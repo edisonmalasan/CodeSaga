@@ -9,6 +9,12 @@ export default defineConfig({
   globalTimeout: 180_000,
   reporter: 'list',
   use: { baseURL: 'http://127.0.0.1:3000' },
+  projects: [
+    { name: 'http', testMatch: 'foundation.spec.ts' },
+    ...(['chromium', 'firefox', 'webkit'] as const).map((browserName) => ({
+      name: browserName, testMatch: 'discovery.spec.ts', use: { browserName },
+    })),
+  ],
   webServer: [
     {
       name: 'API',

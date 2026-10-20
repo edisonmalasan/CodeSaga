@@ -95,6 +95,8 @@ test('discovery and every reading preview fit narrow, tablet and desktop widths'
   }
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: /skip/i })).toBeFocused();
+  await page.keyboard.press('Enter');
+  await expect(page.getByRole('main')).toBeFocused();
   const data = await catalog(request);
   for (const lesson of data.lessons.filter((item) => item.availability === 'preview')) {
     const course = data.courses.find((item) => item.id === lesson.courseId)!;
@@ -138,7 +140,8 @@ test('original media expands with keyboard recovery and has a broken-image fallb
   await page.route(`**${image.src}`, (route) => route.abort());
   await page.reload();
   // Reading media is lazy: bring its position into view to request the image.
-  await page.locator('.content-image, .missing-media').scrollIntoViewIfNeeded();
+  const targetImage = page.getByRole('figure', { name: image.caption, exact: true });
+  await targetImage.scrollIntoViewIfNeeded();
   await expect(page.getByText(`Image unavailable: ${image.alt}`, { exact: true })).toBeVisible();
 });
 

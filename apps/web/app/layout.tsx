@@ -11,5 +11,5 @@ export const metadata: Metadata = {
   description: 'Explore original Python and HTML & CSS reading previews. Find a small, understandable place to begin coding.',
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><PreferenceProvider><a className="skip-link" href="#main-content">Skip to content</a><Header /><main id="main-content" tabIndex={-1}>{children}</main><Footer /></PreferenceProvider></body></html>;
+  return <html lang="en"><body><PreferenceProvider><a className="skip-link" href="#main-content" tabIndex={0}>Skip to content</a><Header /><main id="main-content" tabIndex={-1}>{children}</main><Footer /></PreferenceProvider></body></html>;
 }

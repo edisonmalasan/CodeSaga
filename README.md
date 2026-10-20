@@ -63,10 +63,10 @@ pnpm test:e2e
 | `pnpm db:rehearse-restore` | Local PostgreSQL dump/restore, rollback and cleanup drill using two disposable databases; [scope and recovery notes](infra/RECOVERY.md) |
 | `pnpm build` | Shared contracts/content, API and Next.js production build |
 | `pnpm audit:boundaries` | Built web traces/client chunks exclude backend/reference configuration |
-| `pnpm test:e2e` | Chromium discovery/reading/keyboard/storage/media journeys and cross-process HTTP contracts |
+| `pnpm test:e2e` | Chromium/Firefox/WebKit public journeys and separate HTTP contracts; [matrix and limits](tests/README.md) |
 | `pnpm release:record` | Clean committed source inventory; [release handoff and CI artifact retrieval](docs/RELEASE.md) |
 
-Install the matching browser once with `pnpm exec playwright install chromium` before local browser acceptance. CI installs Chromium and its Linux dependencies. `.github/workflows/verify.yml` runs the pipeline on Linux using isolated service fixtures. A configured workflow is not evidence that a remote run has passed; see the roadmap for recorded verification.
+Install the matching engines once with `pnpm exec playwright install chromium firefox webkit` before local browser acceptance. CI installs those engines and their Linux dependencies. `.github/workflows/verify.yml` runs the pipeline on Linux using isolated service fixtures. A configured workflow is not evidence that a remote run has passed; see the roadmap for recorded verification.
 
 ## Repository boundaries
 

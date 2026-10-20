@@ -16,7 +16,7 @@ export function Header() {
     <div className="header-inner">
       <Link href="/" className="wordmark" aria-label="CodeSaga home">CodeSaga<span className="wordmark-square" aria-hidden="true" /></Link>
       <nav className={`primary-nav${open ? ' is-open' : ''}`} id="primary-navigation" aria-label="Main navigation">{links.map(([href, label]) => <Link key={href} href={href} aria-current={path.startsWith(href) ? 'page' : undefined} onClick={() => setOpen(false)}>{label}</Link>)}</nav>
-      <div className="header-actions"><Link className="icon-link" href="/search" aria-label="Search public content"><Icon name="search" /></Link><PreferenceControls /><button ref={toggle} className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="primary-navigation" onClick={() => setOpen(!open)}><Icon name={open ? 'close' : 'menu'} /></button></div>
+      <div className="header-actions"><Link className="icon-link" href="/search" aria-label="Search public content"><Icon name="search" /></Link><PreferenceControls /><button ref={toggle} className="menu-toggle" aria-label={open ? 'Close navigation' : 'Open navigation'} aria-expanded={open} aria-controls="primary-navigation" onClick={(event) => { event.currentTarget.focus(); setOpen((value) => !value); }}><Icon name={open ? 'close' : 'menu'} /></button></div>
     </div>
   </header>;
 }
