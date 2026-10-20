@@ -6,7 +6,7 @@
 - **What it does:** Planned original coding-learning platform inspired by the retained Codédex investigation: courses, real browser-based coding, checked practice, durable progress, Builds, projects and community, with later commerce, AI, habits and role-specific features.
 - **Primary users / use cases:** Self-directed beginners learning to code in a browser, confirmed by the user; projects/community support that learning journey. Later role-specific workflows remain planned.
 - **Current state:** Documentation-only repository. No application source, manifest, installed application stack, database, tests, build scripts or deployed CodeSaga service is verified.
-- **Current focus:** Impeccable product initialization and project hooks. The user selected a Next.js frontend and NestJS/PostgreSQL backend; hosting remains undecided. Application implementation has not started and autonomous roadmap execution is not active.
+- **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. M01 foundation is in progress on `feat/working-foundation`; verified outcomes will be recorded in the roadmap before advancing. Hosting remains undecided.
 
 ## Where to Look
 

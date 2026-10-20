@@ -44,7 +44,7 @@ A unique market claim, employment outcome, certification promise, competitive ad
 - Frontend interaction and backend authority are distinct. Source/output, grading, completion, XP, saved Build revision and public publication are separate states.
 - The current repository is documentation-only. There is no runnable interface to inspect or live preview/dev command to configure yet.
 - [docs/CONTEXT.md](docs/CONTEXT.md) routes project work; [docs/ROADMAP.md](docs/ROADMAP.md) owns delivery scope; [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) owns technical design. This file owns the confirmed product brief and stack selection.
-- [AGENTS.md](AGENTS.md) retains the user's repository working rules. Initialization does not activate autonomous roadmap execution.
+- [AGENTS.md](AGENTS.md) retains the user's repository working rules. Autonomous roadmap execution was subsequently authorized on 2026-10-20.
 
 ## Capabilities and Constraints
 
@@ -74,7 +74,7 @@ The roadmap also covers challenge packs/daily practice, resources/tutorials, own
 - **Product name:** CodeSaga.
 - **Reference:** Codédex's investigated product behavior informs reconstruction planning.
 - The current plan calls for original or appropriately licensed CodeSaga branding, characters, curriculum and media. Captured reference branding, artwork, prose and user content are not a licensed production asset library.
-- No final voice, logo, palette, typography, visual world or page concept is established by this initialization. Those decisions belong to later scoped design work.
+- The user confirmed an **original pixel-inspired adventure world** on 2026-10-20. Final logo, palette, typography and page compositions will be established during scoped design work.
 
 ## Evidence on Hand
 

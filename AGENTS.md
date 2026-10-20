@@ -109,6 +109,8 @@ If the working tree is dirty or Git operations are blocked, resolve safely witho
 
 _Activate only when the user explicitly requests autonomous roadmap execution._
 
+**Status: Active**, explicitly authorized by the user on 2026-10-20. Execute eligible roadmap tasks continuously using the rules below; record verified outcomes and blockers in `docs/ROADMAP.md`.
+
 1. **Orchestrator:** Read `docs/CONTEXT.md` and `docs/ROADMAP.md`, select the next eligible task, manage Git operations, and verify completion.
 2. **Subagent:** Spawn **subagents** per task if needed when supported. Otherwise, perform the work directly.
 3. **Execution:** Create branch → Implement → Test → Commit → Push → Merge → Update roadmap.

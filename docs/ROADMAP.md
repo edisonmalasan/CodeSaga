@@ -137,7 +137,7 @@ M15/M16 apply throughout. Free capability enforcement belongs to M03 and does no
 
 *Outcome: an agreed technical baseline and reproducible, verifiable starting application.*
 
-**Status:** Not started. **Dependencies:** none. **Evidence:** [reconstruction map](../re/docs/08-codesaga-reconstruction-map.md), repository inventory. **Decisions:** architecture D01–D04.
+**Status:** In progress. **Dependencies:** none. **Evidence:** [reconstruction map](../re/docs/08-codesaga-reconstruction-map.md), repository inventory. **Decisions:** architecture D01–D04.
 
 - [ ] **M01.01** First-release scope, original-content strategy and exclusions are recorded; later features are not advertised as shipped.
 - [ ] **M01.02** Frontend/backend/runtime/data boundaries and initial stack/provider choices have rationale, supported versions and explicit deferred decisions.
@@ -583,7 +583,7 @@ No evidenced core capability is silently dropped. Conditional extensions stay un
 
 | ID | Milestone | Status | Gate |
 |---|---|---|---|
-| M01 | Decisions/foundation | Not started | Fresh checkout and real commands/contracts |
+| M01 | Decisions/foundation | In progress | Fresh checkout and real commands/contracts |
 | M02 | Design/discovery/content | Not started | Assets, filters, routing and responsive access |
 | M03 | Identity/accounts/access | Not started | Sessions/providers/cross-user checks |
 | M04 | Lesson/execution | Not started | Real run/check/preview/input/error journey |
@@ -612,7 +612,7 @@ Verification: staged whitespace checks passed for each group; hook/configuration
 
 ### Next implementation decision
 
-Review M01 and the remaining parts of architecture D01–D04, then authorize a bounded scaffold/core slice. The user has already confirmed the product brief and core framework/database selection in PRODUCT.md. Documentation/Impeccable initialization does not start autonomous roadmap execution.
+Autonomous roadmap execution was explicitly authorized on 2026-10-20. Complete and verify M01, then continue eligible tasks. The user confirmed original pixel-inspired adventure visuals and requested provider adapters while identity/execution providers remain unselected; do not present unconfigured integrations as functioning features.
 
 ### Maintenance
 
