@@ -60,6 +60,7 @@ pnpm test:e2e
 | `pnpm typecheck` | Applications, packages and acceptance-test TypeScript |
 | `pnpm test` | Package tests; database suite skips without `TEST_DATABASE_URL` |
 | `pnpm test:integration` | Required real database checks; fails if the local database is unavailable |
+| `pnpm db:rehearse-restore` | Local PostgreSQL dump/restore, rollback and cleanup drill using two disposable databases; [scope and recovery notes](infra/RECOVERY.md) |
 | `pnpm build` | Shared contracts/content, API and Next.js production build |
 | `pnpm audit:boundaries` | Built web traces/client chunks exclude backend/reference configuration |
 | `pnpm test:e2e` | Chromium discovery/reading/keyboard/storage/media journeys and cross-process HTTP contracts |

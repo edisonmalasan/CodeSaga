@@ -44,6 +44,7 @@ _Use commands that really exist in this repository. Never invent a script._
 | Run locally          | `pnpm dev` | First run setup/services/migrations from README.md; starts web and API |
 | Build                | `pnpm build` | Builds contracts/content, API and Next.js; requires example environment setup |
 | Test                 | `pnpm test`; `pnpm test:integration`; `pnpm test:e2e` | Unit/HTTP, real local PostgreSQL, and cross-process checks respectively |
+| Database recovery    | `pnpm db:rehearse-restore` | Local fixture dump/restore, rollback and cleanup; scope in infra/RECOVERY.md |
 | Lint / type-check    | `pnpm typecheck` | tsc across all packages; no separate linter configured |
 
 Run from the repository root unless a command explicitly requires another directory.

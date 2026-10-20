@@ -23,6 +23,7 @@
 | Original interface design and assets | [Frontend design system](../apps/web/DESIGN.md), scoped sidecar/brief/captures in `apps/web/.impeccable/`, and [asset provenance](../apps/web/ASSETS.md) |
 | Identity/execution configuration needs | [Provider setup](../apps/api/PROVIDER_SETUP.md); unavailable adapter behavior and checks in [API verification](../apps/api/VERIFICATION.md) |
 | Setup, run, verify and local service commands | Root [README.md](../README.md); [AGENTS.md](../AGENTS.md) retains working rules and command summary |
+| Local PostgreSQL restore rehearsal and limitations | [Recovery runbook](../infra/RECOVERY.md); real fixture verification through `pnpm db:rehearse-restore` |
 | Research entry point and detailed context map | [re/README.md](../re/README.md) |
 | Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
 | Reference product/content/visual model | [02 Routes/content](../re/docs/02-routes-content.md), [03 Product systems](../re/docs/03-product-systems.md), [05 Visual system](../re/docs/05-visual-interaction-system.md) |

@@ -10,7 +10,8 @@
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "tsx --test test/*.test.ts",
     "db:migrate": "tsx --env-file-if-exists=.env src/database/migrate-cli.ts",
-    "db:seed": "tsx --env-file-if-exists=.env src/database/seed-cli.ts"
+    "db:seed": "tsx --env-file-if-exists=.env src/database/seed-cli.ts",
+    "db:rehearse-restore": "tsx scripts/recovery-drill.ts"
   },
   "dependencies": {
     "@codesaga/content": "workspace:*",

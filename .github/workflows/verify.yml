@@ -34,6 +34,8 @@ jobs:
       - run: pnpm db:migrate && pnpm db:seed
       - run: pnpm db:migrate && pnpm db:seed
       - run: pnpm verify
+      - run: pnpm db:rehearse-restore
+        timeout-minutes: 2
       - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
         timeout-minutes: 4

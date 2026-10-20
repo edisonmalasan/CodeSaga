@@ -20,7 +20,8 @@
     "services:down": "docker compose -f infra/compose.yaml down",
     "services:verify": "node infra/verify-object-store.mjs",
     "db:migrate": "pnpm --filter @codesaga/api db:migrate",
-    "db:seed": "pnpm --filter @codesaga/api db:seed"
+    "db:seed": "pnpm --filter @codesaga/api db:seed",
+    "db:rehearse-restore": "pnpm --filter @codesaga/api db:rehearse-restore"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",
