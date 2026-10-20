@@ -13,6 +13,15 @@ test('the original published collection validates and exposes only the authored 
   assert.ok(catalog.resources.some((item) => item.kind === 'blog'));
 });
 
+test('published reading bodies contain prose rather than draft routing metadata', () => {
+  const catalog = getPublishedCatalog();
+  for (const item of [...catalog.lessons, ...catalog.resources]) {
+    for (const block of item.body) {
+      if (block.type === 'paragraph') assert.doesNotMatch(block.text, /^(?:Slug |Kind [a-z]+;|Summary:)/, item.slug);
+    }
+  }
+});
+
 test('canonical aliases preserve identity and enforce course parents', () => {
   const course = getCourse('python')!;
   assert.equal(getCourse('python-basics')!.record.id, course.record.id);

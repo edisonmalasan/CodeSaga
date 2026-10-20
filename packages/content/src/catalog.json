@@ -596,10 +596,6 @@
       "body": [
         {
           "type": "paragraph",
-          "text": "Kind cheatsheet; slug `python-pocket-notes`; category programming; course Python. Summary: A small reference for the syntax used in First light."
-        },
-        {
-          "type": "paragraph",
           "text": "Use this sheet after a lesson, rather than trying to memorize everything at once."
         },
         {
@@ -672,10 +668,6 @@
       ],
       "body": [
         {
-          "type": "paragraph",
-          "text": "Kind cheatsheet; slug `html-css-pocket-notes`; category web; course HTML & CSS. Summary: Document structure, selectors and a readable starting point for small pages."
-        },
-        {
           "type": "heading",
           "level": 2,
           "text": "Structure before style"
@@ -732,10 +724,6 @@
       "body": [
         {
           "type": "paragraph",
-          "text": "Kind article; slug `trace-before-you-change`; category programming; course Python. Summary: A practical way to reason through a short program without guessing."
-        },
-        {
-          "type": "paragraph",
           "text": "When code surprises you, changing three lines at once makes the surprise harder to explain. A trace is a simple record of what each instruction does, in order."
         },
         {
@@ -785,10 +773,6 @@
         "52ae735a-09c5-5acd-9759-323a50cf52c8"
       ],
       "body": [
-        {
-          "type": "paragraph",
-          "text": "Kind tutorial; slug `build-a-trail-notice`; category web; course HTML & CSS. Summary: Take the lesson's document into a plain local HTML file and inspect it with your own browser."
-        },
         {
           "type": "paragraph",
           "text": "This optional tutorial uses software on your own device: a plain text editor and a browser. CodeSaga does not create, save or host the file for you. If you cannot create local files, you can still read the steps and compare them with the lesson."
@@ -853,14 +837,6 @@
       "category": "tools",
       "courseIds": [],
       "body": [
-        {
-          "type": "paragraph",
-          "text": "Kind article; slug `what-a-reading-preview-can-teach`; category tools; no course relation; blog placement."
-        },
-        {
-          "type": "paragraph",
-          "text": "Summary: How to use CodeSaga's first original lessons while interactive learning tools are still being built."
-        },
         {
           "type": "paragraph",
           "text": "A short program has a useful quality: you can often understand its behavior before running it. That makes a reading preview a place to ask focused questions. What value does this name hold? Which instruction happens first? Why does this heading describe a section?"
