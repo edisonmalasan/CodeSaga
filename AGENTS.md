@@ -4,7 +4,7 @@
 
 - **Name:** CodeSaga
 - **Purpose:** Planned original coding-learning platform for learners and project creators, with later reviewer/moderator, educator/student and operator workflows; evidence-based scope is in docs/ROADMAP.md.
-- **Current state:** M01 foundation in progress: Next.js web and NestJS API source, shared schemas, a pnpm lockfile, PostgreSQL migrations and healthy local service fixtures exist. Local type/build/HTTP/database/object checks have passed; clean-checkout and CI gates remain. Learner features and deployment are not implemented. See docs/ROADMAP.md for current verification.
+- **Current state:** M01 foundation complete: Next.js web and NestJS API source, shared schemas, a pnpm lockfile, PostgreSQL migrations and healthy local fixtures are verified from clean source and Linux CI. Learner features and deployment are not implemented; autonomous execution continues with M02. See docs/ROADMAP.md for current verification.
 
 ## Source of Truth
 

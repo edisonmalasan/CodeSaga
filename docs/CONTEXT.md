@@ -5,8 +5,8 @@
 - **Project:** CodeSaga.
 - **What it does:** Planned original coding-learning platform inspired by the retained Codédex investigation: courses, real browser-based coding, checked practice, durable progress, Builds, projects and community, with later commerce, AI, habits and role-specific features.
 - **Primary users / use cases:** Self-directed beginners learning to code in a browser, confirmed by the user; projects/community support that learning journey. Later role-specific workflows remain planned.
-- **Current state:** M01 scaffold exists and local type/build/HTTP/PostgreSQL/object checks have passed. All local fixtures are healthy; clean-checkout verification and CI are pending. No learner UI, account integration or deployment is shipped.
-- **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. M01 foundation is in progress on `feat/working-foundation`; verified outcomes will be recorded in the roadmap before advancing. Hosting remains undecided.
+- **Current state:** M01 foundation is complete: clean-source installation/verification and full Linux CI passed, including real PostgreSQL and signed object checks. No learner UI, account integration or deployment is shipped yet.
+- **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. Continue M02 original discovery/content and prepare identity/execution adapters; providers and hosting remain undecided.
 
 ## Where to Look
 
@@ -46,7 +46,7 @@ The user-authorized temporary reference Build was deleted and its dashboard rest
 
 ## Next Useful Work
 
-Finish M01 verification and merge, then continue M02 original content/discovery. The user confirmed original pixel-inspired adventure visuals and requested identity/execution adapters while providers remain unselected. Continue independent eligible work; record provider-dependent blockers precisely. Do not introduce a second architectural source of truth or duplicate the research archive into these docs.
+Continue M02 original content/discovery and provider adapters after the verified foundation merge. The user confirmed original pixel-inspired adventure visuals while providers remain unselected. Continue independent eligible work; record provider-dependent blockers precisely. Do not introduce a second architectural source of truth or duplicate the research archive into these docs.
 
 ## Context Loading Rules
 

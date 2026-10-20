@@ -4,7 +4,7 @@ An original browser-based coding-learning platform for self-directed beginners.
 
 ## Development status
 
-The foundation is being implemented: a Next.js frontend, a separate NestJS API and PostgreSQL, with shared public transport schemas. The root route currently returns a development-stage JSON response; learner-facing pages follow in M02. Sign-in, code execution, progress, Builds and commerce are not shipped.
+The foundation is implemented and verified: a Next.js frontend, a separate NestJS API and PostgreSQL, with shared public transport schemas. The root route currently returns a development-stage JSON response; learner-facing pages follow in M02. Sign-in, code execution, progress, Builds and commerce are not shipped.
 
 See [the roadmap](docs/ROADMAP.md) for verified outcomes, [architecture](docs/ARCHITECTURE.md) for boundaries and decisions, and [context](docs/CONTEXT.md) for navigation. Autonomous roadmap execution is active under [AGENTS.md](AGENTS.md).
 

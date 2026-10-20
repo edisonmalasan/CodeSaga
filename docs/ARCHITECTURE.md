@@ -1,6 +1,6 @@
 # CodeSaga — Frontend and backend architecture
 
-**Status:** M01 foundation implementation is in progress. Existing scaffold files and commands are listed in [README.md](../README.md); verified outcomes are tracked in the roadmap. The user confirmed the core Next.js frontend and NestJS/PostgreSQL backend on 2026-10-20 Manila; see [PRODUCT.md](../PRODUCT.md). Hosting remains undecided. Domain modules, learner features, external providers and services beyond the foundation below remain proposed designs.
+**Status:** M01 foundation is implemented and verified. Existing scaffold files and commands are listed in [README.md](../README.md); clean-source and Linux CI outcomes are recorded in the roadmap. The user confirmed the core Next.js frontend and NestJS/PostgreSQL backend on 2026-10-20 Manila; see [PRODUCT.md](../PRODUCT.md). Hosting remains undecided. Domain modules, learner features, external providers and services beyond the foundation below remain proposed designs.
 
 The [roadmap](ROADMAP.md) owns scope, sequence and acceptance outcomes. This document owns the proposed technical boundaries, contracts and data flows. [Context](CONTEXT.md) routes readers to the right evidence. The original [research mapper](../re/README.md) owns reference observations; no architecture here is presented as recovered private Codédex source.
 
@@ -68,12 +68,12 @@ Use a **TypeScript monorepo**, a separately deployed web application and API, an
 | Identity | Established identity/session provider behind an adapter | Google/GitHub/email baseline proposed; provider and account-linking policy unresolved |
 | Execution | Managed sandbox provider or separately operated sandbox pool behind a gateway | No submitted code runs in API, web or general background workers |
 | Search | Database-backed catalog/content search first | Dedicated search service only if measured needs justify it; permission filtering always required |
-| Verification | Unit/domain tests, PostgreSQL integration tests, browser E2E/accessibility tests | Frameworks and versions selected and pinned during scaffold; no runnable commands exist yet |
+| Verification | Unit/domain tests, PostgreSQL integration tests, browser E2E/accessibility tests | Foundation unit/HTTP/database and process checks exist; domain/browser/accessibility coverage grows with later features |
 | Local/infrastructure | Reproducible service configuration, environment schema, CI and managed secrets | Separate dev/staging/production identities and buckets; hosting vendors not selected |
 
 The server/client rendering split is supported by [Next.js documentation](https://nextjs.org/docs/app/getting-started/server-and-client-components). Feature module organization is described in [NestJS modules](https://docs.nestjs.com/modules). PostgreSQL supports the proposed key/uniqueness constraints in its [constraint documentation](https://www.postgresql.org/docs/current/ddl-constraints.html). [BullMQ workers](https://docs.bullmq.io/guide/workers) process queue jobs; job idempotency remains an application responsibility. These references explain technology capabilities, not a deployed CodeSaga configuration.
 
-Select supported versions, ORM/query tooling, editor packages and commercial providers when implementation begins; record the actual lockfile and deployment requirements. Do not copy versions from target bundles or label this table the current stack.
+Section 2.0 and manifests record the actual foundation choices. Editor packages, commercial providers and deployment requirements are decided at their milestones. Do not copy target bundle versions or treat unimplemented rows in this table as installed components.
 
 ### 2.2 Proposed repository layout
 
@@ -95,7 +95,7 @@ docs/                     Context, roadmap and this architecture
 re/                       Existing local evidence; ignored by Git
 ```
 
-Paths above are planned; they do not exist yet. Backend domain modules live inside `apps/api` initially. Add shared packages only when there is a real consumer; avoid exporting database entities through `packages/contracts`. Sandbox workers may require an independent repository/deployment if their trust boundary cannot be represented safely inside this monorepo.
+The foundation implements `apps/web`, `apps/api`, `packages/contracts`, `infra`, `tests` and supporting scripts. Other paths above remain planned. Backend domain modules live inside `apps/api` initially. Add shared packages only when there is a real consumer; avoid exporting database entities through `packages/contracts`. Sandbox workers may require an independent repository/deployment if their trust boundary cannot be represented safely inside this monorepo.
 
 ## 3. System overview
 

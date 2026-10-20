@@ -1,6 +1,6 @@
 # CodeSaga — Full product roadmap
 
-**Baseline:** 2026-10-20, Asia/Manila. **Application status:** M01 foundation in progress. Separate web/API scaffolds, shared schemas, a lockfile and local service fixtures now exist; learner features and deployment remain unimplemented. See M01 for verification and remaining gates.
+**Baseline:** 2026-10-20, Asia/Manila. **Application status:** M01 foundation complete. Separate web/API scaffolds, shared schemas, a lockfile and healthy local service fixtures are verified from clean source and Linux CI. Learner features and deployment remain unimplemented; M02 is the next eligible milestone.
 
 **Goal:** an original CodeSaga platform with a complete frontend and backend for discovering courses, learning and executing code, receiving checked feedback, retaining progress/rewards, practicing, building/publishing projects and participating in community, followed by paid assistance, habits and extended roles.
 
@@ -139,20 +139,22 @@ M15/M16 apply throughout. Free capability enforcement belongs to M03 and does no
 
 *Outcome: an agreed technical baseline and reproducible, verifiable starting application.*
 
-**Status:** In progress. **Dependencies:** none. **Evidence:** [reconstruction map](../re/docs/08-codesaga-reconstruction-map.md), repository inventory. **Decisions:** architecture D01–D04.
+**Status:** Complete. **Dependencies:** none. **Evidence:** [reconstruction map](../re/docs/08-codesaga-reconstruction-map.md), source and verification below. **Decisions:** architecture D01–D04.
 
 - [x] **M01.01** First-release scope, original-content strategy and exclusions are recorded; later features are not advertised as shipped.
 - [x] **M01.02** Frontend/backend/runtime/data boundaries and initial stack/provider choices have rationale, supported versions and explicit deferred decisions.
-- [ ] **M01.03** A fresh checkout can install, run, build and verify the real scaffold through documented scripts and a committed lockfile.
+- [x] **M01.03** A fresh checkout can install, run, build and verify the real scaffold through documented scripts and a committed lockfile.
 - [x] **M01.04** Environment validation fails clearly on missing/invalid settings; examples contain no production secrets or target service credentials.
 - [x] **M01.05** Local database/object/queue fixtures and migrations initialize a clean environment reproducibly.
 - [x] **M01.06** Public web/API schemas have one authority; invalid requests and known errors return predictable contracts/request IDs.
-- [ ] **M01.07** CI verifies actual scaffold scripts with isolated fixtures; frontend builds exclude backend secrets and raw research assets.
+- [x] **M01.07** CI verifies actual scaffold scripts with isolated fixtures; frontend builds exclude backend secrets and raw research assets.
 - [x] **M01.08** Context/AGENTS reflect actual directories, commands and installed versions after scaffold while retaining existing rules.
 
 **Exit evidence:** fresh-checkout results, real package/config paths, migrations/contracts and recorded decisions. Planning alone does not close M01.
 
-**Verification in progress — 2026-10-20:** `apps/web`, `apps/api`, `packages/contracts`, `infra`, real package scripts and `pnpm-lock.yaml` now exist. Local type checks, package tests, real PostgreSQL integration tests, web/API production compilation and two cross-process HTTP checks passed. Environment tests exercise missing/malformed settings and redaction; API tests cover request IDs, CORS, payload bounds, malformed JSON, safe errors and database outage. Database checks cover clean/concurrent migrations, rollback, checksums, constraints and idempotent original draft seeding. PostgreSQL, Redis and MinIO all became healthy; signed MinIO bucket/object write/read and cleanup passed through `pnpm services:verify`. Fresh-checkout pipeline and remote CI remain pending. No learner account or live runner is claimed. Decision rationale and deferred providers are in architecture section 2.0.
+**Verified — 2026-10-20:** `apps/web`, `apps/api`, `packages/contracts`, `infra`, real scripts and `pnpm-lock.yaml` exist. A clean Git archive of `71b1d25` passed frozen installation, setup, repeated migration/seed, `pnpm verify` and both cross-process HTTP checks on Windows/Node 26.10.0. Clean-source testing found and fixed CRLF/LF migration digests without permitting changed SQL or rewriting history. Source `90b7c0d` additionally passed production-server acceptance locally and the [complete Linux/Node 24 CI pipeline](https://github.com/edisonmalasan/CodeSaga/actions/runs/39393475067): frozen install, clean services, signed object round-trip, repeat migration/seed, types, unit/HTTP tests, mandatory PostgreSQL integration, builds, secret-canary/production boundary audit, both cross-process checks and cleanup. The earlier CI run was cancelled after passing tests hung during nested-process shutdown; direct server ownership and bounded teardown fixed that failure before this passing run.
+
+Environment cases exercise malformed settings/redaction; HTTP cases cover IDs, CORS, payload bounds, safe errors and outages. Database cases cover concurrent migration, rollback, checksums/line endings, constraints and idempotent original draft seed. PostgreSQL, Redis and MinIO are local fixtures; no deployment, learner account, queue consumer, production object integration or live runner is claimed. Decision rationale and deferred providers are in architecture section 2.0. All later milestones retain their own acceptance gates.
 
 ## M02 — Original design system, discovery and content shell
 
@@ -587,7 +589,7 @@ No evidenced core capability is silently dropped. Conditional extensions stay un
 
 | ID | Milestone | Status | Gate |
 |---|---|---|---|
-| M01 | Decisions/foundation | In progress | Fresh checkout and real commands/contracts |
+| M01 | Decisions/foundation | Complete | Clean-source and Linux CI evidence above |
 | M02 | Design/discovery/content | Not started | Assets, filters, routing and responsive access |
 | M03 | Identity/accounts/access | Not started | Sessions/providers/cross-user checks |
 | M04 | Lesson/execution | Not started | Real run/check/preview/input/error journey |
@@ -616,7 +618,7 @@ Verification: staged whitespace checks passed for each group; hook/configuration
 
 ### Next implementation decision
 
-Autonomous roadmap execution was explicitly authorized on 2026-10-20. Complete and verify M01, then continue eligible tasks. The user confirmed original pixel-inspired adventure visuals and requested provider adapters while identity/execution providers remain unselected; do not present unconfigured integrations as functioning features.
+Autonomous roadmap execution was explicitly authorized on 2026-10-20. M01 is verified; continue M02 and prepare identity/execution adapters. The user confirmed original pixel-inspired adventure visuals and requested adapters while providers remain unselected; do not present unconfigured integrations as functioning features.
 
 ### Maintenance
 
