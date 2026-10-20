@@ -135,6 +135,10 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .course-card h3 a:hover { text-decoration: underline; }
 .course-card h3 span { display: block; font-size: 1rem; font-weight: 500; color: var(--muted); margin-top: 6px; }
 .course-summary { font-size: .9375rem; color: var(--muted); max-width: 51ch; margin-bottom: 24px; }
+.course-guide { margin-bottom: 20px; font-size: .875rem; }
+.course-guide summary { color: var(--accent); padding-block: 6px; }
+.course-guide h4 { margin: 16px 0 6px; font-size: .875rem; }
+.course-guide ul { margin: 0; padding-left: 20px; }
 .course-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: .8125rem; color: var(--muted); }
 .course-open { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; border: 1px solid var(--line); border-radius: 6px; }
 .course-open:hover { background: var(--selected); }

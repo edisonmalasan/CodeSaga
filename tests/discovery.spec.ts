@@ -13,6 +13,11 @@ test('a learner can compose/reset filters and read a real original lesson', asyn
   const lesson = data.lessons.find((item) => item.courseId === course.id && item.availability === 'preview')!;
   await page.goto('/courses');
   await expect(page.locator('.course-card')).toHaveCount(data.courses.length);
+  const courseCard = page.locator('.course-card').filter({ has: page.getByRole('link', { name: 'Explore Python course', exact: true }) });
+  await courseCard.locator('summary').click();
+  for (const item of [...course.prerequisites, ...course.recommendations]) await expect(courseCard.getByText(item, { exact: true })).toBeVisible();
+  await courseCard.locator('summary').press('Enter');
+  await expect(courseCard.locator('details')).not.toHaveAttribute('open', '');
   await page.getByRole('searchbox', { name: 'Search courses', exact: true }).fill('Python');
   await page.getByRole('button', { name: 'Web development', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'No trail matches those filters' })).toBeVisible();

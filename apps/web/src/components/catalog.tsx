@@ -39,6 +39,7 @@ function CourseCard({ course, catalog }: { course: Course; catalog: PublishedCat
     <div className="course-card-top"><span className="language-mark" aria-hidden="true">{course.language === 'Python' ? 'Py' : course.language === 'HTML & CSS' ? '</>' : course.language === 'JavaScript' ? 'JS' : course.language === 'SQL' ? 'SQL' : 'git'}</span><span className={`availability ${course.availability}`}>{course.availability === 'preview' ? 'Reading preview' : 'Upcoming'}</span></div>
     <p className="course-category">{categoryNames[course.category]} <span aria-hidden="true">·</span> {course.difficulty === 'beginner' ? 'Beginner' : 'Intermediate'}</p>
     <h3><Link href={`/courses/${course.slug}`}>{name}<span>{subtitle}</span></Link></h3><p className="course-summary">{course.summary}</p>
+    <details className="course-guide"><summary>Prerequisites and recommendations<span className="sr-only"> for {course.language}</span></summary><h4>Before you begin</h4><ul>{course.prerequisites.map((item) => <li key={item}>{item}</li>)}</ul><h4>A useful way to start</h4><ul>{course.recommendations.map((item) => <li key={item}>{item}</li>)}</ul></details>
     <div className="course-card-bottom"><span>{lessons.length ? `${lessons.length} ${lessons.length === 1 ? 'lesson' : 'lessons'} to read` : 'Lessons not published yet'}</span><Link href={`/courses/${course.slug}`} className="course-open" aria-label={`${course.availability === 'preview' ? 'Explore' : 'View upcoming'} ${course.language} course`}><Icon name="arrow" /></Link></div>
   </article>;
 }
