@@ -1,0 +1,58 @@
+# Project Context
+
+## At a Glance
+
+- **Project:** CodeSaga.
+- **What it does:** Planned original coding-learning platform inspired by the retained Codédex investigation: courses, real browser-based coding, checked practice, durable progress, Builds, projects and community, with later commerce, AI, habits and role-specific features.
+- **Primary users / use cases:** Self-directed beginners learning to code in a browser, confirmed by the user; projects/community support that learning journey. Later role-specific workflows remain planned.
+- **Current state:** Documentation-only repository. No application source, manifest, installed application stack, database, tests, build scripts or deployed CodeSaga service is verified.
+- **Current focus:** Impeccable product initialization and project hooks. The user selected a Next.js frontend and NestJS/PostgreSQL backend; hosting remains undecided. Application implementation has not started and autonomous roadmap execution is not active.
+
+## Where to Look
+
+| Need | Canonical source |
+|---|---|
+| Confirmed audience, product brief, platform and selected stack | Root [PRODUCT.md](../PRODUCT.md); initialized through Impeccable after the user interview |
+| Feature scope, milestones, dependencies, acceptance and progress | [ROADMAP.md](ROADMAP.md); M01–M16 and EXT01–EXT07 |
+| Frontend routes/modules/state/editor/visual boundaries | [ARCHITECTURE.md](ARCHITECTURE.md), section 4 |
+| Backend modules, transactions, workers and data ownership | [ARCHITECTURE.md](ARCHITECTURE.md), sections 5–6 |
+| API/events, Run/Submit/save/publish/billing/AI/date flows | [ARCHITECTURE.md](ARCHITECTURE.md), sections 7–8 |
+| Execution/preview isolation, permissions, operations and decisions | [ARCHITECTURE.md](ARCHITECTURE.md), sections 9–12 |
+| Current behavior and installed dependencies | No CodeSaga application source/manifests yet; planned paths in architecture are not existing code |
+| Build/test commands and repository working rules | Root [AGENTS.md](../AGENTS.md); application commands unavailable until real scripts exist |
+| Research entry point and detailed context map | [re/README.md](../re/README.md) |
+| Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
+| Reference product/content/visual model | [02 Routes/content](../re/docs/02-routes-content.md), [03 Product systems](../re/docs/03-product-systems.md), [05 Visual system](../re/docs/05-visual-interaction-system.md) |
+| Reference editor/protocol/client/API mechanisms | [04 Learning](../re/docs/04-learning-editor-runtime.md), [06 Client](../re/docs/06-client-architecture.md), [07 Contracts](../re/docs/07-api-data-contracts.md), [10 Protocol](../re/docs/10-runtime-protocol-and-storage.md), [13 Traces](../re/docs/13-deeper-client-traces.md) |
+| Additional runtimes, public edges and authenticated checks | [12 Runtimes](../re/docs/12-additional-editor-runtimes.md), [14 Public edges](../re/docs/14-public-interaction-edge-cases.md), [15 Account UI](../re/docs/15-signed-in-account-investigation.md), [16 Focused verification](../re/docs/16-build-progress-and-runtime-verification.md) |
+| Remaining target unknowns versus CodeSaga choices | [09 Research unknowns](../re/docs/09-coverage-and-open-questions.md); roadmap U01–U22 mapping; architecture D01–D16 |
+| Graphify / Obsidian | No generated graph, installation or central vault configuration verified; use repository docs |
+
+## Project-Specific Constraints
+
+- The user requested complete evidence-based planning, readable frontend/backend architecture, and population of AGENTS **without changing its existing rules**.
+- The user confirmed the core frontend/backend stack in [PRODUCT.md](../PRODUCT.md). It is selected but not installed; supporting technologies, providers, versions, limits, pricing, hosting and launch date remain unresolved.
+- All implementation milestones remain unchecked. Research verification does not count as CodeSaga implementation.
+- Reference observations, static mechanisms, unknowns and proposed CodeSaga policies remain distinct. Later investigation document 16 qualifies earlier incomplete React/C#/owner findings.
+- Original/appropriately licensed CodeSaga content, branding, characters and media are required for the proposed product; captured target content/assets/UGC are reference evidence.
+- The existing .gitignore ignores re. A normal clone will not include this local evidence unless a separately approved sanitized handoff is arranged. Preserve the ignore rule.
+- Private target backend source/rules and complete paid/role workflows were not recovered. The final authenticated checks prove same-browser behavior; cross-session server durability/enforcement remains a separate CodeSaga verification target.
+
+## Research Handoff State
+
+The reference investigation is locally retained: 17 documents, 58 unique REA records, 14 initial signed-in Computer Use states and 44 focused states, plus 23 visual transcriptions. The recorded research audit passed with zero errors. Use the audit artifact for exact counts/date rather than assuming later edits have been audited.
+
+The user-authorized temporary reference Build was deleted and its dashboard restored to 0/5 after reload. The designated account intentionally retained Initials completion and +15 XP; React source was restored and corrected C# probe source was left in its lesson editor. That bounded test is finished; these facts do not authorize further account changes. REA MCP ceased being exposed late in research; the final pass is attributed to Computer Use, not new REA records.
+
+## Next Useful Work
+
+Review roadmap M01 and the remaining parts of architecture D01–D04, then perform only the next user-authorized scope. Core framework/database selection is already confirmed in PRODUCT.md. At scaffold time replace unavailable app commands/stack entries with verified package/config evidence. Do not introduce a second architectural source of truth or duplicate the entire research archive into these docs.
+
+## Context Loading Rules
+
+1. Start with the user's task and this routing file.
+2. Open only the relevant section of `docs/ROADMAP.md`, not the entire roadmap unless needed.
+3. Inspect directly affected source files and tests.
+4. Consult architecture docs, related Obsidian notes, or Graphify **only when relevant and available**.
+5. If sources disagree, report the conflict; do not silently choose whichever is convenient.
+6. Do not treat generated graphs or old memory notes as more authoritative than current source code and approved requirements.
