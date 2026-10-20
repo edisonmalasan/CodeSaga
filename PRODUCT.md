@@ -15,7 +15,7 @@ Confirmed by the user on 2026-10-20, Asia/Manila:
 - **Architecture:** clear frontend/backend boundaries; the browser interface and authoritative API/data layer have separate responsibilities.
 - **Hosting:** undecided.
 
-These are selected technologies, not installed dependencies. The repository currently has no application scaffold, package manifest, lockfile, database configuration or runnable CodeSaga service. Versions, package manager, data-access tooling, identity/execution/payment/AI providers and supporting infrastructure remain open. The detailed architecture and remaining decisions are maintained in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
+The core scaffold now exists with pinned dependencies. Actual versions, local service decisions and data-access rationale are maintained in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md), section 2.0; manifests and lockfile own dependency truth. Identity/execution/payment/AI providers and production infrastructure remain open. The user requested identity/execution adapters while no providers are selected.
 
 ## Users
 
@@ -42,7 +42,7 @@ A unique market claim, employment outcome, certification promise, competitive ad
 - This is a web product; mobile browser layouts remain web rather than a confirmed native iOS/Android product.
 - The primary workflow is course discovery → lesson → edit/run → check → completion/progress → resume. Independent practice, saved Builds, project submission and community extend that workflow.
 - Frontend interaction and backend authority are distinct. Source/output, grading, completion, XP, saved Build revision and public publication are separate states.
-- The current repository is documentation-only. There is no runnable interface to inspect or live preview/dev command to configure yet.
+- The foundation has separate web/API development commands and health endpoints. Learner-facing pages follow in M02; no sign-in or code execution integration is shipped by the scaffold.
 - [docs/CONTEXT.md](docs/CONTEXT.md) routes project work; [docs/ROADMAP.md](docs/ROADMAP.md) owns delivery scope; [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) owns technical design. This file owns the confirmed product brief and stack selection.
 - [AGENTS.md](AGENTS.md) retains the user's repository working rules. Autonomous roadmap execution was subsequently authorized on 2026-10-20.
 

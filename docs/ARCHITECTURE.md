@@ -1,6 +1,6 @@
 # CodeSaga — Frontend and backend architecture
 
-**Status:** proposed detailed design for implementation; no application code, package manifest, database, infrastructure or running CodeSaga service exists in this repository yet. The user confirmed the core Next.js frontend and NestJS/PostgreSQL backend on 2026-10-20 Manila; see [PRODUCT.md](../PRODUCT.md). Hosting remains undecided. Other supporting technologies and detailed policies below remain proposals, not installed dependencies or approved provider choices.
+**Status:** M01 foundation implementation is in progress. Existing scaffold files and commands are listed in [README.md](../README.md); verified outcomes are tracked in the roadmap. The user confirmed the core Next.js frontend and NestJS/PostgreSQL backend on 2026-10-20 Manila; see [PRODUCT.md](../PRODUCT.md). Hosting remains undecided. Domain modules, learner features, external providers and services beyond the foundation below remain proposed designs.
 
 The [roadmap](ROADMAP.md) owns scope, sequence and acceptance outcomes. This document owns the proposed technical boundaries, contracts and data flows. [Context](CONTEXT.md) routes readers to the right evidence. The original [research mapper](../re/README.md) owns reference observations; no architecture here is presented as recovered private Codédex source.
 
@@ -35,6 +35,20 @@ The [roadmap](ROADMAP.md) owns scope, sequence and acceptance outcomes. This doc
 The target's Firebase, Redux, STOMP, route names and minified modules are reference mechanisms. They do not require CodeSaga to share the same stack. Target bugs and inaccessible states are documented reference findings, not intended CodeSaga behavior.
 
 ## 2. Recommended platform
+
+### 2.0 Foundation decisions — 2026-10-20
+
+Selected under the user's explicit authorization to execute the roadmap:
+
+- **First alpha scope:** original, English-language beginner content: one coherent Python chapter and one HTML/CSS lesson, with discovery → sign-in → real Run/Check → durable progress/resume as the release gate. Builds, community, commerce, AI, pets and extended roles remain later milestones; they are not advertised as available by the scaffold.
+- **Content and visual rights:** author CodeSaga curriculum and fixtures; use original pixel-inspired adventure visuals confirmed by the user. Do not distribute captured target artwork, prose or user records. Current database seed content is a draft for infrastructure verification.
+- **D01 local baseline:** pnpm workspace with `apps/web`, `apps/api` and `packages/contracts`; Next.js 16.4.2, React 19.3.1, NestJS 11.2.7, TypeScript 5.9.3, Zod 4.6.7 and pg 8.23.1 are exact direct dependency pins. Node.js 24 LTS is the CI baseline; the development host has Node.js 26.10.0. NestJS 11 and TypeScript 5.9 keep conventional decorator compilation for this slice; upgrades require the same build and HTTP checks. Lockfile and manifests own exact dependency versions.
+- **Data access:** explicit SQL migrations with `pg`, transaction-scoped advisory locking and a checksum ledger. This keeps database constraints visible and avoids selecting an ORM before domain needs are known. Public Zod transport schemas are shared; database rows and credentials stay in the API.
+- **Local services:** PostgreSQL 18.6, Redis 8.10.2 and source-built MinIO `RELEASE.2025-10-15T17-29-55Z` are disposable, loopback-bound Compose fixtures. The MinIO source release is built because its official release does not publish that container tag. Queue and object application consumers remain deferred until needed.
+- **D02/D03:** the user has no identity or execution provider yet and requested adapters plus an explicit report of configuration needs. No placeholder sign-in, local execution of learner code or simulated successful Run is an acceptable substitute. Provider choice, credentials, limits and independent-session checks gate M03/M04 respectively.
+- **Explicitly deferred:** hosting, production Redis/object vendors, identity/email, execution, billing and AI providers; no commercial account, subscription or deployment is created by local setup. Preview and runner trust zones remain separate from web/API.
+
+Compatibility and API references: [Next.js installation](https://nextjs.org/docs/app/getting-started/installation), [NestJS modules](https://docs.nestjs.com/modules), [Node.js release lifecycle](https://nodejs.org/en/about/previous-releases), [pnpm build allowlist](https://pnpm.io/settings/build#allowbuilds), and [MinIO source release](https://github.com/minio/minio/releases/tag/RELEASE.2025-10-15T17-29-55Z). These explain technology requirements; the roadmap owns actual verification results.
 
 ### 2.1 Baseline to review at M01
 
@@ -523,10 +537,10 @@ The core framework/database choice is confirmed in [PRODUCT.md](../PRODUCT.md). 
 
 | ID | Decision | Proposed default | Decide before |
 |---|---|---|---|
-| D01 | Stack, repo packages and hosting | Core selected: React/Next.js frontend, NestJS API and PostgreSQL, confirmed in PRODUCT.md. Hosting, versions, packaging and supporting infrastructure remain open | Remaining decisions before M01 scaffold |
-| D02 | Identity/session/email providers and account linking | Established provider; Google/GitHub/email; server session | M03 identity |
-| D03 | Execution provider, costs and sandbox policy | Adapter first; one verified Python path before expansion | M04 live Run |
-| D04 | Original brand, assets, curriculum scope/licensing | Original CodeSaga visual/narrative/content; reference structure only | M02 public assets/content |
+| D01 | Stack, repo packages and hosting | Local baseline selected in section 2.0; manifests/lockfile own pins. Hosting and production infrastructure remain deferred | Local verification M01; hosting before deployment |
+| D02 | Identity/session/email providers and account linking | User requested adapters; no provider/credentials yet. Established provider, Google/GitHub/email and server session remain proposals | M03 identity |
+| D03 | Execution provider, costs and sandbox policy | User requested adapters; no provider/credentials yet. One verified isolated Python path before expansion | M04 live Run |
+| D04 | Original brand, assets, curriculum scope/licensing | Pixel-inspired adventure confirmed; original alpha content scope in section 2.0; actual system/assets follow in M02 | M02 public assets/content |
 | D05 | Grade, completion, revalidation, XP/level/badge/skip rules | Versioned checks and server award ledger; no XP on skip | M04/M05 accepted attempts |
 | D06 | Guest persistence and transfer | Recoverable local drafts; server-validated one-time merge | M03/M05 migration |
 | D07 | Free/paid Build/runtime/storage/AI quotas | Configurable capabilities; no target limit copied as a promise | M07 Builds / M10 commerce |

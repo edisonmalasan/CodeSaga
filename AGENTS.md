@@ -4,7 +4,7 @@
 
 - **Name:** CodeSaga
 - **Purpose:** Planned original coding-learning platform for learners and project creators, with later reviewer/moderator, educator/student and operator workflows; evidence-based scope is in docs/ROADMAP.md.
-- **Current state:** Documentation-only repository: local research and populated planning docs; no application source, manifest, installed app stack, database, build/test scripts or deployed service verified. All implementation milestones are not started.
+- **Current state:** M01 foundation in progress: Next.js web and NestJS API source, shared schemas, a pnpm lockfile, PostgreSQL migrations and healthy local service fixtures exist. Local type/build/HTTP/database/object checks have passed; clean-checkout and CI gates remain. Learner features and deployment are not implemented. See docs/ROADMAP.md for current verification.
 
 ## Source of Truth
 
@@ -28,11 +28,11 @@ _Fill from verified project files. Remove unused rows._
 
 | Layer              | Technology / version      | Evidence        |
 | ------------------ | ------------------------- | --------------- |
-| Frontend / UI      | Not implemented; proposed frontend is documented separately        | Repository inventory; docs/ARCHITECTURE.md distinguishes proposed from installed technology |
-| Backend / runtime  | Not implemented; proposed backend is documented separately         | Repository inventory; docs/ARCHITECTURE.md distinguishes proposed from installed technology |
-| Database / storage | Not configured        | Repository inventory; docs/ARCHITECTURE.md distinguishes proposed from installed technology |
-| Build / tooling    | No application toolchain configured; Python research/audit utilities exist           | Repository inventory; docs/ARCHITECTURE.md distinguishes proposed from installed technology |
-| Tests              | No application test framework configured; offline evidence audit available | Repository inventory; docs/ARCHITECTURE.md distinguishes proposed from installed technology |
+| Frontend / UI      | Next.js 16.4.2, React 19.3.1, TypeScript 5.9.3 | apps/web/package.json; pnpm-lock.yaml; no learner UI yet |
+| Backend / runtime  | NestJS 11.2.7, pg 8.23.1; Node 24 CI baseline (26.10.0 local) | apps/api/package.json; .nvmrc; actual runtime |
+| Database / storage | PostgreSQL 18.6; Redis 8.10.2 and source-built MinIO local fixtures | infra/compose.yaml; apps/api/migrations; production providers undecided |
+| Build / tooling    | pnpm 12.6.0 workspace; tsc, Next.js build; Python research/audit utilities | package.json; pnpm-lock.yaml; tsconfig.base.json |
+| Tests              | node:test through tsx; PostgreSQL integration; Playwright HTTP acceptance | package scripts; apps/*/test; packages/contracts/test; tests/ |
 
 ## Build, Test, and Development Commands
 
@@ -40,11 +40,11 @@ _Use commands that really exist in this repository. Never invent a script._
 
 | Purpose              | Command                   | Evidence / notes |
 | -------------------- | ------------------------- | ---------------- |
-| Install dependencies | `Not available`     | No application manifest/scripts exist at initialization; update only from verified project files     |
-| Run locally          | `Not available`         | No application manifest/scripts exist at initialization; update only from verified project files     |
-| Build                | `Not available`       | No application manifest/scripts exist at initialization; update only from verified project files     |
-| Test                 | `Not available`        | No application manifest/scripts exist at initialization; update only from verified project files     |
-| Lint / type-check    | `Not available` | No application manifest/scripts exist at initialization; update only from verified project files     |
+| Install dependencies | `pnpm install --frozen-lockfile` | Committed workspace manifests and lockfile |
+| Run locally          | `pnpm dev` | First run setup/services/migrations from README.md; starts web and API |
+| Build                | `pnpm build` | Builds contracts, API and Next.js; requires example environment setup |
+| Test                 | `pnpm test`; `pnpm test:integration`; `pnpm test:e2e` | Unit/HTTP, real local PostgreSQL, and cross-process checks respectively |
+| Lint / type-check    | `pnpm typecheck` | tsc across all packages; no separate linter configured |
 
 Run from the repository root unless a command explicitly requires another directory.
 
@@ -52,7 +52,7 @@ Run from the repository root unless a command explicitly requires another direct
 
 _List only **verified** constraints from the repository or approved requirements. Reference `docs/ARCHITECTURE.md` if present. If none are documented, write `Not yet established`—do not manufacture rules._
 
-- The user requires readable frontend and backend architecture, a full roadmap based on retained evidence, and preservation of existing AGENTS rules. docs/ARCHITECTURE.md is a proposed design, not an installed/approved implementation. No additional implemented architecture constraints are yet established.
+- The user requires readable frontend and backend architecture, a full roadmap based on retained evidence, and preservation of existing AGENTS rules. The selected core is Next.js, NestJS and PostgreSQL; docs/ARCHITECTURE.md separates the implemented foundation from proposed domain features. Public schemas live in packages/contracts; database credentials and learner execution stay outside frontend bundles. No submitted learner code runs inside the web/API process.
 
 ## Working Method (Lightweight ICM)
 

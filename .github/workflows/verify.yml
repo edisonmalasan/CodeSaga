@@ -1,0 +1,39 @@
+name: Verify
+
+on:
+  push:
+    branches: [main, 'feat/**', 'fix/**', 'chore/**', 'docs/**', 'refactor/**']
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  foundation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+      CODESAGA_BUILD_SECRET_CANARY: codesaga-ci-private-build-canary
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm setup:local
+      - run: pnpm services:up
+      - run: pnpm services:verify
+      - run: pnpm db:migrate && pnpm db:seed
+      - run: pnpm db:migrate && pnpm db:seed
+      - run: pnpm verify
+      - run: pnpm test:e2e
+      - if: always()
+        run: pnpm services:down

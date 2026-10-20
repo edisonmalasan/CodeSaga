@@ -1,10 +1,10 @@
 # CodeSaga — Full product roadmap
 
-**Baseline:** 2026-10-20, Asia/Manila. **Application status:** not started. This repository contains documentation and local research; it has no CodeSaga application source, package manifest, database, installed application stack or running service.
+**Baseline:** 2026-10-20, Asia/Manila. **Application status:** M01 foundation in progress. Separate web/API scaffolds, shared schemas, a lockfile and local service fixtures now exist; learner features and deployment remain unimplemented. See M01 for verification and remaining gates.
 
 **Goal:** an original CodeSaga platform with a complete frontend and backend for discovering courses, learning and executing code, receiving checked feedback, retaining progress/rewards, practicing, building/publishing projects and participating in community, followed by paid assistance, habits and extended roles.
 
-This is a proposed delivery sequence. It does not authorize autonomous execution, spending, deployments, target-account actions or a vendor choice. Read [CONTEXT.md](CONTEXT.md) for navigation, [ARCHITECTURE.md](ARCHITECTURE.md) for the frontend/backend design and decision register, and [the investigation mapper](../re/README.md) for observed reference behavior.
+The user explicitly authorized autonomous roadmap execution on 2026-10-20. This delivery sequence does not itself authorize spending, deployments or target-account actions. Read [CONTEXT.md](CONTEXT.md) for navigation, [ARCHITECTURE.md](ARCHITECTURE.md) for boundaries and decisions, and [the investigation mapper](../re/README.md) for observed reference behavior.
 
 ## Contents
 
@@ -47,6 +47,8 @@ This is a proposed delivery sequence. It does not authorize autonomous execution
 Stable IDs such as M05.03 survive wording changes. Implemented-but-unverified work stays unchecked. Completion needs affected source/contracts, verification results, environment/fixture identity, review/commit references where applicable and remaining limitations. A successful Codédex probe does not prove CodeSaga implements the feature.
 
 ## Verified starting point
+
+This table preserves the documentation-only initialization baseline. Subsequent implementation outcomes are recorded under each milestone.
 
 | Item | Verified state | Authority |
 |---|---|---|
@@ -103,7 +105,7 @@ These are scope slices, not dates or cost estimates. Staffing, budget, launch da
 | Build files/assets/save/conflict/publication UI | Owner ACL, revisioned storage, quotas and immutable releases | Expected revision, conflict, visibility and publication identity |
 | Community/account/commerce/AI/pet/role views | Domain permissions, moderation, billing, usage and date policies | Public/private projection, ownership and policy version |
 
-The user confirmed the React/Next.js frontend and NestJS/PostgreSQL backend in [PRODUCT.md](../PRODUCT.md). **The core is selected but not installed.** Hosting remains undecided; TypeScript monorepo packaging, queue/workers, object storage and separate sandbox/preview services remain detailed architecture proposals. M01 resolves the remaining choices. Modules, entities, API/event contracts, flows and trust boundaries live in [ARCHITECTURE.md](ARCHITECTURE.md).
+The user confirmed the React/Next.js frontend and NestJS/PostgreSQL backend in [PRODUCT.md](../PRODUCT.md). The core now has pinned scaffold dependencies and local service fixtures. Hosting, production infrastructure and separate runner/preview services remain undecided or unimplemented. Modules, entities, contracts, flows and trust boundaries live in [ARCHITECTURE.md](ARCHITECTURE.md).
 
 ## Milestone dependency map
 
@@ -139,16 +141,18 @@ M15/M16 apply throughout. Free capability enforcement belongs to M03 and does no
 
 **Status:** In progress. **Dependencies:** none. **Evidence:** [reconstruction map](../re/docs/08-codesaga-reconstruction-map.md), repository inventory. **Decisions:** architecture D01–D04.
 
-- [ ] **M01.01** First-release scope, original-content strategy and exclusions are recorded; later features are not advertised as shipped.
-- [ ] **M01.02** Frontend/backend/runtime/data boundaries and initial stack/provider choices have rationale, supported versions and explicit deferred decisions.
+- [x] **M01.01** First-release scope, original-content strategy and exclusions are recorded; later features are not advertised as shipped.
+- [x] **M01.02** Frontend/backend/runtime/data boundaries and initial stack/provider choices have rationale, supported versions and explicit deferred decisions.
 - [ ] **M01.03** A fresh checkout can install, run, build and verify the real scaffold through documented scripts and a committed lockfile.
-- [ ] **M01.04** Environment validation fails clearly on missing/invalid settings; examples contain no production secrets or target service credentials.
-- [ ] **M01.05** Local database/object/queue fixtures and migrations initialize a clean environment reproducibly.
-- [ ] **M01.06** Public web/API schemas have one authority; invalid requests and known errors return predictable contracts/request IDs.
+- [x] **M01.04** Environment validation fails clearly on missing/invalid settings; examples contain no production secrets or target service credentials.
+- [x] **M01.05** Local database/object/queue fixtures and migrations initialize a clean environment reproducibly.
+- [x] **M01.06** Public web/API schemas have one authority; invalid requests and known errors return predictable contracts/request IDs.
 - [ ] **M01.07** CI verifies actual scaffold scripts with isolated fixtures; frontend builds exclude backend secrets and raw research assets.
-- [ ] **M01.08** Context/AGENTS reflect actual directories, commands and installed versions after scaffold while retaining existing rules.
+- [x] **M01.08** Context/AGENTS reflect actual directories, commands and installed versions after scaffold while retaining existing rules.
 
 **Exit evidence:** fresh-checkout results, real package/config paths, migrations/contracts and recorded decisions. Planning alone does not close M01.
+
+**Verification in progress — 2026-10-20:** `apps/web`, `apps/api`, `packages/contracts`, `infra`, real package scripts and `pnpm-lock.yaml` now exist. Local type checks, package tests, real PostgreSQL integration tests, web/API production compilation and two cross-process HTTP checks passed. Environment tests exercise missing/malformed settings and redaction; API tests cover request IDs, CORS, payload bounds, malformed JSON, safe errors and database outage. Database checks cover clean/concurrent migrations, rollback, checksums, constraints and idempotent original draft seeding. PostgreSQL, Redis and MinIO all became healthy; signed MinIO bucket/object write/read and cleanup passed through `pnpm services:verify`. Fresh-checkout pipeline and remote CI remain pending. No learner account or live runner is claimed. Decision rationale and deferred providers are in architecture section 2.0.
 
 ## M02 — Original design system, discovery and content shell
 
@@ -622,4 +626,4 @@ Autonomous roadmap execution was explicitly authorized on 2026-10-20. Complete a
 - Preserve decision rationale in the authoritative architecture register.
 - Record completed requirement IDs, source/contracts, checks and limitations; keep reference facts in re and concise navigation in context.
 - A clone without ignored re lacks local evidence; coordinate a sanitized approved handoff without implicitly publishing research or removing its ignore rule.
-- Preserve the Git/working/autonomous rules in root AGENTS.md. No implementation checkbox is complete at this baseline.
+- Preserve the Git/working/autonomous rules in root AGENTS.md; update outcomes only from verified implementation evidence.

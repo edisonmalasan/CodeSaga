@@ -5,7 +5,7 @@
 - **Project:** CodeSaga.
 - **What it does:** Planned original coding-learning platform inspired by the retained Codédex investigation: courses, real browser-based coding, checked practice, durable progress, Builds, projects and community, with later commerce, AI, habits and role-specific features.
 - **Primary users / use cases:** Self-directed beginners learning to code in a browser, confirmed by the user; projects/community support that learning journey. Later role-specific workflows remain planned.
-- **Current state:** Documentation-only repository. No application source, manifest, installed application stack, database, tests, build scripts or deployed CodeSaga service is verified.
+- **Current state:** M01 scaffold exists and local type/build/HTTP/PostgreSQL/object checks have passed. All local fixtures are healthy; clean-checkout verification and CI are pending. No learner UI, account integration or deployment is shipped.
 - **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. M01 foundation is in progress on `feat/working-foundation`; verified outcomes will be recorded in the roadmap before advancing. Hosting remains undecided.
 
 ## Where to Look
@@ -18,8 +18,8 @@
 | Backend modules, transactions, workers and data ownership | [ARCHITECTURE.md](ARCHITECTURE.md), sections 5–6 |
 | API/events, Run/Submit/save/publish/billing/AI/date flows | [ARCHITECTURE.md](ARCHITECTURE.md), sections 7–8 |
 | Execution/preview isolation, permissions, operations and decisions | [ARCHITECTURE.md](ARCHITECTURE.md), sections 9–12 |
-| Current behavior and installed dependencies | No CodeSaga application source/manifests yet; planned paths in architecture are not existing code |
-| Build/test commands and repository working rules | Root [AGENTS.md](../AGENTS.md); application commands unavailable until real scripts exist |
+| Current behavior and installed dependencies | `apps/web`, `apps/api`, `packages/contracts`, package manifests and `pnpm-lock.yaml`; future paths in architecture remain proposals |
+| Setup, run, verify and local service commands | Root [README.md](../README.md); [AGENTS.md](../AGENTS.md) retains working rules and command summary |
 | Research entry point and detailed context map | [re/README.md](../re/README.md) |
 | Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
 | Reference product/content/visual model | [02 Routes/content](../re/docs/02-routes-content.md), [03 Product systems](../re/docs/03-product-systems.md), [05 Visual system](../re/docs/05-visual-interaction-system.md) |
@@ -31,8 +31,8 @@
 ## Project-Specific Constraints
 
 - The user requested complete evidence-based planning, readable frontend/backend architecture, and population of AGENTS **without changing its existing rules**.
-- The user confirmed the core frontend/backend stack in [PRODUCT.md](../PRODUCT.md). It is selected but not installed; supporting technologies, providers, versions, limits, pricing, hosting and launch date remain unresolved.
-- All implementation milestones remain unchecked. Research verification does not count as CodeSaga implementation.
+- The user confirmed the core frontend/backend stack in [PRODUCT.md](../PRODUCT.md). Foundation dependencies are pinned; supporting provider decisions, limits, pricing, hosting and launch date remain unresolved. Architecture section 2.0 records the local baseline and first alpha scope.
+- Record only verified implementation outcomes in the roadmap. Research verification does not count as CodeSaga implementation.
 - Reference observations, static mechanisms, unknowns and proposed CodeSaga policies remain distinct. Later investigation document 16 qualifies earlier incomplete React/C#/owner findings.
 - Original/appropriately licensed CodeSaga content, branding, characters and media are required for the proposed product; captured target content/assets/UGC are reference evidence.
 - The existing .gitignore ignores re. A normal clone will not include this local evidence unless a separately approved sanitized handoff is arranged. Preserve the ignore rule.
@@ -46,7 +46,7 @@ The user-authorized temporary reference Build was deleted and its dashboard rest
 
 ## Next Useful Work
 
-Review roadmap M01 and the remaining parts of architecture D01–D04, then perform only the next user-authorized scope. Core framework/database selection is already confirmed in PRODUCT.md. At scaffold time replace unavailable app commands/stack entries with verified package/config evidence. Do not introduce a second architectural source of truth or duplicate the entire research archive into these docs.
+Finish M01 verification and merge, then continue M02 original content/discovery. The user confirmed original pixel-inspired adventure visuals and requested identity/execution adapters while providers remain unselected. Continue independent eligible work; record provider-dependent blockers precisely. Do not introduce a second architectural source of truth or duplicate the research archive into these docs.
 
 ## Context Loading Rules
 

@@ -1,0 +1,30 @@
+{
+  "name": "codesaga",
+  "version": "0.1.0",
+  "private": true,
+  "packageManager": "pnpm@12.6.0",
+  "engines": { "node": ">=24 <27" },
+  "scripts": {
+    "setup:local": "node scripts/setup-local.mjs",
+    "dev": "pnpm --filter @codesaga/contracts build && concurrently --kill-others -n api,web \"pnpm --filter @codesaga/api dev\" \"pnpm --filter @codesaga/web dev\"",
+    "build": "pnpm --filter @codesaga/contracts build && pnpm --filter @codesaga/api build && pnpm --filter @codesaga/web build",
+    "typecheck": "pnpm --filter @codesaga/contracts build && pnpm -r typecheck",
+    "test": "pnpm --filter @codesaga/contracts build && pnpm -r test",
+    "test:integration": "node --env-file=apps/api/.env scripts/test-integration.mjs",
+    "test:e2e": "playwright test",
+    "verify": "pnpm typecheck && pnpm test && pnpm test:integration && pnpm build && pnpm audit:boundaries",
+    "audit:boundaries": "node scripts/audit-boundaries.mjs",
+    "services:up": "docker compose -f infra/compose.yaml up -d --wait",
+    "services:down": "docker compose -f infra/compose.yaml down",
+    "services:verify": "node infra/verify-object-store.mjs",
+    "db:migrate": "pnpm --filter @codesaga/api db:migrate",
+    "db:seed": "pnpm --filter @codesaga/api db:seed"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1",
+    "@types/node": "26.6.5",
+    "concurrently": "10.0.6",
+    "tsx": "4.23.15",
+    "typescript": "5.9.3"
+  }
+}
