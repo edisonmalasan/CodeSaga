@@ -2,6 +2,8 @@
 
 NestJS 11 API. `GET /health` reports process liveness; `GET /ready` queries PostgreSQL and returns HTTP 503 with `DATABASE_UNAVAILABLE` if the database is unavailable. Both success responses use `healthSchema` from `@codesaga/contracts`. All errors use that package's `apiErrorSchema`, with a matching `X-Request-ID` response header. Operational routes are unprefixed; public domain routes use `/api/v1`.
 
+Request outcomes use structured stdout events and a server-generated `X-Trace-ID`. See [request telemetry](TELEMETRY.md) for fields, privacy boundaries, verification and delivery/retention limits.
+
 ## Public content and integration contracts
 
 | Route | Shared success schema / behavior |

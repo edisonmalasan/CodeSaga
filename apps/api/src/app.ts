@@ -10,8 +10,10 @@ import { ContentController } from './content/content.controller';
 import { PublishedContent } from './content/content.service';
 import { IntegrationsController } from './integrations/integrations.controller';
 import { IDENTITY_SESSION, ISOLATED_EXECUTION, UnavailableIdentitySession, UnavailableIsolatedExecution } from './integrations/ports';
+import { requestTelemetryMiddleware, writeRequestTelemetry, type RequestTelemetrySink } from './telemetry';
 
-export async function createApp(config: ApiConfig, database: Database = createDatabase(config)) {
+export async function createApp(config: ApiConfig, database: Database = createDatabase(config),
+  telemetry: RequestTelemetrySink = writeRequestTelemetry) {
   @Module({
     controllers: [HealthController, ContentController, IntegrationsController],
     providers: [
@@ -29,6 +31,7 @@ export async function createApp(config: ApiConfig, database: Database = createDa
     logger: false,
   });
   app.getHttpAdapter().getInstance().disable('x-powered-by');
+  app.use(requestTelemetryMiddleware(telemetry));
   app.use(requestIdMiddleware);
   app.useGlobalFilters(new ApiExceptionFilter());
   app.enableCors({
@@ -38,7 +41,7 @@ export async function createApp(config: ApiConfig, database: Database = createDa
     },
     methods: ['GET', 'HEAD', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'X-Request-ID'],
-    exposedHeaders: ['X-Request-ID'],
+    exposedHeaders: ['X-Request-ID', 'X-Trace-ID'],
     credentials: false,
     maxAge: 600,
   });

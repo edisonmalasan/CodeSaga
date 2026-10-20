@@ -73,7 +73,7 @@ test('unknown routes, invalid query and invalid request IDs are deterministic', 
 test('CORS only allows configured origins and exposes request IDs', async () => {
   const allowed = await fetch(`${origin}/health`, { headers: { Origin: 'http://localhost:3000' } });
   assert.equal(allowed.headers.get('access-control-allow-origin'), 'http://localhost:3000');
-  assert.equal(allowed.headers.get('access-control-expose-headers'), 'X-Request-ID');
+  assert.equal(allowed.headers.get('access-control-expose-headers'), 'X-Request-ID,X-Trace-ID');
   const denied = await fetch(`${origin}/health`, { headers: { Origin: 'http://localhost:3000.evil.example' } });
   assert.equal(denied.status, 403);
   assert.equal(denied.headers.get('access-control-allow-origin'), null);

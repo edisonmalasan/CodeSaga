@@ -533,6 +533,8 @@ Migrations are reviewed, repeatable and tested with existing data; destructive c
 
 ### 11.2 Observability
 
+**Implemented public API slice:** [Request telemetry](../apps/api/TELEMETRY.md) owns the current stdout event contract, server-generated trace header, privacy checks and delivery/operating limits. The broader correlations and monitoring below remain proposed until their domains and providers exist.
+
 Correlate request, principal reference, attempt/job, Build revision, provider event and outbox IDs. Observe save failure/conflicts, grade availability, completion/reward duplicates, projection lag, execution queue/start/end/loss, preview readiness, webhook lag, AI quota/stream failures, job retries and notification delivery. Avoid high-cardinality personal/source text in metric labels.
 
 Keep business audit logs separate from product analytics. Analytics consent/preferences and deletion/export obligations are explicit. Performance/cost monitoring covers editor payload size, runtime provider spend, storage/egress and AI reservations.
