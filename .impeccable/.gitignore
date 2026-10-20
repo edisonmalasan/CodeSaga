@@ -1,0 +1,3 @@
+# Per-developer consent and generated detector state stay local.
+config.local.json
+hook.cache.json
