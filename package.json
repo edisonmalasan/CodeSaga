@@ -11,7 +11,7 @@
     "typecheck": "pnpm --filter @codesaga/contracts build && pnpm -r typecheck",
     "test": "pnpm --filter @codesaga/contracts build && pnpm -r test",
     "test:integration": "node --env-file=apps/api/.env scripts/test-integration.mjs",
-    "test:e2e": "playwright test",
+    "test:e2e": "pnpm --filter @codesaga/contracts build && playwright test",
     "verify": "pnpm typecheck && pnpm test && pnpm test:integration && pnpm build && pnpm audit:boundaries",
     "audit:boundaries": "node scripts/audit-boundaries.mjs",
     "services:up": "docker compose -f infra/compose.yaml up -d --wait",

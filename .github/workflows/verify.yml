@@ -35,5 +35,6 @@ jobs:
       - run: pnpm db:migrate && pnpm db:seed
       - run: pnpm verify
       - run: pnpm test:e2e
+        timeout-minutes: 4
       - if: always()
         run: pnpm services:down

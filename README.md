@@ -47,7 +47,7 @@ pnpm verify
 pnpm test:e2e
 ```
 
-`verify` runs type checks, unit/HTTP tests, real PostgreSQL integration tests, production builds and a web dependency/client boundary audit. Integration tests create and remove isolated schemas in the local database; the wrapper rejects non-local database URLs. `test:e2e` starts the web and API processes itself, so stop existing development servers on ports 3000/4000 first.
+`verify` runs type checks, unit/HTTP tests, real PostgreSQL integration tests, production builds and a web dependency/client boundary audit. Integration tests create and remove isolated schemas in the local database; the wrapper rejects non-local database URLs. `test:e2e` starts separate web and API processes itself, so stop existing development servers on ports 3000/4000 first. With `CI=true`, it starts the compiled production servers after `pnpm build`; otherwise it uses development servers. Shutdown is bounded and the acceptance step has a CI timeout.
 
 | Command | Scope |
 |---|---|
