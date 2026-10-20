@@ -10,12 +10,17 @@ import { assertLocalDocker, fixturePort, ownedDatabaseIdentifier, recoveryNames 
 const root = resolve(__dirname, '../../..');
 const maximumBytes = 8 * 1024 * 1024;
 
+class DockerCommandFailure extends Error {
+  constructor(readonly diagnostic: string) { super('Docker recovery command failed.'); }
+}
+
 // Binary archive bytes never pass through a shell or a host temporary file.
 function docker(args: string[], input?: Buffer): Promise<Buffer> {
   return new Promise((resolveResult, reject) => {
     const child = spawn('docker', args, { cwd: root, shell: false, windowsHide: true, stdio: ['pipe', 'pipe', 'pipe'] });
     const output: Buffer[] = [];
     let bytes = 0;
+    let diagnostic = '';
     let failure: Error | undefined;
     const timer = setTimeout(() => {
       failure = new Error('Docker recovery command timed out.');
@@ -26,13 +31,16 @@ function docker(args: string[], input?: Buffer): Promise<Buffer> {
       if (bytes > maximumBytes) { failure = new Error('Recovery command exceeded its fixture output limit.'); child.kill(); }
       else output.push(chunk);
     });
-    // Drain diagnostics without exposing archive rows, credentials or SQL in logs.
-    child.stderr.resume();
+    // Keep a bounded internal diagnostic to distinguish SQL failures from transport
+    // outages. It is never logged, including when verification fails.
+    child.stderr.on('data', (chunk: Buffer) => {
+      diagnostic = (diagnostic + chunk.toString()).slice(0, 8192);
+    });
     child.stdin.on('error', () => {}); // Early pg_restore rejection can close stdin.
     child.on('error', () => { clearTimeout(timer); reject(new Error('Cannot start the Docker recovery command.')); });
     child.on('close', (code) => {
       clearTimeout(timer);
-      if (failure || code !== 0) reject(failure ?? new Error('Docker recovery command failed.'));
+      if (failure || code !== 0) reject(failure ?? new DockerCommandFailure(diagnostic));
       else resolveResult(Buffer.concat(output));
     });
     child.stdin.end(input);
@@ -106,11 +114,13 @@ async function main() {
     await source.query('UPDATE courses SET summary = $1', ['Changed after backup.']);
     const restoreOptions = ['--single-transaction', '--exit-on-error', '--no-owner', '--no-acl'];
     phase = 'verify rejected archive and transactional restore failure';
-    await assert.rejects(() => pg('pg_restore', names.restore, restoreOptions, Buffer.from('invalid archive')));
+    await assert.rejects(() => pg('pg_restore', names.restore, restoreOptions, Buffer.from('invalid archive')),
+      (error: unknown) => error instanceof DockerCommandFailure && /pg_restore: error:.*input file/.test(error.diagnostic));
     assert.deepEqual((await target.query("SELECT tablename FROM pg_tables WHERE schemaname = 'public'")).rows, []);
     await target.query('CREATE TABLE lesson_versions (sentinel text)');
     await target.query('INSERT INTO lesson_versions VALUES ($1)', ['Keep the pre-restore state.']);
-    await assert.rejects(() => pg('pg_restore', names.restore, restoreOptions, archive));
+    await assert.rejects(() => pg('pg_restore', names.restore, restoreOptions, archive),
+      (error: unknown) => error instanceof DockerCommandFailure && error.diagnostic.includes('relation "lesson_versions" already exists'));
     assert.deepEqual((await target.query("SELECT tablename FROM pg_tables WHERE schemaname = 'public'")).rows,
       [{ tablename: 'lesson_versions' }]);
     assert.deepEqual((await target.query('SELECT sentinel FROM lesson_versions')).rows,
