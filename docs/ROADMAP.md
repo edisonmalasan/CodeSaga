@@ -507,6 +507,8 @@ Waves suggest order, not committed launch quantities. The target's 601 configure
 
 The command is included in CI after the main verification step. [Recovery runbook](../infra/RECOVERY.md) owns invocation, bounds, failure handling and scope. Database-generated snapshot text retains microsecond precision; the real drill detected an injected one-microsecond timestamp change and passed again after its restoration. The rehearsal uses in-memory archives from its own original fixture and accepts no external target/archive. M16.07 remains unchecked: production backups/PITR, policies/RPO/RTO, full environment restoration, future data projections/publications/queues and provider recovery remain unimplemented. This local drill does not change M03/M04 provider blockers or claim launch readiness.
 
+**Linux verification:** final recovery source `33cfff3` passed the [complete Linux/Node 24 CI pipeline](https://github.com/edisonmalasan/CodeSaga/actions/runs/39470889221): frozen install, healthy fixtures, object round-trip, repeat migration/seed, types/unit/real-database checks, production builds/secret boundary audit, the actual backup/restore rehearsal, all 11 browser acceptance cases and fixture cleanup. Negative restore checks match PostgreSQL diagnostics, so transport failures cannot stand in for the intended failure cases.
+
 ## Full evidence-to-feature coverage
 
 | Source | Scope | Delivery owners |
