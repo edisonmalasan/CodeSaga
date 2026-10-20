@@ -1,0 +1,915 @@
+{
+  "version": 1,
+  "courses": [
+    {
+      "id": "0acc59c7-3f1a-5a93-b8f5-1a2696971a10",
+      "version": 1,
+      "slug": "python",
+      "aliases": [
+        "python-basics"
+      ],
+      "title": "Python: the first camp",
+      "summary": "Make a program speak, give values names, and use simple arithmetic to plan a tiny expedition.",
+      "publication": "published",
+      "category": "programming",
+      "language": "Python",
+      "difficulty": "beginner",
+      "availability": "preview",
+      "prerequisites": [
+        "No coding experience required."
+      ],
+      "recommendations": [
+        "Read the three First light lessons in order."
+      ],
+      "chapterIds": [
+        "3c75cf9f-1266-5efd-a998-6f7fe546de1e"
+      ],
+      "resourceIds": [
+        "e52d62cb-1ada-53d6-be45-3eb233e6ab27",
+        "c55b1d55-957d-5829-888e-d3da5aae6aed"
+      ],
+      "tags": [
+        "python",
+        "variables",
+        "strings",
+        "arithmetic"
+      ]
+    },
+    {
+      "id": "52ae735a-09c5-5acd-9759-323a50cf52c8",
+      "version": 1,
+      "slug": "html-css",
+      "aliases": [
+        "web-foundations"
+      ],
+      "title": "HTML & CSS: a place on the web",
+      "summary": "Give a small web page a meaningful structure, then see how CSS changes its presentation.",
+      "publication": "published",
+      "category": "web",
+      "language": "HTML & CSS",
+      "difficulty": "beginner",
+      "availability": "preview",
+      "prerequisites": [
+        "No coding experience required."
+      ],
+      "recommendations": [
+        "Begin with Make a trail notice."
+      ],
+      "chapterIds": [
+        "80df8028-afed-5a9b-93dd-d919d027be24"
+      ],
+      "resourceIds": [
+        "80f64f27-10eb-59e5-82ee-f75d81cf936b",
+        "5d23c8a2-79f6-539b-94aa-5c48940c739f"
+      ],
+      "tags": [
+        "html",
+        "css",
+        "web",
+        "semantic"
+      ]
+    },
+    {
+      "id": "4354e90b-5686-5fef-bb05-a947e2cf8c97",
+      "version": 1,
+      "slug": "javascript",
+      "aliases": [],
+      "title": "JavaScript: make it respond",
+      "summary": "A planned path from values and functions to interactions in the browser.",
+      "publication": "published",
+      "category": "web",
+      "language": "JavaScript",
+      "difficulty": "beginner",
+      "availability": "upcoming",
+      "prerequisites": [
+        "Basic HTML."
+      ],
+      "recommendations": [
+        "Explore the HTML & CSS reading preview first."
+      ],
+      "chapterIds": [],
+      "resourceIds": [],
+      "tags": [
+        "javascript",
+        "browser",
+        "functions"
+      ]
+    },
+    {
+      "id": "ef527295-f9d0-551b-b261-b007b9937b1c",
+      "version": 1,
+      "slug": "sql",
+      "aliases": [],
+      "title": "SQL: ask better questions",
+      "summary": "A planned introduction to selecting, filtering and combining structured data.",
+      "publication": "published",
+      "category": "data",
+      "language": "SQL",
+      "difficulty": "beginner",
+      "availability": "upcoming",
+      "prerequisites": [
+        "No coding experience required."
+      ],
+      "recommendations": [
+        "Read the Python named values preview."
+      ],
+      "chapterIds": [],
+      "resourceIds": [],
+      "tags": [
+        "sql",
+        "data",
+        "queries"
+      ]
+    },
+    {
+      "id": "757bca03-7883-5b96-917b-0e34d27b6f16",
+      "version": 1,
+      "slug": "git",
+      "aliases": [],
+      "title": "Git: keep your bearings",
+      "summary": "A planned guide to recording changes and understanding the history of a project.",
+      "publication": "published",
+      "category": "tools",
+      "language": "Git",
+      "difficulty": "beginner",
+      "availability": "upcoming",
+      "prerequisites": [
+        "Comfort editing text files."
+      ],
+      "recommendations": [
+        "Read the trail notice tutorial."
+      ],
+      "chapterIds": [],
+      "resourceIds": [],
+      "tags": [
+        "git",
+        "version control",
+        "history"
+      ]
+    }
+  ],
+  "chapters": [
+    {
+      "id": "3c75cf9f-1266-5efd-a998-6f7fe546de1e",
+      "version": 1,
+      "slug": "first-light",
+      "aliases": [],
+      "title": "First light",
+      "summary": "Output, text, names and arithmetic: a small starting kit for Python.",
+      "publication": "published",
+      "courseId": "0acc59c7-3f1a-5a93-b8f5-1a2696971a10",
+      "order": 1,
+      "availability": "preview",
+      "lessonIds": [
+        "99c980d2-0395-5b5c-a26b-a5bf49e44f09",
+        "e50c9042-9f62-53a6-8319-344a4c409158",
+        "7df603d4-386b-561c-bc4c-0c905002eeb2"
+      ]
+    },
+    {
+      "id": "80df8028-afed-5a9b-93dd-d919d027be24",
+      "version": 1,
+      "slug": "a-page-with-a-purpose",
+      "aliases": [],
+      "title": "A page with a purpose",
+      "summary": "Separate a document’s meaning from the styles that help readers navigate it.",
+      "publication": "published",
+      "courseId": "52ae735a-09c5-5acd-9759-323a50cf52c8",
+      "order": 1,
+      "availability": "preview",
+      "lessonIds": [
+        "9519dcd7-6dd4-5214-ae04-fbca5b999ea4"
+      ]
+    }
+  ],
+  "lessons": [
+    {
+      "id": "99c980d2-0395-5b5c-a26b-a5bf49e44f09",
+      "version": 1,
+      "slug": "a-message-from-camp",
+      "aliases": [
+        "hello-world"
+      ],
+      "title": "A message from camp",
+      "summary": "Ask Python to display a line of text and learn what quotes and parentheses do.",
+      "publication": "published",
+      "courseId": "0acc59c7-3f1a-5a93-b8f5-1a2696971a10",
+      "chapterId": "3c75cf9f-1266-5efd-a998-6f7fe546de1e",
+      "order": 1,
+      "availability": "preview",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "You have arrived at a small woodland camp. Before you plan the route ahead, leave a message that another explorer can read. A program can do that too: it takes an instruction and produces an observable result."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Make text appear"
+        },
+        {
+          "type": "paragraph",
+          "text": "In Python, `print()` displays a value. Put text between quotation marks inside its parentheses. Quoted text is called a string."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "print(\"The lantern is lit.\")"
+        },
+        {
+          "type": "paragraph",
+          "text": "Expected output, shown as a static example:"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The lantern is lit."
+        },
+        {
+          "type": "paragraph",
+          "text": "The quotes tell Python where the string begins and ends. They are part of the program's notation, so they do not appear in the displayed message. The parentheses hold the value you pass to `print`."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "One instruction after another"
+        },
+        {
+          "type": "paragraph",
+          "text": "Python normally reads these instructions from top to bottom. A second call produces a second line."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "print(\"The lantern is lit.\")\nprint(\"The trail starts here.\")"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "The lantern is lit.\nThe trail starts here."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Try it on paper"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Predict the two lines before you look at the example output.",
+            "Replace the first message with a greeting of your own.",
+            "Check that the opening and closing quotes match and both parentheses are present."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "title": "Reading preview",
+          "text": "CodeSaga does not run or check this code yet. You can reason through it here, or copy it into a trusted Python 3 environment you already use."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "When punctuation is missing"
+        },
+        {
+          "type": "paragraph",
+          "text": "If you forget the closing quote, Python cannot tell where the text ends. If you encounter a syntax error in a local environment, first compare the quotes and parentheses with the complete example. An error is information about an instruction, not a judgment of your ability."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next: give values names so that one idea can be used more than once."
+        }
+      ]
+    },
+    {
+      "id": "e50c9042-9f62-53a6-8319-344a4c409158",
+      "version": 1,
+      "slug": "give-your-supplies-names",
+      "aliases": [
+        "variables"
+      ],
+      "title": "Give your supplies names",
+      "summary": "Store a value under a readable name, use it, and understand what reassignment changes.",
+      "publication": "published",
+      "courseId": "0acc59c7-3f1a-5a93-b8f5-1a2696971a10",
+      "chapterId": "3c75cf9f-1266-5efd-a998-6f7fe546de1e",
+      "order": 2,
+      "availability": "preview",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Imagine writing a packing note. Repeating a long description every time is awkward. A variable lets your program refer to a value by name."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A name and a value"
+        },
+        {
+          "type": "paragraph",
+          "text": "The equals sign assigns the value on the right to the name on the left."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "destination = \"North lookout\"\nprint(destination)"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "North lookout"
+        },
+        {
+          "type": "paragraph",
+          "text": "`destination` has no quotes because it is a variable name. `\"North lookout\"` has quotes because it is a string. Writing `print(\"destination\")` would display the literal word `destination`, not the value assigned to that name."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Values can change"
+        },
+        {
+          "type": "paragraph",
+          "text": "Assignment happens when Python reaches that line. A later assignment changes which value a name refers to; it does not rewrite output that has already appeared."
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "lanterns = 2\nprint(lanterns)\nlanterns = 3\nprint(lanterns)"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "2\n3"
+        },
+        {
+          "type": "paragraph",
+          "text": "Here the numbers have no quotes. Python treats them as numeric values, which can take part in arithmetic. `\"3\"` would instead be text containing the character 3."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Choose names that explain"
+        },
+        {
+          "type": "paragraph",
+          "text": "Use a letter or underscore to start a variable name; later characters may include digits. A useful beginner convention is lowercase words separated by underscores, such as `water_bottles`. Names are case-sensitive, so `camp` and `Camp` are different names. Avoid replacing built-in names such as `print`."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Read the assignment aloud",
+          "text": "“lanterns is assigned 2” makes the direction clearer than “lanterns equals 2.” Assignment is an action, not a mathematical statement about every future value."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Trace the packing note"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Write `snacks = 4` on paper.",
+            "Add `snacks = 6` below it.",
+            "Predict what `print(snacks)` on the next line displays.",
+            "Explain why the answer is 6 rather than 4 or 10."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "This is an ungraded reflection. No answer or progress is stored. Next: combine numeric values to plan supplies."
+        }
+      ]
+    },
+    {
+      "id": "7df603d4-386b-561c-bc4c-0c905002eeb2",
+      "version": 1,
+      "slug": "count-what-the-trail-needs",
+      "aliases": [
+        "arithmetic"
+      ],
+      "title": "Count what the trail needs",
+      "summary": "Combine numbers with arithmetic operators and use parentheses to make the intended order clear.",
+      "publication": "published",
+      "courseId": "0acc59c7-3f1a-5a93-b8f5-1a2696971a10",
+      "chapterId": "3c75cf9f-1266-5efd-a998-6f7fe546de1e",
+      "order": 3,
+      "availability": "preview",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Your group needs enough water for the walk. Instead of counting each bottle separately, write down the relationship: people multiplied by bottles per person."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Calculate with named values"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "explorers = 3\nbottles_each = 2\ntotal_bottles = explorers * bottles_each\nprint(total_bottles)"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "6"
+        },
+        {
+          "type": "paragraph",
+          "text": "The `*` operator multiplies. Python evaluates the expression on the right before assigning its result to `total_bottles`."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Four useful operators"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "`+` adds numeric values: `4 + 2` produces `6`.",
+            "`-` subtracts: `4 - 2` produces `2`.",
+            "`*` multiplies: `4 * 2` produces `8`.",
+            "`/` divides: `4 / 2` produces `2.0` in Python 3."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The decimal result from `/` is expected. Python also has other numeric operators, but these four are enough for this preview."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Make the order visible"
+        },
+        {
+          "type": "paragraph",
+          "text": "Multiplication is evaluated before addition. Compare these expressions:"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "print(2 + 3 * 4)\nprint((2 + 3) * 4)"
+        },
+        {
+          "type": "code",
+          "language": "text",
+          "code": "14\n20"
+        },
+        {
+          "type": "paragraph",
+          "text": "In the first line, `3 * 4` becomes 12, then 2 is added. In the second, the parentheses make `2 + 3` happen first. Use parentheses when they help another reader see your intent, even if you already know the precedence rules."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Text and numbers differ",
+          "text": "`\"3\" + \"2\"` joins strings into `\"32\"`; `3 + 2` adds numbers to make `5`. Check your values before choosing an operation."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Plan a smaller trip"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Change the number of explorers to 2 and bottles per explorer to 3.",
+            "Predict `total_bottles` without executing the program.",
+            "Add a variable named `spare_bottles` with value 1.",
+            "Write an expression for the total including the spare."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "You have now read every lesson in this chapter preview. Further chapters, automatic checking and completion tracking are not available yet. Revisit a lesson or use the Python pocket notes as a reference."
+        }
+      ]
+    },
+    {
+      "id": "9519dcd7-6dd4-5214-ae04-fbca5b999ea4",
+      "version": 1,
+      "slug": "make-a-trail-notice",
+      "aliases": [
+        "first-page"
+      ],
+      "title": "Make a trail notice",
+      "summary": "Read a complete HTML document, identify its semantic elements, and add a small CSS rule.",
+      "publication": "published",
+      "courseId": "52ae735a-09c5-5acd-9759-323a50cf52c8",
+      "chapterId": "80df8028-afed-5a9b-93dd-d919d027be24",
+      "order": 1,
+      "availability": "preview",
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "A useful web page tells someone something. Ours will announce a meeting point for an imaginary walk. HTML gives the document structure and meaning. CSS controls how that structure is presented."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Start with the document"
+        },
+        {
+          "type": "code",
+          "language": "html",
+          "code": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <title>Trail meeting point</title>\n  </head>\n  <body>\n    <main>\n      <h1>Meet at the old bridge</h1>\n      <p>Bring water and a notebook for the walk.</p>\n      <h2>Before you leave</h2>\n      <ul>\n        <li>Check the weather.</li>\n        <li>Tell someone your route.</li>\n      </ul>\n    </main>\n  </body>\n</html>"
+        },
+        {
+          "type": "paragraph",
+          "text": "This is a static code sample, not a live preview. The imaginary walking notice is practice material, not safety advice for a real trip."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Read the structure"
+        },
+        {
+          "type": "paragraph",
+          "text": "`<main>` marks the page's main content. `<h1>` names that content; `<h2>` starts a subsection. `<p>` holds a paragraph. `<ul>` groups an unordered list, and each `<li>` is one item. The text inside these elements remains readable even before you add styles."
+        },
+        {
+          "type": "paragraph",
+          "text": "The document's language helps assistive technology pronounce text. The viewport meta element asks mobile browsers to use the device width. The `<title>` belongs in the browser tab; it does not replace the visible heading."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Add presentation with CSS"
+        },
+        {
+          "type": "paragraph",
+          "text": "The next CSS could go inside a `<style>` element in the document's `<head>`, or in a separate linked stylesheet."
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "body {\n  font-family: system-ui, sans-serif;\n  line-height: 1.6;\n  color: #172f3a;\n  background: #f4f8fa;\n}\n\nmain {\n  max-width: 42rem;\n  margin: 3rem auto;\n  padding: 0 1rem;\n}\n\nh1 {\n  color: #185b4b;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "A selector such as `main` chooses elements. Inside braces, each declaration pairs a property with a value. `max-width` limits the reading line, while padding leaves room at narrow screen edges. CSS changes the presentation; it does not turn a paragraph into a heading."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Inspect before decorating"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Find the main heading in the HTML and change its words.",
+            "Add a third list item inside `<ul>`.",
+            "Explain which CSS rule affects every paragraph's line spacing.",
+            "If you use your own local file, resize the browser and check that the text remains readable."
+          ]
+        },
+        {
+          "type": "callout",
+          "tone": "note",
+          "title": "Reading preview",
+          "text": "CodeSaga has no browser editor, hosting or saved projects connected here. The tutorial explains how to inspect a local file if you want to continue independently."
+        }
+      ]
+    }
+  ],
+  "resources": [
+    {
+      "id": "e52d62cb-1ada-53d6-be45-3eb233e6ab27",
+      "version": 1,
+      "slug": "python-pocket-notes",
+      "aliases": [],
+      "title": "Python pocket notes",
+      "summary": "A small reference for the syntax used in First light.",
+      "publication": "published",
+      "kind": "cheatsheet",
+      "category": "programming",
+      "courseIds": [
+        "0acc59c7-3f1a-5a93-b8f5-1a2696971a10"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Kind cheatsheet; slug `python-pocket-notes`; category programming; course Python. Summary: A small reference for the syntax used in First light."
+        },
+        {
+          "type": "paragraph",
+          "text": "Use this sheet after a lesson, rather than trying to memorize everything at once."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Text and output"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "print(\"A clear message\")"
+        },
+        {
+          "type": "paragraph",
+          "text": "Quotes mark a string; parentheses enclose the value passed to `print`. To display a variable's value, use its name without quotes."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Assignment and arithmetic"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "people = 3\nwater_each = 2\nwater_total = people * water_each\nprint(water_total)"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "`name = value` assigns a value to a name.",
+            "`+`, `-`, `*`, `/` perform basic arithmetic on numbers.",
+            "Parentheses group expressions.",
+            "Names are case-sensitive. Use clear lowercase names with underscores."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A quick debugging order"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Read the error message in your own environment.",
+            "Check matching quotes, parentheses and spelling.",
+            "Distinguish string values from numbers.",
+            "Trace each assignment in order."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Static reference only; this sheet does not run code, check answers or track learning."
+        }
+      ]
+    },
+    {
+      "id": "80f64f27-10eb-59e5-82ee-f75d81cf936b",
+      "version": 1,
+      "slug": "html-css-pocket-notes",
+      "aliases": [],
+      "title": "HTML & CSS pocket notes",
+      "summary": "Document structure, selectors and a readable starting point for small pages.",
+      "publication": "published",
+      "kind": "cheatsheet",
+      "category": "web",
+      "courseIds": [
+        "52ae735a-09c5-5acd-9759-323a50cf52c8"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Kind cheatsheet; slug `html-css-pocket-notes`; category web; course HTML & CSS. Summary: Document structure, selectors and a readable starting point for small pages."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Structure before style"
+        },
+        {
+          "type": "list",
+          "ordered": false,
+          "items": [
+            "`<title>` names the browser tab.",
+            "`<main>` marks the main content.",
+            "`<h1>` names the page; `<h2>` introduces a section.",
+            "`<p>` is a paragraph, and `<ul>` with `<li>` forms an unordered list.",
+            "An image needs meaningful alternative text when it conveys information."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A declaration has two parts"
+        },
+        {
+          "type": "code",
+          "language": "css",
+          "code": "p {\n  line-height: 1.6;\n}"
+        },
+        {
+          "type": "paragraph",
+          "text": "`p` is the selector, `line-height` is the property, and `1.6` is its value. The semicolon ends the declaration. Prefer readable text and obvious focus states before decorative flourishes."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Check the small screen"
+        },
+        {
+          "type": "paragraph",
+          "text": "Keep a real viewport meta element, let paragraphs wrap, and test a narrow browser window. Avoid giving the entire page a fixed width that is wider than the device."
+        }
+      ]
+    },
+    {
+      "id": "c55b1d55-957d-5829-888e-d3da5aae6aed",
+      "version": 1,
+      "slug": "trace-before-you-change",
+      "aliases": [],
+      "title": "Trace before you change",
+      "summary": "A practical way to reason through a short program without guessing.",
+      "publication": "published",
+      "kind": "article",
+      "category": "programming",
+      "courseIds": [
+        "0acc59c7-3f1a-5a93-b8f5-1a2696971a10"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Kind article; slug `trace-before-you-change`; category programming; course Python. Summary: A practical way to reason through a short program without guessing."
+        },
+        {
+          "type": "paragraph",
+          "text": "When code surprises you, changing three lines at once makes the surprise harder to explain. A trace is a simple record of what each instruction does, in order."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Keep a small value table"
+        },
+        {
+          "type": "paragraph",
+          "text": "Read this program without running it:"
+        },
+        {
+          "type": "code",
+          "language": "python",
+          "code": "supplies = 2\nsupplies = supplies + 3\nprint(supplies)"
+        },
+        {
+          "type": "paragraph",
+          "text": "After the first line, the name refers to 2. On the next line, Python reads the current value, adds 3, then assigns the result back to the same name. The final line displays 5."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Change one idea"
+        },
+        {
+          "type": "paragraph",
+          "text": "Predict what would happen if the added number became 1. Explain your prediction in a sentence. Only then try it in a local environment if one is available. A mismatch between prediction and result gives you a precise question to investigate."
+        },
+        {
+          "type": "paragraph",
+          "text": "Tracing does not replace execution. It helps you make execution more informative. The examples here are reading material, so no work or answer is saved."
+        }
+      ]
+    },
+    {
+      "id": "5d23c8a2-79f6-539b-94aa-5c48940c739f",
+      "version": 1,
+      "slug": "build-a-trail-notice",
+      "aliases": [],
+      "title": "Build a trail notice in a local file",
+      "summary": "Inspect a plain local HTML file in your own browser.",
+      "publication": "published",
+      "kind": "tutorial",
+      "category": "web",
+      "courseIds": [
+        "52ae735a-09c5-5acd-9759-323a50cf52c8"
+      ],
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Kind tutorial; slug `build-a-trail-notice`; category web; course HTML & CSS. Summary: Take the lesson's document into a plain local HTML file and inspect it with your own browser."
+        },
+        {
+          "type": "paragraph",
+          "text": "This optional tutorial uses software on your own device: a plain text editor and a browser. CodeSaga does not create, save or host the file for you. If you cannot create local files, you can still read the steps and compare them with the lesson."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Prepare a small file"
+        },
+        {
+          "type": "list",
+          "ordered": true,
+          "items": [
+            "Create an empty folder for the practice document.",
+            "Open your own plain text editor and create `index.html`.",
+            "Copy the complete HTML sample from Make a trail notice.",
+            "Save the file as plain text with the `.html` extension."
+          ]
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Open and inspect"
+        },
+        {
+          "type": "paragraph",
+          "text": "Open `index.html` in your browser. You should see a heading, a paragraph and a short list. The address may begin with `file:` because the document is on your device, not a published website."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the browser shows source text rather than the page, check that the actual filename ends with `.html`, not `.html.txt`. If the page is empty, confirm that the file was saved and you opened the same file."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Give it a readable shape"
+        },
+        {
+          "type": "paragraph",
+          "text": "Add the lesson's CSS inside a `<style>` element in `<head>`. Save the file and refresh the browser. Resize the window. Read the page aloud and ask whether the headings describe the structure clearly."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Make it yours"
+        },
+        {
+          "type": "paragraph",
+          "text": "Replace the imaginary walk with another harmless practice notice, such as a book swap. Keep the document structure and change only the words first. Then adjust one style at a time. Your local edits stay on your device; CodeSaga has no copy of them."
+        }
+      ]
+    },
+    {
+      "id": "80c2f8a7-de6a-5374-8e30-8f93afcd26a7",
+      "version": 1,
+      "slug": "what-a-reading-preview-can-teach",
+      "aliases": [],
+      "title": "What a reading preview can teach",
+      "summary": "Use the first original lessons while interactive tools are being built.",
+      "publication": "published",
+      "kind": "blog",
+      "category": "tools",
+      "courseIds": [],
+      "body": [
+        {
+          "type": "paragraph",
+          "text": "Kind article; slug `what-a-reading-preview-can-teach`; category tools; no course relation; blog placement."
+        },
+        {
+          "type": "paragraph",
+          "text": "Summary: How to use CodeSaga's first original lessons while interactive learning tools are still being built."
+        },
+        {
+          "type": "paragraph",
+          "text": "A short program has a useful quality: you can often understand its behavior before running it. That makes a reading preview a place to ask focused questions. What value does this name hold? Which instruction happens first? Why does this heading describe a section?"
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Predict, compare, explain"
+        },
+        {
+          "type": "paragraph",
+          "text": "Begin with one example. Cover the shown output and predict it. Compare your prediction with the static result, then explain the difference in your own words. For HTML, identify what each element means before considering its appearance."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Know the boundary"
+        },
+        {
+          "type": "paragraph",
+          "text": "The current previews do not execute code, check answers, save work, award XP or record completion. The examples and output are authored reference material. You can continue in an environment on your own device if you already have one, but no local setup is required to read."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "Follow a small sequence"
+        },
+        {
+          "type": "paragraph",
+          "text": "The Python First light chapter has three previews in order. The HTML & CSS preview introduces one complete document. The catalog labels future subjects as upcoming so that an interesting title is never mistaken for a finished course."
+        },
+        {
+          "type": "heading",
+          "level": 2,
+          "text": "A setting for small examples"
+        },
+        {
+          "type": "paragraph",
+          "text": "The camp is an imaginary place for a few concrete examples: lanterns, supplies and a trail notice. The ideas you learn do not depend on the story; they carry over to other programs and pages."
+        },
+        {
+          "type": "image",
+          "src": "/media/camp-observatory.png",
+          "alt": "An explorer at a woodland camp with a path to a small observatory.",
+          "caption": "Original CodeSaga illustration. The camp is a fictional setting for these coding examples.",
+          "width": 1536,
+          "height": 1024
+        }
+      ]
+    }
+  ]
+}

@@ -3,6 +3,7 @@ import { ArgumentsHost, Catch, ExceptionFilter, HttpException, PipeTransform, Ba
 import { apiErrorSchema } from '@codesaga/contracts';
 import type { Request, Response, NextFunction } from 'express';
 import type { z } from 'zod';
+import { IntegrationUnavailableError } from './integrations/ports';
 
 export class PublicError extends HttpException {
   constructor(public readonly code: string, message: string, status: number) {
@@ -51,7 +52,12 @@ export class ApiExceptionFilter implements ExceptionFilter {
       if (exception.type === 'entity.parse.failed') status = 400;
       if (exception.type === 'entity.too.large') status = 413;
     }
-    const [code, message] = exception instanceof PublicError
+    if (exception instanceof IntegrationUnavailableError) status = 503;
+    const [code, message] = exception instanceof IntegrationUnavailableError
+      ? exception.integration === 'identity'
+        ? ['IDENTITY_NOT_CONFIGURED', 'Identity service not configured']
+        : ['EXECUTION_NOT_CONFIGURED', 'Execution service not configured']
+      : exception instanceof PublicError
       ? [exception.code, exception.message]
       : knownErrors[status] ?? ['INTERNAL_ERROR', 'Internal server error'];
     const requestId = response.locals.requestId ?? randomUUID();

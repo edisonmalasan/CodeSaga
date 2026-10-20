@@ -6,11 +6,18 @@ import type { ApiConfig } from './config';
 import { DATABASE, createDatabase, type Database } from './database/database';
 import { HealthController } from './health.controller';
 import { ApiExceptionFilter, PublicError, requestIdMiddleware } from './http';
+import { ContentController } from './content/content.controller';
+import { PublishedContent } from './content/content.service';
+import { IntegrationsController } from './integrations/integrations.controller';
+import { IDENTITY_SESSION, ISOLATED_EXECUTION, UnavailableIdentitySession, UnavailableIsolatedExecution } from './integrations/ports';
 
 export async function createApp(config: ApiConfig, database: Database = createDatabase(config)) {
   @Module({
-    controllers: [HealthController],
+    controllers: [HealthController, ContentController, IntegrationsController],
     providers: [
+      PublishedContent,
+      { provide: IDENTITY_SESSION, useValue: new UnavailableIdentitySession() },
+      { provide: ISOLATED_EXECUTION, useValue: new UnavailableIsolatedExecution() },
       { provide: DATABASE, useValue: database },
       { provide: 'DATABASE_SHUTDOWN', useValue: { onApplicationShutdown: () => database.close() } },
     ],

@@ -1,5 +1,8 @@
 import { z } from 'zod';
 
+export * from './content';
+export * from './integrations';
+
 /** Public transport schemas only. Never import database or private configuration here. */
 export const healthSchema = z.object({
   status: z.literal('ok'),
