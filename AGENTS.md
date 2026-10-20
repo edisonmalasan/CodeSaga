@@ -110,20 +110,9 @@ If the working tree is dirty or Git operations are blocked, resolve safely witho
 _Activate only when the user explicitly requests autonomous roadmap execution._
 
 1. **Orchestrator:** Read `docs/CONTEXT.md` and `docs/ROADMAP.md`, select the next eligible task, manage Git operations, and verify completion.
-2. **Subagent:** Spawn **one implementation-and-testing subagent** per task when supported. Otherwise, perform the work directly.
+2. **Subagent:** Spawn **subagents** per task if needed when supported. Otherwise, perform the work directly.
 3. **Execution:** Create branch → Implement → Test → Commit → Push → Merge → Update roadmap.
 4. **Continuity:** Automatically proceed to the next eligible roadmap task. **Do not stop after one feature or merge.**
 5. **Blockers:** Attempt safe recovery. Pause only for unresolved errors, missing requirements, permissions, required approvals, or unsafe operations. Continue independent tasks when possible.
 6. **Completion:** Stop when all authorized tasks are finished, remaining tasks are deferred or blocked, or the user stops execution.
 7. **Knowledge:** Update relevant documentation, preserve reusable lessons in Obsidian, and refresh Graphify after significant changes.
-
-## Template Initialization (only when requested)
-
-When asked to initialize these templates for a new repository:
-
-1. Inspect the repository's `README`, manifests, folder structure, configuration, tests, and existing documentation.
-2. Fill this file plus `docs/CONTEXT.md` and `docs/ROADMAP.md` using **verified** information. Keep the roadmap grouped by useful milestones, not implementation steps.
-3. Preserve existing user-written requirements. Use `Not verified` or ask a targeted question for genuinely unknown details.
-4. Remove inapplicable template rows and placeholders. Do not claim features are complete without evidence.
-5. Do **not** automatically install Graphify, create branches/commits, modify the Obsidian vault, or create optional docs without permission.
-6. Summarize the populated files, sources consulted, and remaining uncertainties for review.
