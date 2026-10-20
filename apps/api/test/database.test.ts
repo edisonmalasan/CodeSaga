@@ -1,6 +1,7 @@
 import { strict as assert } from 'node:assert';
 import { randomUUID } from 'node:crypto';
-import { cp, mkdtemp, rm, writeFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+import { cp, mkdtemp, readFile, rm, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { test } from 'node:test';
@@ -89,6 +90,27 @@ test('isolated PostgreSQL migrations and seed', {
         assert.ok(directory.startsWith(join(tmpdir(), 'codesaga-migrations-')));
         await rm(directory, { recursive: true, force: true });
       }
+    });
+  });
+
+  await t.test('migration history is stable across LF and CRLF checkouts', async () => {
+    await isolated(async (pool) => {
+      const directory = await mkdtemp(join(tmpdir(), 'codesaga-migrations-'));
+      try {
+        const name = '0001_content_catalog.sql';
+        const lf = (await readFile(join(migrationsDirectory, name), 'utf8')).replace(/\r\n/g, '\n');
+        const crlf = lf.replace(/\n/g, '\r\n');
+        await writeFile(join(directory, name), crlf);
+        assert.deepEqual(await migrate(pool, directory), [name]);
+        const canonical = createHash('sha256').update(lf).digest('hex');
+        assert.equal((await pool.query('SELECT checksum FROM schema_migrations')).rows[0].checksum, canonical);
+        await writeFile(join(directory, name), lf);
+        assert.deepEqual(await migrate(pool, directory), []);
+        const legacy = createHash('sha256').update(crlf).digest('hex');
+        await pool.query('UPDATE schema_migrations SET checksum = $1', [legacy]);
+        assert.deepEqual(await migrate(pool, directory), []);
+        assert.equal((await pool.query('SELECT checksum FROM schema_migrations')).rows[0].checksum, legacy);
+      } finally { await rm(directory, { recursive: true, force: true }); }
     });
   });
 });

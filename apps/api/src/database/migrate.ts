@@ -8,8 +8,12 @@ export const migrationsDirectory = resolve(__dirname, '../../migrations');
 export async function migrate(pool: Pool, directory = migrationsDirectory): Promise<string[]> {
   const names = (await readdir(directory)).filter((name) => /^\d{4}_[a-z0-9_]+\.sql$/.test(name)).sort();
   const migrations = await Promise.all(names.map(async (name) => {
-    const sql = await readFile(resolve(directory, name), 'utf8');
-    return { name, sql, checksum: createHash('sha256').update(sql).digest('hex') };
+    const sql = (await readFile(resolve(directory, name), 'utf8')).replace(/\r\n/g, '\n');
+    const checksum = createHash('sha256').update(sql).digest('hex');
+    // The first Windows fixture stored a raw CRLF digest. Accept only that
+    // equivalent representation; never rewrite history or accept edited SQL.
+    const legacyCrlfChecksum = createHash('sha256').update(sql.replace(/\n/g, '\r\n')).digest('hex');
+    return { name, sql, checksum, legacyCrlfChecksum };
   }));
   const client = await pool.connect();
   try {
@@ -24,7 +28,8 @@ export async function migrate(pool: Pool, directory = migrationsDirectory): Prom
     const applied = await client.query<{ name: string; checksum: string }>('SELECT name, checksum FROM schema_migrations');
     const local = new Map(migrations.map((item) => [item.name, item]));
     for (const row of applied.rows) {
-      if (local.get(row.name)?.checksum !== row.checksum) {
+      const migration = local.get(row.name);
+      if (!migration || ![migration.checksum, migration.legacyCrlfChecksum].includes(row.checksum)) {
         throw new Error(`Migration missing or modified: ${row.name}`);
       }
     }
