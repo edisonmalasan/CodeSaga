@@ -38,4 +38,6 @@ On 2026-10-21, the production matrix passed **29/29 with retries disabled on Win
 
 Rendered WebKit captures at 390×844 (open/closed menu and restored focus) and 1440×900 were inspected locally; the palette, native controls and focus ring conform to the existing [design system](../apps/web/DESIGN.md). Those local captures are ignored; automated acceptance and the roadmap's linked CI run own repeatable verification. Historical M02 captures remain its earlier scoped evidence.
 
+Application source `defe8a4` subsequently passed the [complete Linux/Node 24 workflow](https://github.com/edisonmalasan/CodeSaga/actions/runs/39493073451), including all 29 cases in 31 seconds with no flaky/retried outcome, service cleanup and source-inventory upload. The workflow permits a retry, but none was needed for this run.
+
 CSS viewport resizing does not emulate a complete phone or supply physical touch, real-device Safari/Chrome, screen-reader listening, subjective sound checks, full zoom/high-contrast coverage or external-video playback. The public cases do not certify an account, owner/paid/staff workflow, live execution, durable progress, Build, billing or deployment. M16.01/M16.02 retain their remaining gates in the [roadmap](../docs/ROADMAP.md).
