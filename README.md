@@ -64,6 +64,7 @@ pnpm test:e2e
 | `pnpm build` | Shared contracts/content, API and Next.js production build |
 | `pnpm audit:boundaries` | Built web traces/client chunks exclude backend/reference configuration |
 | `pnpm test:e2e` | Chromium discovery/reading/keyboard/storage/media journeys and cross-process HTTP contracts |
+| `pnpm release:record` | Clean committed source inventory; [release handoff and CI artifact retrieval](docs/RELEASE.md) |
 
 Install the matching browser once with `pnpm exec playwright install chromium` before local browser acceptance. CI installs Chromium and its Linux dependencies. `.github/workflows/verify.yml` runs the pipeline on Linux using isolated service fixtures. A configured workflow is not evidence that a remote run has passed; see the roadmap for recorded verification.
 

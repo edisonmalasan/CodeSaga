@@ -25,6 +25,7 @@
 | Setup, run, verify and local service commands | Root [README.md](../README.md); [AGENTS.md](../AGENTS.md) retains working rules and command summary |
 | Local PostgreSQL restore rehearsal and limitations | [Recovery runbook](../infra/RECOVERY.md); real fixture verification through `pnpm db:rehearse-restore` |
 | API request tracing, event fields and logging limits | [Request telemetry](../apps/api/TELEMETRY.md); server-generated `X-Trace-ID`, approved route templates and redaction checks |
+| Source inventory, CI evidence and release/rollback limits | [Release handoff](RELEASE.md); `pnpm release:record` and the workflow's source inventory artifact |
 | Research entry point and detailed context map | [re/README.md](../re/README.md) |
 | Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
 | Reference product/content/visual model | [02 Routes/content](../re/docs/02-routes-content.md), [03 Product systems](../re/docs/03-product-systems.md), [05 Visual system](../re/docs/05-visual-interaction-system.md) |

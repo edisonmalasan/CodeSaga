@@ -11,7 +11,8 @@
     "build": "pnpm build:packages && pnpm --filter @codesaga/api build && pnpm --filter @codesaga/web build",
     "typecheck": "pnpm build:packages && pnpm -r typecheck && pnpm test:typecheck",
     "test:typecheck": "tsc --noEmit -p tsconfig.tests.json",
-    "test": "pnpm build:packages && pnpm -r test",
+    "test": "pnpm build:packages && pnpm -r test && pnpm test:tooling",
+    "test:tooling": "node --test scripts/*.test.mjs",
     "test:integration": "node --env-file=apps/api/.env scripts/test-integration.mjs",
     "test:e2e": "pnpm build:packages && playwright test",
     "verify": "pnpm typecheck && pnpm test && pnpm test:integration && pnpm build && pnpm audit:boundaries",
@@ -21,7 +22,8 @@
     "services:verify": "node infra/verify-object-store.mjs",
     "db:migrate": "pnpm --filter @codesaga/api db:migrate",
     "db:seed": "pnpm --filter @codesaga/api db:seed",
-    "db:rehearse-restore": "pnpm --filter @codesaga/api db:rehearse-restore"
+    "db:rehearse-restore": "pnpm --filter @codesaga/api db:rehearse-restore",
+    "release:record": "node scripts/release-record.mjs"
   },
   "devDependencies": {
     "@playwright/test": "1.64.1",

@@ -41,3 +41,10 @@ jobs:
         timeout-minutes: 4
       - if: always()
         run: pnpm services:down
+      - run: node scripts/release-record.mjs > "$RUNNER_TEMP/codesaga-release-record.json"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: source-inventory-${{ github.sha }}
+          path: ${{ runner.temp }}/codesaga-release-record.json
+          if-no-files-found: error
+          retention-days: 14
