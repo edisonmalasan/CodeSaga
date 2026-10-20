@@ -40,9 +40,12 @@ function docker(args: string[], input?: Buffer): Promise<Buffer> {
 }
 
 async function snapshot(pool: Pool) {
-  const records: Record<string, unknown[]> = {};
+  const records: Record<string, string[]> = {};
   for (const table of ['courses', 'chapters', 'lessons', 'lesson_versions', 'schema_migrations']) {
-    records[table] = (await pool.query(`SELECT * FROM ${table} ORDER BY ${table === 'schema_migrations' ? 'name' : 'id'}`)).rows;
+    // Keep database-generated text: JS Date/JSON number parsing can lose precision.
+    const rows = await pool.query<{ record: string }>(`SELECT to_jsonb(entry)::text AS record FROM ${table} AS entry
+      ORDER BY ${table === 'schema_migrations' ? 'name' : 'id'}`);
+    records[table] = rows.rows.map((row) => row.record);
   }
   const constraints = (await pool.query(`SELECT conrelid::regclass::text AS relation, conname, pg_get_constraintdef(oid) AS definition
     FROM pg_constraint WHERE connamespace = 'public'::regnamespace ORDER BY relation, conname`)).rows;
@@ -93,7 +96,9 @@ async function main() {
     await migrate(source);
     await seed(source);
     await source.query('UPDATE lesson_versions SET body = $1', ['Original restore fixture: café 🧭\n"quotes", \'apostrophes\' and \\ paths.']);
+    await source.query("UPDATE schema_migrations SET applied_at = TIMESTAMPTZ '2026-01-02T03:04:05.123456Z'");
     const before = await snapshot(source);
+    assert.ok(before.records.schema_migrations!.every((row) => row.includes('.123456')));
     phase = 'dump known original fixture';
     const archive = await pg('pg_dump', names.source, ['--format=custom', '--no-owner', '--no-acl']);
     assert.equal(archive.subarray(0, 5).toString(), 'PGDMP');
@@ -114,6 +119,9 @@ async function main() {
     phase = 'restore and verify rows, ledger, constraints and indexes';
     await pg('pg_restore', names.restore, restoreOptions, archive);
     assert.deepEqual(await snapshot(target), before);
+    await target.query("UPDATE schema_migrations SET applied_at = applied_at + INTERVAL '1 microsecond'");
+    assert.notDeepEqual(await snapshot(target), before, 'Snapshot comparison must detect microsecond drift.');
+    await target.query("UPDATE schema_migrations SET applied_at = applied_at - INTERVAL '1 microsecond'");
     assert.deepEqual(await migrate(target), []);
     await seed(target);
     assert.deepEqual(await snapshot(target), before);
@@ -123,7 +131,7 @@ async function main() {
       (error: unknown) => (error as { code: string }).code === '23503');
     await target.query('UPDATE courses SET summary = $1', ['Restored database accepts writes.']);
     assert.equal((await target.query('SELECT summary FROM courses')).rows[0].summary, 'Restored database accepts writes.');
-    console.log('PASS: original rows/Unicode, migration ledger, constraints, indexes, repeat migrate/seed and post-restore writes.');
+    console.log('PASS: original rows/Unicode/microseconds, migration ledger, constraints, indexes, repeat migrate/seed and post-restore writes.');
     console.log('PASS: corrupt archive rejected; conflicting restore rolled back without partial tables or sentinel loss.');
   } catch {
     failed = true;

@@ -13,12 +13,14 @@ The command creates two uniquely named databases in this repository's PostgreSQL
 
 1. Creates source and restore databases from `template0`; records ownership only after each creation succeeds and prints their disposable names.
 2. Runs the actual application migrations and original draft seed in the source; adds Unicode, newline and quoting content to exercise byte preservation.
-3. Captures rows, migration names/checksums/timestamps, constraint definitions and index definitions. Takes a custom-format `pg_dump` archive, then changes the source to prove the restore represents the backup point.
+3. Captures rows as database-generated JSON text, migration names/checksums/timestamps, constraint definitions and index definitions. This preserves timestamp microseconds instead of rounding through the driver's JavaScript dates; a one-microsecond drift must fail comparison. Takes a custom-format `pg_dump` archive, then changes the source to prove the restore represents the backup point.
 4. Rejects an invalid archive. Attempts a restore into a deliberately conflicting disposable target and verifies rollback: no partial application tables and no loss of the sentinel row.
 5. Restores into the empty disposable target. Compares the restored snapshot, repeats migration/seed without changes, checks primary/foreign-key enforcement and verifies a post-restore write.
 6. Closes pools, removes only successfully created databases owned by that invocation, and verifies their absence. Failed verification or cleanup exits nonzero. Binary archives are bounded to 8 MiB in memory; command execution is bounded to 30 seconds. No archive is written to disk.
 
 The rehearsal uses PostgreSQL 18's [custom dump format](https://www.postgresql.org/docs/18/app-pgdump.html) and [single-transaction, exit-on-error restoration](https://www.postgresql.org/docs/18/app-pgrestore.html). Restoration is limited to the archive just generated from the original fixture. It does not ingest arbitrary backups.
+
+The raw-text snapshot avoids [node-postgres timestamp conversion limits](https://node-postgres.com/features/types) using PostgreSQL's [JSON construction functions](https://www.postgresql.org/docs/18/functions-json.html); numeric values also stay in database-generated text rather than being reparsed as JavaScript numbers.
 
 ## Failure handling
 
