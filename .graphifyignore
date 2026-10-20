@@ -1,0 +1,9 @@
+.agents/
+.codex/
+.impeccable/
+re/
+node_modules/
+.next/
+dist/
+.local/
+graphify-out/

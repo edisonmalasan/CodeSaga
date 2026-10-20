@@ -3,10 +3,12 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
   testDir: './tests',
   fullyParallel: true,
+  workers: process.env.CI ? 2 : undefined,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
   globalTimeout: 180_000,
   reporter: 'list',
+  use: { baseURL: 'http://127.0.0.1:3000' },
   webServer: [
     {
       name: 'API',

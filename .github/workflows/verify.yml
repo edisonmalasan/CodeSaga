@@ -34,6 +34,7 @@ jobs:
       - run: pnpm db:migrate && pnpm db:seed
       - run: pnpm db:migrate && pnpm db:seed
       - run: pnpm verify
+      - run: pnpm exec playwright install --with-deps chromium
       - run: pnpm test:e2e
         timeout-minutes: 4
       - if: always()
