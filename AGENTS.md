@@ -4,7 +4,7 @@
 
 - **Name:** CodeSaga
 - **Purpose:** Planned original coding-learning platform for learners and project creators, with later reviewer/moderator, educator/student and operator workflows; evidence-based scope is in docs/ROADMAP.md.
-- **Current state:** M01 foundation complete: Next.js web and NestJS API source, shared schemas, a pnpm lockfile, PostgreSQL migrations and healthy local fixtures are verified from clean source and Linux CI. Learner features and deployment are not implemented; autonomous execution continues with M02. See docs/ROADMAP.md for current verification.
+- **Current state:** Next.js web and NestJS API source, original public discovery/reading previews, shared schemas/content, a pnpm lockfile, PostgreSQL migrations and local fixtures are implemented. docs/ROADMAP.md owns completion and verification evidence. Identity/execution adapters explicitly report unconfigured. Live learning, account workflows and deployment remain unavailable; autonomous orchestration is active.
 
 ## Source of Truth
 
@@ -28,11 +28,11 @@ _Fill from verified project files. Remove unused rows._
 
 | Layer              | Technology / version      | Evidence        |
 | ------------------ | ------------------------- | --------------- |
-| Frontend / UI      | Next.js 16.4.2, React 19.3.1, TypeScript 5.9.3 | apps/web/package.json; pnpm-lock.yaml; no learner UI yet |
+| Frontend / UI      | Next.js 16.4.2, React 19.3.1, TypeScript 5.9.3; local Silkscreen 5.3.0 | apps/web/package.json; pnpm-lock.yaml; public discovery and reading UI |
 | Backend / runtime  | NestJS 11.2.7, pg 8.23.1; Node 24 CI baseline (26.10.0 local) | apps/api/package.json; .nvmrc; actual runtime |
 | Database / storage | PostgreSQL 18.6; Redis 8.10.2 and source-built MinIO local fixtures | infra/compose.yaml; apps/api/migrations; production providers undecided |
 | Build / tooling    | pnpm 12.6.0 workspace; tsc, Next.js build; Python research/audit utilities | package.json; pnpm-lock.yaml; tsconfig.base.json |
-| Tests              | node:test through tsx; PostgreSQL integration; Playwright HTTP acceptance | package scripts; apps/*/test; packages/contracts/test; tests/ |
+| Tests              | node:test through tsx; PostgreSQL integration; Playwright Chromium/HTTP acceptance | package scripts; apps/*/test; packages/*/test; tests/ |
 
 ## Build, Test, and Development Commands
 
@@ -42,7 +42,7 @@ _Use commands that really exist in this repository. Never invent a script._
 | -------------------- | ------------------------- | ---------------- |
 | Install dependencies | `pnpm install --frozen-lockfile` | Committed workspace manifests and lockfile |
 | Run locally          | `pnpm dev` | First run setup/services/migrations from README.md; starts web and API |
-| Build                | `pnpm build` | Builds contracts, API and Next.js; requires example environment setup |
+| Build                | `pnpm build` | Builds contracts/content, API and Next.js; requires example environment setup |
 | Test                 | `pnpm test`; `pnpm test:integration`; `pnpm test:e2e` | Unit/HTTP, real local PostgreSQL, and cross-process checks respectively |
 | Lint / type-check    | `pnpm typecheck` | tsc across all packages; no separate linter configured |
 

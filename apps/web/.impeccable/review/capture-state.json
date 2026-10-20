@@ -1,0 +1,34 @@
+{
+  "shots": [
+    "desktop.png",
+    "mobile.png",
+    "menu-mobile.png",
+    "empty-mobile.png",
+    "reading-mobile.png",
+    "html-reading-mobile.png",
+    "reading-desktop.png",
+    "course-desktop.png",
+    "dark-desktop.png",
+    "preferences-mobile.png",
+    "image-desktop.png",
+    "image-fallback-desktop.png",
+    "storage-failure-mobile.png",
+    "sharing-failure-mobile.png",
+    "api-outage-mobile.png",
+    "api-recovered-mobile.png"
+  ],
+  "errors": [],
+  "focusRestored": true,
+  "widths": [
+    {
+      "route": "/learn/html-css/make-a-trail-notice",
+      "viewport": 390,
+      "document": 390
+    }
+  ],
+  "outageRecovery": {
+    "status": "passed",
+    "sequence": "API stopped; explicit error; API restored to health200; Retry content; loaded catalog",
+    "viewport": 390
+  }
+}

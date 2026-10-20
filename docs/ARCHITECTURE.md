@@ -41,14 +41,40 @@ The target's Firebase, Redux, STOMP, route names and minified modules are refere
 Selected under the user's explicit authorization to execute the roadmap:
 
 - **First alpha scope:** original, English-language beginner content: one coherent Python chapter and one HTML/CSS lesson, with discovery → sign-in → real Run/Check → durable progress/resume as the release gate. Builds, community, commerce, AI, pets and extended roles remain later milestones; they are not advertised as available by the scaffold.
-- **Content and visual rights:** author CodeSaga curriculum and fixtures; use original pixel-inspired adventure visuals confirmed by the user. Do not distribute captured target artwork, prose or user records. Current database seed content is a draft for infrastructure verification.
+- **Content and visual rights:** author CodeSaga curriculum and fixtures; use original pixel-inspired adventure visuals confirmed by the user. Do not distribute captured target artwork, prose or user records. Current database seed content is a draft for infrastructure verification. `packages/content` owns the separate original published catalog, chapters, reading previews and resources; schemas, publication and relationship checks run before serving them. It is a source-controlled publication slice, not an implemented database authoring workflow.
 - **D01 local baseline:** pnpm workspace with `apps/web`, `apps/api` and `packages/contracts`; Next.js 16.4.2, React 19.3.1, NestJS 11.2.7, TypeScript 5.9.3, Zod 4.6.7 and pg 8.23.1 are exact direct dependency pins. Node.js 24 LTS is the CI baseline; the development host has Node.js 26.10.0. NestJS 11 and TypeScript 5.9 keep conventional decorator compilation for this slice; upgrades require the same build and HTTP checks. Lockfile and manifests own exact dependency versions.
 - **Data access:** explicit SQL migrations with `pg`, transaction-scoped advisory locking and a checksum ledger. Digests canonicalize CRLF to LF; equivalent legacy CRLF digests from the first local fixture remain accepted without rewriting the ledger. Changed SQL still fails. This keeps constraints visible and avoids selecting an ORM before domain needs are known. Public Zod transport schemas are shared; database rows and credentials stay in the API.
 - **Local services:** PostgreSQL 18.6, Redis 8.10.2 and source-built MinIO `RELEASE.2025-10-15T17-29-55Z` are disposable, loopback-bound Compose fixtures. The MinIO source release is built because its official release does not publish that container tag. Queue and object application consumers remain deferred until needed.
 - **D02/D03:** the user has no identity or execution provider yet and requested adapters plus an explicit report of configuration needs. No placeholder sign-in, local execution of learner code or simulated successful Run is an acceptable substitute. Provider choice, credentials, limits and independent-session checks gate M03/M04 respectively.
+- **Current public data flow:** Next.js server routes → server-only catalog client → NestJS `/api/v1/content` → validated `packages/content`; both applications consume `packages/contracts`. Browser islands receive public DTOs for filters, media and local preferences. Stable IDs/versioned records are independent of canonical slugs and aliases. Draft records cannot enter catalog/lookup transport schemas. Unknown, mismatched-parent and unpublished lesson lookups return unavailable identities; API errors produce a reading error state. No private principal or learner progress is inferred from reading position.
+- **Unavailable integrations:** internal identity/execution ports have rejecting implementations; capabilities report false and no supported runtimes. Session lookup and valid execution commands return safe typed 503 responses. The bounded Python command schema is provisional transport preparation, not a supported runtime. [Provider setup](../apps/api/PROVIDER_SETUP.md) owns the required configuration and integration acceptance gates. No secrets, server ports or provider implementations are exported through shared browser contracts.
 - **Explicitly deferred:** hosting, production Redis/object vendors, identity/email, execution, billing and AI providers; no commercial account, subscription or deployment is created by local setup. Preview and runner trust zones remain separate from web/API.
 
 Compatibility and API references: [Next.js installation](https://nextjs.org/docs/app/getting-started/installation), [NestJS modules](https://docs.nestjs.com/modules), [Node.js release lifecycle](https://nodejs.org/en/about/previous-releases), [pnpm build allowlist](https://pnpm.io/settings/build#allowbuilds), and [MinIO source release](https://github.com/minio/minio/releases/tag/RELEASE.2025-10-15T17-29-55Z). These explain technology requirements; the roadmap owns actual verification results.
+
+#### Implemented frontend/backend flow
+
+```mermaid
+flowchart LR
+  Browser[Browser: navigation, filters, media, local preferences] --> Web[Next.js server routes]
+  Web --> Client[Server-only validated catalog client]
+  Client --> API[NestJS API]
+  API --> Content[Original published content package]
+  Schemas[Shared Zod public contracts] -. validates .-> Client
+  Schemas -. validates .-> API
+  Content -. validates .-> Schemas
+  API -. readiness only .-> DB[PostgreSQL fixture and migration ledger]
+  API -. registered adapters .-> Ports[Identity/execution ports: typed unavailable responses]
+```
+
+| Boundary | Current implementation | Later work |
+|---|---|---|
+| Frontend | `apps/web/app` server routes; `src/catalog-client.ts` owns API fetch/validation and canonical redirects; client components own filters, local preferences, media and Copy link | Account state, editor workspace, jobs/output, owned files and progress |
+| Backend | `apps/api/src/content` reads validated published data; `src/integrations` rejects unconfigured session/execution calls; database services own migrations and readiness | Authenticated domain transactions, trusted execution admission, grading and durable learner state |
+| Public contracts | `packages/contracts` owns transport validation; no private database models/provider credentials exported | Versioned authenticated commands, job streams and scoped projections |
+| Publication | `packages/content` owns authored records, stable IDs, aliases, parent/reference/publication validation and defensive copies | Authorized database authoring/review/publishing/rollback |
+
+Public reading is independent of the draft database seed. Redis/object fixtures have no production application consumers. The remaining sections describe the wider target architecture; their unimplemented domains are not enabled by this public slice.
 
 ### 2.1 Baseline to review at M01
 
@@ -95,7 +121,7 @@ docs/                     Context, roadmap and this architecture
 re/                       Existing local evidence; ignored by Git
 ```
 
-The foundation implements `apps/web`, `apps/api`, `packages/contracts`, `infra`, `tests` and supporting scripts. Other paths above remain planned. Backend domain modules live inside `apps/api` initially. Add shared packages only when there is a real consumer; avoid exporting database entities through `packages/contracts`. Sandbox workers may require an independent repository/deployment if their trust boundary cannot be represented safely inside this monorepo.
+The foundation and public content slice implement `apps/web`, `apps/api`, `packages/contracts`, `packages/content`, `infra`, `tests` and supporting scripts. Other paths above remain planned. Backend domain modules live inside `apps/api` initially. Add shared packages only when there is a real consumer; avoid exporting database entities through `packages/contracts`. Sandbox workers may require an independent repository/deployment if their trust boundary cannot be represented safely inside this monorepo.
 
 ## 3. System overview
 

@@ -4,7 +4,7 @@ An original browser-based coding-learning platform for self-directed beginners.
 
 ## Development status
 
-The foundation is implemented and verified: a Next.js frontend, a separate NestJS API and PostgreSQL, with shared public transport schemas. The root route currently returns a development-stage JSON response; learner-facing pages follow in M02. Sign-in, code execution, progress, Builds and commerce are not shipped.
+The Next.js frontend includes original course discovery and static reading previews. A separate NestJS API serves validated published content, alongside the verified PostgreSQL foundation and shared public transport schemas. Sign-in, code execution, progress, Builds and commerce are not shipped.
 
 See [the roadmap](docs/ROADMAP.md) for verified outcomes, [architecture](docs/ARCHITECTURE.md) for boundaries and decisions, and [context](docs/CONTEXT.md) for navigation. Autonomous roadmap execution is active under [AGENTS.md](AGENTS.md).
 
@@ -36,7 +36,13 @@ The first service startup builds the pinned MinIO source release and downloads i
 
 Database, Redis and object ports bind only to loopback. They have project-scoped persistent Docker volumes. `pnpm services:down` stops the project services and preserves those volumes. No production credentials, cloud accounts or hosting provider are required for the foundation.
 
-The seed is original CodeSaga draft content and is idempotent. A seed is not a published course. Migrations use a checksum ledger and transaction lock; changed applied migrations fail rather than silently rewriting history.
+The database seed is original CodeSaga draft content and is idempotent. Published reading previews have a separate authority: validated original records in `packages/content`. Public routes never expose the infrastructure draft seed. Migrations use a checksum ledger and transaction lock; changed applied migrations fail rather than silently rewriting history.
+
+## Public discovery and integrations
+
+Browse `/courses`, open Python or HTML/CSS reading previews, or visit `/resources`, `/tutorials`, `/blog`, `/search`, `/about`, `/help` and `/pricing`. JavaScript, SQL and Git are explicitly upcoming. The examples are static; reading does not award completion or XP. Theme, motion and optional navigation sound preferences are browser-local.
+
+The web server fetches validated public content from the separate API. API outages produce a reading error state. `/api/v1/capabilities` reports identity and execution as unconfigured. Session and valid execution requests return typed 503 responses; no account or code job is created. See [provider setup requirements](apps/api/PROVIDER_SETUP.md) for the decisions and configuration needed to enable these integrations.
 
 ## Verify
 
@@ -51,21 +57,22 @@ pnpm test:e2e
 
 | Command | Scope |
 |---|---|
-| `pnpm typecheck` | All application and contract TypeScript |
+| `pnpm typecheck` | Applications, packages and acceptance-test TypeScript |
 | `pnpm test` | Package tests; database suite skips without `TEST_DATABASE_URL` |
 | `pnpm test:integration` | Required real database checks; fails if the local database is unavailable |
-| `pnpm build` | Shared contracts, API and Next.js production build |
+| `pnpm build` | Shared contracts/content, API and Next.js production build |
 | `pnpm audit:boundaries` | Built web traces/client chunks exclude backend/reference configuration |
-| `pnpm test:e2e` | Real processes and HTTP health/readiness/error contracts |
+| `pnpm test:e2e` | Chromium discovery/reading/keyboard/storage/media journeys and cross-process HTTP contracts |
 
-`.github/workflows/verify.yml` runs the same foundation pipeline on Linux using isolated service fixtures. A configured workflow is not evidence that a remote run has passed; see the roadmap for recorded verification.
+Install the matching browser once with `pnpm exec playwright install chromium` before local browser acceptance. CI installs Chromium and its Linux dependencies. `.github/workflows/verify.yml` runs the pipeline on Linux using isolated service fixtures. A configured workflow is not evidence that a remote run has passed; see the roadmap for recorded verification.
 
 ## Repository boundaries
 
 ```text
-apps/web/          Next.js server routes and future learner UI
-apps/api/          NestJS transport, configuration and database services
+apps/web/          Next.js public discovery, reading and interactive controls
+apps/api/          NestJS public content, unavailable integration adapters and database services
 packages/contracts/ Public Zod schemas shared by API and web
+packages/content/   Original published content and relationship validation
 infra/             Local PostgreSQL, Redis and MinIO fixtures
 scripts/           Setup, integration runner and production boundary audit
 tests/             Cross-process acceptance tests

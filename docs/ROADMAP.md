@@ -160,27 +160,35 @@ Environment cases exercise malformed settings/redaction; HTTP cases cover IDs, C
 
 *Outcome: learners discover/read original content through a coherent accessible public interface.*
 
-**Status:** Not started. **Dependencies:** M01. **Evidence:** [routes/content](../re/docs/02-routes-content.md), [visual system](../re/docs/05-visual-interaction-system.md), [public edges](../re/docs/14-public-interaction-edge-cases.md). **Decision:** D04 and authored release scope.
+**Status:** Complete for the original public reading/discovery slice. **Dependencies:** M01 complete. **Evidence:** [routes/content](../re/docs/02-routes-content.md), [visual system](../re/docs/05-visual-interaction-system.md), [public edges](../re/docs/14-public-interaction-edge-cases.md), implementation and verification below. **Decision:** D04 and authored release scope.
 
-- [ ] **M02.01** Original CodeSaga branding, pixel-inspired scenes/characters and licensed fonts/media have provenance and readable paragraph/code typography.
-- [ ] **M02.02** Shared controls cover keyboard focus, loading, empty, disabled, denied, error and success states.
-- [ ] **M02.03** Marketing/learner shells support desktop/mobile navigation, course switching, breadcrumbs and help/footer links without overlap or inaccessible controls.
-- [ ] **M02.04** Catalog cards derive category, difficulty, description, prerequisites/recommendations and availability from validated published metadata.
-- [ ] **M02.05** Text/category filters reset correctly and provide no-results feedback; curated paths have an explicit relationship to filtering.
-- [ ] **M02.06** Course pages distinguish chapters, lessons, bonus articles, packs, cheat sheets, checkpoint/final projects, certificates and coming-soon sections.
-- [ ] **M02.07** Stable content IDs/versioned references survive title/slug changes; aliases redirect and invalid/locked resources show accurate identity.
-- [ ] **M02.08** Rich lesson/article/tutorial blocks support code, images/expansion, safe video, headings, instructions/help and graceful missing-media states.
-- [ ] **M02.09** Theme/sound/reduced-motion preferences survive navigation as specified and degrade safely when storage fails.
-- [ ] **M02.10** Metadata, canonicals, sitemap/robots and sharing links reflect published resources; drafts/private records do not enter public indexes.
-- [ ] **M02.11** About/help/pricing-entry/blog/tutorial/search discovery work with original or licensed content and explicit external/unavailable states.
+- [x] **M02.01** Original CodeSaga branding, pixel-inspired scenes/characters and licensed fonts/media have provenance and readable paragraph/code typography.
+- [x] **M02.02** Shared controls cover keyboard focus, loading, empty, disabled, denied, error and success states.
+- [x] **M02.03** Marketing/learner shells support desktop/mobile navigation, course switching, breadcrumbs and help/footer links without overlap or inaccessible controls.
+- [x] **M02.04** Catalog cards derive category, difficulty, description, prerequisites/recommendations and availability from validated published metadata.
+- [x] **M02.05** Text/category filters reset correctly and provide no-results feedback; curated paths have an explicit relationship to filtering.
+- [x] **M02.06** Course pages distinguish chapters, lessons, bonus articles, packs, cheat sheets, checkpoint/final projects, certificates and coming-soon sections.
+- [x] **M02.07** Stable content IDs/versioned references survive title/slug changes; aliases redirect and invalid/locked resources show accurate identity.
+- [x] **M02.08** Rich lesson/article/tutorial blocks support code, images/expansion, safe video, headings, instructions/help and graceful missing-media states.
+- [x] **M02.09** Theme/sound/reduced-motion preferences survive navigation as specified and degrade safely when storage fails.
+- [x] **M02.10** Metadata, canonicals, sitemap/robots and sharing links reflect published resources; drafts/private records do not enter public indexes.
+- [x] **M02.11** About/help/pricing-entry/blog/tutorial/search discovery work with original or licensed content and explicit external/unavailable states.
 
 **Exit evidence:** asset provenance, content validation, responsive/keyboard review, filtering/redirect/metadata and safe-rendering cases.
 
+**Verified — 2026-10-20:** Original published data and relationship validation live in `packages/content`; public transport schemas in `packages/contracts`; NestJS content reads in `apps/api/src/content`; Next.js discovery/reading in `apps/web`. The source-controlled publication slice contains five course entries (two previews, three upcoming), two chapters, four reading lessons and five resources/110 rich blocks. Catalog cards expose their validated prerequisites/recommendations through native disclosures. These are original static reading previews, not a released interactive alpha. [Frontend design](../apps/web/DESIGN.md) and its scoped sidecar record the built system; [asset provenance](../apps/web/ASSETS.md) preserves the original scene prompt and local Silkscreen license.
+
+Types, 36 package unit/HTTP tests and five mandatory PostgreSQL integration tests passed; the ordinary API test invocation's one explicit database skip is covered by the mandatory suite. All 11 production Chromium acceptance cases passed without retries, including all four reading previews at 320/390/768/1024/1440, actual card guidance, filters/reset/read navigation, canonical identities/metadata, preferences/storage failures, keyboard recovery, media failures and sharing. Production builds and boundary audits passed. The [full Linux/Node 24 CI for final application source `16adb34`](https://github.com/edisonmalasan/CodeSaga/actions/runs/39429712809) passed frozen installation, isolated services, signed object round-trip, repeat migration/seed, types, tests, build/secret-canary audit and Chromium acceptance.
+
+Independent full-interface review identified one retry recovery defect; its [verdict pass](../apps/web/.impeccable/review/finish-verdict.md) scored that fix resolved after actual API outage/restoration/retry. The later [catalog extension review](../apps/web/.impeccable/review/cards-review.md) returned **ship** at its scoped level; the documenter confirmed conformance to the incumbent system. Sixteen base/outage captures plus three current catalog captures, exact scope/limitations and detector results are retained in [verification evidence](../apps/web/.impeccable/review/verification.md). JSON/YAML, normative token references and local documentation links were validated. External video playback, subjective audio listening, other browsers/screen readers, identity, execution and durable progress are not certified by this milestone.
+
 ## M03 — Identity, accounts and access
+
+**Provider preparation:** Internal identity/session ports and rejecting adapters are implemented and tested; capabilities stay `false/not_configured`, and session lookup returns a typed 503 even with forged credentials. This does not complete any account flow below. The user requested adapter preparation while no provider is selected. Selection, owned test identities, session/account-linking policy and server configuration gate implementation; exact requirements are in [provider setup](../apps/api/PROVIDER_SETUP.md). Independent M02 work continues without a fabricated principal.
 
 *Outcome: learners authenticate, manage accounts and access only permitted resources.*
 
-**Status:** Not started. **Dependencies:** M01 and shell as needed. **Evidence:** [auth/session code](../re/docs/06-client-architecture.md), [account UI](../re/docs/15-signed-in-account-investigation.md), [native forms](../re/docs/14-public-interaction-edge-cases.md). **Decisions:** D02/D06, baseline D07.
+**Status:** Adapter preparation verified; account integration blocked on identity provider/setup. **Dependencies:** M01 and shell as needed. **Evidence:** [auth/session code](../re/docs/06-client-architecture.md), [account UI](../re/docs/15-signed-in-account-investigation.md), [native forms](../re/docs/14-public-interaction-edge-cases.md). **Decisions:** D02/D06, baseline D07.
 
 - [ ] **M03.01** Signup, verification/recovery, login/logout and chosen providers work with owned test identities, including invalid/duplicate/cancelled-provider cases.
 - [ ] **M03.02** Session refresh/revocation, expiry, protected routes and safe redirects behave across reload and two sessions.
@@ -198,9 +206,11 @@ Environment cases exercise malformed settings/redaction; HTTP cases cover IDs, C
 
 ## M04 — Complete lesson and execution experience
 
+**Provider preparation:** Internal execution ports and a bounded provisional command schema reject safely with `EXECUTION_NOT_CONFIGURED`; tests prove no job/output/result/reward is created and unsupported runtimes, paths, extra files and reward claims fail validation. No runtime is advertised or executed. [Provider setup](../apps/api/PROVIDER_SETUP.md) records the remote sandbox, isolation, limits, ownership, budget and retention decisions required before enabling live execution. M03 identity/admission and trusted grading remain additional gates. Reading previews do not satisfy execution checkboxes below.
+
 *Outcome: one original Python chapter and at least one web lesson work through explanation, execution, checking and navigation.*
 
-**Status:** Not started. **Dependencies:** M02/M03, execution D03 and grading D05. **Evidence:** [learning runtime](../re/docs/04-learning-editor-runtime.md), [protocol](../re/docs/10-runtime-protocol-and-storage.md), [runtime expansion](../re/docs/12-additional-editor-runtimes.md), [final checks](../re/docs/16-build-progress-and-runtime-verification.md).
+**Status:** Adapter preparation verified; live execution blocked on M03 and sandbox/grading setup. **Dependencies:** M02/M03, execution D03 and grading D05. **Evidence:** [learning runtime](../re/docs/04-learning-editor-runtime.md), [protocol](../re/docs/10-runtime-protocol-and-storage.md), [runtime expansion](../re/docs/12-additional-editor-runtimes.md), [final checks](../re/docs/16-build-progress-and-runtime-verification.md).
 
 - [ ] **M04.01** Lesson shells show correct course/chapter/title, instructions/examples/help, file/language, XP/completion and Back/Next/lock states.
 - [ ] **M04.02** Editor adapters read/write the actual source model; delayed loading never overwrites saved source with a writable empty model.
@@ -453,6 +463,8 @@ Waves suggest order, not committed launch quantities. The target's 601 configure
 
 ## M15 — Authoring, administration and operational tools
 
+**Preparation verified:** Source-controlled publication validates schemas, stable IDs/aliases, parent/reference/order consistency, draft exclusion and mutation isolation, with original content fixtures. This is not an authorized authoring UI or publish/rollback workflow. Privileged staff/account policies and M03 identity remain prerequisites for those operations.
+
 *Outcome: staff maintain original content/support without bypassing domain rules.*
 
 **Status:** Not started. **Dependencies:** M01, then each domain. **Evidence:** [content schemas](../re/docs/02-routes-content.md), [static admin candidates](../re/docs/07-api-data-contracts.md); workflows here are proposed.
@@ -470,9 +482,11 @@ Waves suggest order, not committed launch quantities. The target's 601 configure
 
 ## M16 — Launch quality, reliability and operating readiness
 
+**Quality work in progress:** Foundation clean-source/real-service CI and the public discovery slice have type, unit/HTTP, database, production-browser, boundary, responsive/focus/failure and independent interface review evidence. These checks apply to the released slice only. Hosting, production identity/execution, operating budgets, full device/assistive-technology matrix, backups, support policies and interactive release journeys remain gates below; no launch readiness is claimed.
+
 *Outcome: each release is accessible, safe, recoverable, measurable and supportable.*
 
-**Status:** Not started. **Dependencies:** included release features and M01. **Evidence:** [coverage](../re/docs/09-coverage-and-open-questions.md), [replay cautions](../re/docs/11-verification-and-replay.md). **Decision:** D15 and release budgets.
+**Status:** In progress for foundation/public slice; launch gates unfinished. **Dependencies:** included release features and M01. **Evidence:** [coverage](../re/docs/09-coverage-and-open-questions.md), [replay cautions](../re/docs/11-verification-and-replay.md). **Decision:** D15 and release budgets.
 
 - [ ] **M16.01** Included guest/account/owner/paid/role journeys pass the declared browser/device matrix with invalid/denied/empty/error cases.
 - [ ] **M16.02** Keyboard/screen-reader/focus/tab/dialog/form/terminal, contrast/zoom/motion/sound/touch checks pass.
@@ -590,9 +604,9 @@ No evidenced core capability is silently dropped. Conditional extensions stay un
 | ID | Milestone | Status | Gate |
 |---|---|---|---|
 | M01 | Decisions/foundation | Complete | Clean-source and Linux CI evidence above |
-| M02 | Design/discovery/content | Not started | Assets, filters, routing and responsive access |
-| M03 | Identity/accounts/access | Not started | Sessions/providers/cross-user checks |
-| M04 | Lesson/execution | Not started | Real run/check/preview/input/error journey |
+| M02 | Design/discovery/content | Complete for public previews | Original content, system, browser/review evidence above |
+| M03 | Identity/accounts/access | Adapters prepared; blocked | Identity provider/setup and owned test identities |
+| M04 | Lesson/execution | Adapters prepared; blocked | M03, sandbox/isolation/grading setup |
 | M05 | Progress/rewards | Not started | Independent durability and unique awards |
 | M06 | Practice/resources | Not started | Packs/daily boundaries/bookmarks |
 | M07 | Owned Builds | Not started | Save/reload/delete/conflict/quota/ACL |
@@ -604,7 +618,7 @@ No evidenced core capability is silently dropped. Conditional extensions stay un
 | M13 | Curriculum breadth | Not started | Original release manifest/runtime matrix |
 | M14 | Extended roles | Not started | Tenant and multi-client checks |
 | M15 | Authoring/administration | Not started | Scoped publish/support/replay |
-| M16 | Launch/operations | Not started | Release/restore/support evidence |
+| M16 | Launch/operations | In progress for current slice | Launch/restore/support and production setup remain |
 
 ### Repository delivery — 2026-10-20
 
@@ -618,7 +632,7 @@ Verification: staged whitespace checks passed for each group; hook/configuration
 
 ### Next implementation decision
 
-Autonomous roadmap execution was explicitly authorized on 2026-10-20. M01 is verified; continue M02 and prepare identity/execution adapters. The user confirmed original pixel-inspired adventure visuals and requested adapters while providers remain unselected; do not present unconfigured integrations as functioning features.
+Autonomous roadmap execution was explicitly authorized on 2026-10-20. M01 and the M02 public preview slice are verified; identity/execution adapters are prepared. Next eligible interactive work requires the [provider setup inputs](../apps/api/PROVIDER_SETUP.md): identity/session policy and owned provider environment/test identities; remote sandbox/isolation/runtime/limits/budget; trusted grading/progress policy. The user requested adapter preparation while providers remain unselected. M05–M14 depend on those domain gates; privileged M15 workflows need M03, and M16 production launch needs hosting/operations and included interactive features. Do not invent working providers, enable unsafe local execution or advertise later features as shipped.
 
 ### Maintenance
 

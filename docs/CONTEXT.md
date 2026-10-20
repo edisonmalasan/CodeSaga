@@ -5,8 +5,8 @@
 - **Project:** CodeSaga.
 - **What it does:** Planned original coding-learning platform inspired by the retained Codédex investigation: courses, real browser-based coding, checked practice, durable progress, Builds, projects and community, with later commerce, AI, habits and role-specific features.
 - **Primary users / use cases:** Self-directed beginners learning to code in a browser, confirmed by the user; projects/community support that learning journey. Later role-specific workflows remain planned.
-- **Current state:** M01 foundation is complete: clean-source installation/verification and full Linux CI passed, including real PostgreSQL and signed object checks. No learner UI, account integration or deployment is shipped yet.
-- **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. Continue M02 original discovery/content and prepare identity/execution adapters; providers and hosting remain undecided.
+- **Current state:** M01 foundation is complete. Original public discovery and reading previews are implemented; the roadmap owns exact completion/review/CI evidence. Account integration, real execution and deployment remain unavailable; this is not the interactive alpha release.
+- **Current focus:** Autonomous roadmap execution is active by explicit user request on 2026-10-20. M01/M02 public delivery is verified; the next interactive work follows identity/execution setup gates. Adapters are prepared, while providers and hosting remain undecided.
 
 ## Where to Look
 
@@ -18,7 +18,10 @@
 | Backend modules, transactions, workers and data ownership | [ARCHITECTURE.md](ARCHITECTURE.md), sections 5–6 |
 | API/events, Run/Submit/save/publish/billing/AI/date flows | [ARCHITECTURE.md](ARCHITECTURE.md), sections 7–8 |
 | Execution/preview isolation, permissions, operations and decisions | [ARCHITECTURE.md](ARCHITECTURE.md), sections 9–12 |
-| Current behavior and installed dependencies | `apps/web`, `apps/api`, `packages/contracts`, package manifests and `pnpm-lock.yaml`; future paths in architecture remain proposals |
+| Current behavior and installed dependencies | `apps/web`, `apps/api`, `packages/contracts`, `packages/content`, package manifests and `pnpm-lock.yaml`; future paths in architecture remain proposals |
+| Published original curriculum and stable identities | `packages/content/src/catalog.json` and its loader/relationship tests; public schemas in `packages/contracts/src/content.ts` |
+| Original interface design and assets | [Frontend design system](../apps/web/DESIGN.md), scoped sidecar/brief/captures in `apps/web/.impeccable/`, and [asset provenance](../apps/web/ASSETS.md) |
+| Identity/execution configuration needs | [Provider setup](../apps/api/PROVIDER_SETUP.md); unavailable adapter behavior and checks in [API verification](../apps/api/VERIFICATION.md) |
 | Setup, run, verify and local service commands | Root [README.md](../README.md); [AGENTS.md](../AGENTS.md) retains working rules and command summary |
 | Research entry point and detailed context map | [re/README.md](../re/README.md) |
 | Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
@@ -26,7 +29,7 @@
 | Reference editor/protocol/client/API mechanisms | [04 Learning](../re/docs/04-learning-editor-runtime.md), [06 Client](../re/docs/06-client-architecture.md), [07 Contracts](../re/docs/07-api-data-contracts.md), [10 Protocol](../re/docs/10-runtime-protocol-and-storage.md), [13 Traces](../re/docs/13-deeper-client-traces.md) |
 | Additional runtimes, public edges and authenticated checks | [12 Runtimes](../re/docs/12-additional-editor-runtimes.md), [14 Public edges](../re/docs/14-public-interaction-edge-cases.md), [15 Account UI](../re/docs/15-signed-in-account-investigation.md), [16 Focused verification](../re/docs/16-build-progress-and-runtime-verification.md) |
 | Remaining target unknowns versus CodeSaga choices | [09 Research unknowns](../re/docs/09-coverage-and-open-questions.md); roadmap U01–U22 mapping; architecture D01–D16 |
-| Graphify / Obsidian | No generated graph, installation or central vault configuration verified; use repository docs |
+| Graphify / Obsidian | Installed Graphify CLI; ignored local `graphify-out/graph.json` and `GRAPH_REPORT.md`, generated offline from code. SQL parser is absent and some test/data files yield no symbols; verify against source. No central vault configured or edited |
 
 ## Project-Specific Constraints
 
@@ -46,7 +49,7 @@ The user-authorized temporary reference Build was deleted and its dashboard rest
 
 ## Next Useful Work
 
-Continue M02 original content/discovery and provider adapters after the verified foundation merge. The user confirmed original pixel-inspired adventure visuals while providers remain unselected. Continue independent eligible work; record provider-dependent blockers precisely. Do not introduce a second architectural source of truth or duplicate the research archive into these docs.
+Use the roadmap's current completion and dependency gates. Identity/session and execution ports exist with explicit unconfigured responses. The user requested adapter preparation while providers remain unselected; real account, runtime, grading/progress and owned-workspace journeys remain gated by [provider setup](../apps/api/PROVIDER_SETUP.md). Source-controlled publication validation and foundational release checks support M15/M16; privileged authoring and launch readiness remain unfinished. No central vault is configured, so decisions remain in repository docs. Do not introduce a second architectural source of truth or duplicate the research archive into these docs.
 
 ## Context Loading Rules
 

@@ -1,0 +1,13 @@
+{
+  "scope": "M02.04 catalog prerequisite/recommendation disclosure extension",
+  "shots": [
+    "cards-desktop.png",
+    "cards-mobile.png",
+    "cards-dark.png"
+  ],
+  "width": {
+    "viewport": 390,
+    "document": 390
+  },
+  "errors": []
+}

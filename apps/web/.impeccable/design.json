@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-20T13:15:44.606841+00:00",
+  "title": "Design System: CodeSaga",
+  "extensions": {
+    "colorMeta": {
+      "page": {
+        "role": "neutral",
+        "displayName": "Page"
+      },
+      "surface": {
+        "role": "neutral",
+        "displayName": "Surface"
+      },
+      "surface-soft": {
+        "role": "neutral",
+        "displayName": "Surface soft"
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Ink"
+      },
+      "muted": {
+        "role": "neutral",
+        "displayName": "Muted"
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Line"
+      },
+      "accent": {
+        "role": "primary",
+        "displayName": "Accent"
+      },
+      "accent-hover": {
+        "role": "primary",
+        "displayName": "Accent hover"
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "On accent"
+      },
+      "selected": {
+        "role": "primary",
+        "displayName": "Selected"
+      },
+      "header": {
+        "role": "primary",
+        "displayName": "Header"
+      },
+      "header-ink": {
+        "role": "primary",
+        "displayName": "Header ink"
+      },
+      "note": {
+        "role": "secondary",
+        "displayName": "Note"
+      },
+      "note-ink": {
+        "role": "secondary",
+        "displayName": "Note ink"
+      },
+      "focus": {
+        "role": "secondary",
+        "displayName": "Focus"
+      },
+      "code": {
+        "role": "neutral",
+        "displayName": "Code"
+      },
+      "code-ink": {
+        "role": "neutral",
+        "displayName": "Code ink"
+      },
+      "dark-page": {
+        "role": "neutral",
+        "displayName": "Dark page"
+      },
+      "dark-surface": {
+        "role": "neutral",
+        "displayName": "Dark surface"
+      },
+      "dark-surface-soft": {
+        "role": "neutral",
+        "displayName": "Dark surface soft"
+      },
+      "dark-ink": {
+        "role": "neutral",
+        "displayName": "Dark ink"
+      },
+      "dark-muted": {
+        "role": "neutral",
+        "displayName": "Dark muted"
+      },
+      "dark-line": {
+        "role": "neutral",
+        "displayName": "Dark line"
+      },
+      "dark-accent": {
+        "role": "primary",
+        "displayName": "Dark accent"
+      },
+      "dark-accent-hover": {
+        "role": "primary",
+        "displayName": "Dark accent hover"
+      },
+      "dark-on-accent": {
+        "role": "primary",
+        "displayName": "Dark on accent"
+      },
+      "dark-selected": {
+        "role": "primary",
+        "displayName": "Dark selected"
+      },
+      "dark-header": {
+        "role": "primary",
+        "displayName": "Dark header"
+      },
+      "dark-header-ink": {
+        "role": "primary",
+        "displayName": "Dark header ink"
+      },
+      "dark-note": {
+        "role": "secondary",
+        "displayName": "Dark note"
+      },
+      "dark-note-ink": {
+        "role": "secondary",
+        "displayName": "Dark note ink"
+      },
+      "dark-focus": {
+        "role": "secondary",
+        "displayName": "Dark focus"
+      },
+      "dark-code": {
+        "role": "neutral",
+        "displayName": "Dark code"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Short pixel display titles; local Silkscreen regular."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "System-sans section headings."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "System-sans subordinate headings."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Ordinary system-sans interface prose."
+      },
+      "reading-body": {
+        "displayName": "Reading Body",
+        "purpose": "Long-form system-sans reading."
+      },
+      "reading-title": {
+        "displayName": "Reading Title",
+        "purpose": "System-sans lesson and article heading."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Compact availability badges."
+      },
+      "mono": {
+        "displayName": "Mono",
+        "purpose": "Preformatted code, distinct from display lettering."
+      }
+    },
+    "themes": {
+      "source": "app/globals.css",
+      "defaultColorScheme": "light",
+      "choices": [
+        {
+          "name": "system",
+          "label": "Use device setting"
+        },
+        {
+          "name": "light",
+          "label": "Daylight"
+        },
+        {
+          "name": "dark",
+          "label": "Nightfall"
+        }
+      ],
+      "lightSelector": ":root[data-theme='light']",
+      "darkSelector": ":root[data-theme='dark']",
+      "systemDarkQuery": "(prefers-color-scheme: dark)",
+      "systemDarkSelector": ":root:not([data-theme='light']):not([data-theme='dark'])",
+      "tokens": {
+        "page": {
+          "light": "{colors.page}",
+          "dark": "{colors.dark-page}"
+        },
+        "surface": {
+          "light": "{colors.surface}",
+          "dark": "{colors.dark-surface}"
+        },
+        "surface-soft": {
+          "light": "{colors.surface-soft}",
+          "dark": "{colors.dark-surface-soft}"
+        },
+        "ink": {
+          "light": "{colors.ink}",
+          "dark": "{colors.dark-ink}"
+        },
+        "muted": {
+          "light": "{colors.muted}",
+          "dark": "{colors.dark-muted}"
+        },
+        "line": {
+          "light": "{colors.line}",
+          "dark": "{colors.dark-line}"
+        },
+        "accent": {
+          "light": "{colors.accent}",
+          "dark": "{colors.dark-accent}"
+        },
+        "accent-hover": {
+          "light": "{colors.accent-hover}",
+          "dark": "{colors.dark-accent-hover}"
+        },
+        "on-accent": {
+          "light": "{colors.on-accent}",
+          "dark": "{colors.dark-on-accent}"
+        },
+        "selected": {
+          "light": "{colors.selected}",
+          "dark": "{colors.dark-selected}"
+        },
+        "header": {
+          "light": "{colors.header}",
+          "dark": "{colors.dark-header}"
+        },
+        "header-ink": {
+          "light": "{colors.header-ink}",
+          "dark": "{colors.dark-header-ink}"
+        },
+        "note": {
+          "light": "{colors.note}",
+          "dark": "{colors.dark-note}"
+        },
+        "note-ink": {
+          "light": "{colors.note-ink}",
+          "dark": "{colors.dark-note-ink}"
+        },
+        "focus": {
+          "light": "{colors.focus}",
+          "dark": "{colors.dark-focus}"
+        },
+        "code": {
+          "light": "{colors.code}",
+          "dark": "{colors.dark-code}"
+        },
+        "code-ink": {
+          "light": "{colors.code-ink}",
+          "dark": "{colors.code-ink}"
+        }
+      },
+      "tonalRamps": "None defined in source; none synthesized."
+    },
+    "shadows": [
+      {
+        "name": "preference-overlay",
+        "value": "0 12px 36px rgb(13 40 49 / 14%)",
+        "purpose": "Source --shadow used by the preference panel."
+      },
+      {
+        "name": "mobile-navigation",
+        "value": "0 12px 18px rgb(10 30 34 / 12%)",
+        "purpose": "Expanded mobile navigation at max-width 720px."
+      }
+    ],
+    "motion": [
+      {
+        "name": "filter-feedback",
+        "value": "background-color 160ms ease-out",
+        "purpose": "Subject-filter hover/selection background feedback."
+      },
+      {
+        "name": "anchor-scroll",
+        "value": "smooth",
+        "purpose": "HTML scroll-behavior; auto when motion is reduced."
+      },
+      {
+        "name": "reduced-motion",
+        "value": ".01ms",
+        "purpose": "Animation and transition duration override for local or device reduced motion; CSS uses equivalent 0.01ms in the media rule."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-desktop",
+        "value": "1000px",
+        "query": "(max-width: 1000px)"
+      },
+      {
+        "name": "mobile",
+        "value": "720px",
+        "query": "(max-width: 720px)"
+      }
+    ],
+    "focus": {
+      "globalOutline": "3px solid var(--focus)",
+      "globalOffset": "4px",
+      "searchOutline": "2px solid var(--accent)",
+      "searchOffset": "1px",
+      "codeOffset": "-4px"
+    },
+    "backdrop": {
+      "imageDialog": "rgb(8 24 30 / 80%)"
+    }
+  },
+  "components": [
+    {
+      "name": "Primary action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Fern action used for course exploration and empty-state recovery.",
+      "html": "<div class=\"ds-preview-button-primary\"><a class=\"ds-button\" href=\"/courses\">Explore the courses<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 5l7 7-7 7\" /></svg></a></div>",
+      "css": ".ds-preview-button-primary { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-button-primary :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-button-primary .ds-button { display: inline-flex; align-items: center; justify-content: center; gap: 12px; min-height: 48px; border: 1px solid transparent; padding: 11px 18px; border-radius: 7px; background: var(--accent); color: var(--on-accent); text-decoration: none; font-weight: 600; font-size: .9375rem; line-height: 1.5; }\n.ds-preview-button-primary .ds-button:hover { background: var(--accent-hover); text-decoration: none; }\n.ds-preview-button-primary a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-button-primary a:hover { text-decoration-thickness: 2px; }\n.ds-preview-button-primary svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-button-primary h1, .ds-preview-button-primary h2, .ds-preview-button-primary h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "button-text",
+      "description": "Underlined filter reset, including the observed disabled state.",
+      "html": "<div class=\"ds-preview-button-text\"><button class=\"ds-text-button\" type=\"button\">Reset filters</button><button class=\"ds-text-button\" type=\"button\" disabled>Reset filters</button></div>",
+      "css": ".ds-preview-button-text { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-button-text :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-button-text button, .ds-preview-button-text input, .ds-preview-button-text select { font: inherit; }\n.ds-preview-button-text .ds-text-button { background: none; border: 0; color: var(--accent); min-height: 44px; padding: 8px 4px; text-decoration: underline; text-underline-offset: 4px; }\n.ds-preview-button-text button:disabled { cursor: default; opacity: .5; }\n.ds-preview-button-text a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-button-text a:hover { text-decoration-thickness: 2px; }\n.ds-preview-button-text svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-button-text h1, .ds-preview-button-text h2, .ds-preview-button-text h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Catalog search",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Labelled search with a fern focus-within outline.",
+      "html": "<div class=\"ds-preview-search-field\"><label class=\"ds-search-label\"><span>Search courses</span><span class=\"ds-search-field\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"10.5\" cy=\"10.5\" r=\"6.5\" /><path d=\"m16 16 5 5\" /></svg><input type=\"search\" maxlength=\"120\" placeholder=\"Try Python, websites, data…\" /></span></label></div>",
+      "css": ".ds-preview-search-field { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-search-field :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-search-field button, .ds-preview-search-field input, .ds-preview-search-field select { font: inherit; }\n.ds-preview-search-field .ds-search-label { flex: 1; max-width: 610px; display: block; font-weight: 600; font-size: .875rem; }\n.ds-preview-search-field .ds-search-field { display: flex; align-items: center; gap: 10px; border: 1px solid var(--line); border-radius: 7px; background: var(--surface); margin-top: 7px; padding-left: 14px; color: var(--muted); }\n.ds-preview-search-field .ds-search-field:focus-within { outline: 2px solid var(--accent); outline-offset: 1px; }\n.ds-preview-search-field .ds-search-field input { min-width: 0; width: 100%; border: 0; outline: none; background: transparent; padding: 12px 12px 12px 0; color: var(--ink); font-weight: 400; }\n.ds-preview-search-field input::placeholder { color: var(--muted); opacity: 1; }\n.ds-preview-search-field a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-search-field a:hover { text-decoration-thickness: 2px; }\n.ds-preview-search-field svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-search-field h1, .ds-preview-search-field h2, .ds-preview-search-field h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Main navigation",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Evergreen navigation with current-location and hover rules.",
+      "html": "<div class=\"ds-preview-navigation\"><header class=\"ds-site-header\"><nav class=\"ds-primary-nav\" aria-label=\"Main navigation\"><a href=\"/courses\" aria-current=\"page\">Courses</a><a href=\"/resources\">Resources</a><a href=\"/about\">About</a><a href=\"/help\">Help</a></nav></header></div>",
+      "css": ".ds-preview-navigation { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-navigation :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-navigation .ds-site-header { position: relative; background: var(--header); color: var(--header-ink); z-index: 20; }\n.ds-preview-navigation .ds-primary-nav { display: flex; align-items: center; gap: 30px; }\n.ds-preview-navigation .ds-primary-nav a { color: inherit; font-size: .9375rem; text-decoration: none; padding: 24px 0 21px; border-bottom: 3px solid transparent; }\n.ds-preview-navigation .ds-primary-nav a[aria-current], .ds-preview-navigation .ds-primary-nav a:hover { border-bottom-color: #b8d8c6; }\n.ds-preview-navigation a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-navigation a:hover { text-decoration-thickness: 2px; }\n.ds-preview-navigation svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-navigation h1, .ds-preview-navigation h2, .ds-preview-navigation h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Subject filters",
+      "kind": "chip",
+      "refersTo": "filter",
+      "description": "Unselected and selected subject buttons; selection is exposed by aria-pressed.",
+      "html": "<div class=\"ds-preview-filter\"><fieldset class=\"ds-category-filters\"><legend class=\"ds-sr-only\">Filter courses by subject</legend><button type=\"button\" aria-pressed=\"true\">All subjects</button><button type=\"button\" aria-pressed=\"false\">Programming</button></fieldset></div>",
+      "css": ".ds-preview-filter { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-filter :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-filter button, .ds-preview-filter input, .ds-preview-filter select { font: inherit; }\n.ds-preview-filter .ds-category-filters { display: flex; flex-wrap: wrap; gap: 8px; padding: 0; border: 0; margin: 20px 0 0; }\n.ds-preview-filter .ds-category-filters button { min-height: 42px; padding: 8px 16px; background: transparent; border: 1px solid var(--line); border-radius: 6px; font-size: .875rem; color: var(--muted); transition: background-color 160ms ease-out; }\n.ds-preview-filter .ds-category-filters button:hover { background: var(--surface-soft); color: var(--ink); }\n.ds-preview-filter .ds-category-filters button[aria-pressed='true'] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }\n.ds-preview-filter a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-filter a:hover { text-decoration-thickness: 2px; }\n.ds-preview-filter svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-filter h1, .ds-preview-filter h2, .ds-preview-filter h3 { line-height: 1.25; text-wrap: balance; }\n.ds-preview-filter .ds-sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }"
+    },
+    {
+      "name": "Course card and availability",
+      "kind": "card",
+      "refersTo": "course-card",
+      "description": "Flat bordered course summary with a distinct course-opening link and publication badge.",
+      "html": "<div class=\"ds-preview-course-card\"><article class=\"ds-course-card\"><div class=\"ds-course-card-top\"><span class=\"ds-language-mark\" aria-hidden=\"true\">Py</span><span class=\"ds-availability ds-preview\">Reading preview</span></div><p class=\"ds-course-category\">Programming · Beginner</p><h3><a href=\"/courses/python\">Python<span>the first camp</span></a></h3><p class=\"ds-course-summary\">Make a program speak, give values names, and use simple arithmetic to plan a tiny expedition.</p><div class=\"ds-course-card-bottom\"><span>3 lessons to read</span><a href=\"/courses/python\" class=\"ds-course-open\" aria-label=\"Explore Python course\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M4 12h15M13 5l7 7-7 7\" /></svg></a></div></article></div>",
+      "css": ".ds-preview-course-card { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-course-card :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-course-card .ds-course-card { grid-column: span 3; display: flex; flex-direction: column; min-width: 0; padding: 26px 28px 20px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }\n.ds-preview-course-card .ds-course-card-top { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 22px; }\n.ds-preview-course-card .ds-language-mark { font: 400 1.75rem/1 var(--pixel); color: var(--accent); }\n.ds-preview-course-card .ds-availability { display: inline-flex; font-size: .75rem; line-height: 1.5; font-weight: 600; padding: 4px 9px; border-radius: 4px; white-space: nowrap; }\n.ds-preview-course-card .ds-availability.ds-preview { color: var(--accent); background: var(--selected); }\n.ds-preview-course-card .ds-course-category { font-size: .75rem; color: var(--muted); margin-bottom: 9px; }\n.ds-preview-course-card .ds-course-card h3 { font-size: 1.5rem; margin-bottom: 14px; }\n.ds-preview-course-card .ds-course-card h3 a { color: var(--ink); text-decoration: none; }\n.ds-preview-course-card .ds-course-card h3 a:hover { text-decoration: underline; }\n.ds-preview-course-card .ds-course-card h3 span { display: block; font-size: 1rem; font-weight: 500; color: var(--muted); margin-top: 6px; }\n.ds-preview-course-card .ds-course-summary { font-size: .9375rem; color: var(--muted); max-width: 51ch; margin-bottom: 24px; }\n.ds-preview-course-card .ds-course-card-bottom { display: flex; justify-content: space-between; align-items: center; gap: 14px; margin-top: auto; padding-top: 16px; border-top: 1px solid var(--line); font-size: .8125rem; color: var(--muted); }\n.ds-preview-course-card .ds-course-open { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; border: 1px solid var(--line); border-radius: 6px; }\n.ds-preview-course-card .ds-course-open:hover { background: var(--selected); }\n.ds-preview-course-card a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-course-card a:hover { text-decoration-thickness: 2px; }\n.ds-preview-course-card svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-course-card h1, .ds-preview-course-card h2, .ds-preview-course-card h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Reading preview notice",
+      "kind": "custom",
+      "refersTo": "preview-notice",
+      "description": "Amber disclosure describes static examples and unavailable running/checking/saved progress.",
+      "html": "<div class=\"ds-preview-preview-notice\"><div class=\"ds-preview-notice\"><svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 6c-3-2-6-2-9-1v14c3-1 6-1 9 1 3-2 6-2 9-1V5c-3-1-6-1-9 1Zm0 0v14\" /></svg><p><strong>Reading preview.</strong> Code and output are static examples. Running, checking and saved progress are not available yet.</p><a href=\"/help\">How previews work</a></div></div>",
+      "css": ".ds-preview-preview-notice { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-preview-notice :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-preview-notice .ds-preview-notice { display: flex; gap: 14px; align-items: start; padding: 16px 20px; color: var(--note-ink); background: var(--note); border-radius: 8px; font-size: .8125rem; }\n.ds-preview-preview-notice .ds-preview-notice > svg { margin-top: 2px; }\n.ds-preview-preview-notice .ds-preview-notice p { margin: 0; }\n.ds-preview-preview-notice .ds-preview-notice a { flex-shrink: 0; color: inherit; margin-left: auto; }\n.ds-preview-preview-notice a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-preview-notice a:hover { text-decoration-thickness: 2px; }\n.ds-preview-preview-notice svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-preview-notice h1, .ds-preview-preview-notice h2, .ds-preview-preview-notice h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Current chapter position",
+      "kind": "nav",
+      "refersTo": "trail-position",
+      "description": "Amber denotes the current page; the trail explicitly disclaims recorded progress.",
+      "html": "<div class=\"ds-preview-trail-position\"><nav class=\"ds-chapter-trail\" aria-label=\"Python chapter navigation\"><ol><li class=\"ds-current\"><span class=\"ds-trail-position\" aria-hidden=\"true\">1</span><a href=\"/learn/python/a-message-from-camp\" aria-current=\"page\">A message from camp<span>You are reading</span></a></li><li><span class=\"ds-trail-position\" aria-hidden=\"true\">2</span><a href=\"/learn/python/give-your-supplies-names\">Give your supplies names<span>Reading preview</span></a></li></ol><p class=\"ds-trail-note\">Your position in the chapter is shown here. Reading progress is not recorded.</p></nav></div>",
+      "css": ".ds-preview-trail-position { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-trail-position :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-trail-position .ds-chapter-trail { font-size: .875rem; }\n.ds-preview-trail-position .ds-chapter-trail ol { list-style: none; padding: 0; margin: 0; }\n.ds-preview-trail-position .ds-chapter-trail li { display: flex; align-items: start; gap: 12px; padding: 0 0 28px; position: relative; }\n.ds-preview-trail-position .ds-chapter-trail li:not(:last-child)::after { content: ''; position: absolute; left: 13px; top: 29px; bottom: 3px; width: 1px; background: var(--line); }\n.ds-preview-trail-position .ds-trail-position { width: 28px; height: 28px; display: inline-flex; align-items: center; justify-content: center; background: var(--surface-soft); color: var(--muted); border-radius: 5px; flex-shrink: 0; font-size: .75rem; font-variant-numeric: tabular-nums; }\n.ds-preview-trail-position .ds-chapter-trail li.ds-current .ds-trail-position { color: var(--note-ink); background: var(--note); }\n.ds-preview-trail-position .ds-chapter-trail li a { text-decoration: none; color: var(--ink); font-weight: 600; line-height: 1.5; }\n.ds-preview-trail-position .ds-chapter-trail li a span { display: block; color: var(--muted); font-weight: 400; font-size: .75rem; margin-top: 3px; }\n.ds-preview-trail-position .ds-chapter-trail li a[aria-current] { color: var(--accent); }\n.ds-preview-trail-position .ds-trail-note { font-size: .75rem; color: var(--muted); margin-top: 8px; }\n.ds-preview-trail-position a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-trail-position a:hover { text-decoration-thickness: 2px; }\n.ds-preview-trail-position svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-trail-position h1, .ds-preview-trail-position h2, .ds-preview-trail-position h3 { line-height: 1.25; text-wrap: balance; }"
+    },
+    {
+      "name": "Static code sample",
+      "kind": "custom",
+      "refersTo": "code-example",
+      "description": "Dark, keyboard-focusable static code with contained horizontal scrolling.",
+      "html": "<div class=\"ds-preview-code-example\"><figure class=\"ds-code-example\"><figcaption>PYTHON · code example</figcaption><pre tabindex=\"0\" aria-label=\"python code sample\"><code>print(\"The lantern is lit.\")</code></pre></figure></div>",
+      "css": ".ds-preview-code-example { color: var(--ink); font: 1rem/1.65 system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }\n.ds-preview-code-example :focus-visible { outline: 3px solid var(--focus); outline-offset: 4px; }\n.ds-preview-code-example .ds-code-example { margin: 24px 0 28px; background: var(--code); color: var(--code-ink); border-radius: 9px; overflow: hidden; }\n.ds-preview-code-example .ds-code-example figcaption { padding: 10px 18px; color: #bdd3dc; border-bottom: 1px solid #34505b; font: .75rem/1.5 system-ui, sans-serif; }\n.ds-preview-code-example .ds-code-example pre { margin: 0; padding: 20px; overflow-x: auto; font-size: .875rem; line-height: 1.8; tab-size: 2; white-space: pre; scrollbar-color: #6e929f var(--code); }\n.ds-preview-code-example code { font-family: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, monospace; }\n.ds-preview-code-example .ds-code-example pre:focus-visible { outline-offset: -4px; }\n.ds-preview-code-example a { color: var(--accent); text-underline-offset: .2em; }\n.ds-preview-code-example a:hover { text-decoration-thickness: 2px; }\n.ds-preview-code-example svg { flex: 0 0 auto; vertical-align: middle; }\n.ds-preview-code-example h1, .ds-preview-code-example h2, .ds-preview-code-example h3 { line-height: 1.25; text-wrap: balance; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Original pixel trailhead field guide",
+    "overview": "CodeSaga's confirmed original pixel-adventure world feels like a woodland place to begin. Evergreen navigation, pale blue-white ground, fern actions and amber notes connect the illustrated camp to quiet, readable web surfaces. Short pixel lettering supplies identity while ordinary controls make subject discovery familiar.\n\nReading pages carry the same palette with restrained system typography, generous line height and contained code samples. This records the implemented public discovery and static reading previews; identity, execution, saved progress, XP and Builds remain unavailable. Page composition and the code-led direction contract belong in the [surface brief](.impeccable/surfaces/apps-web-app-page-tsx.md), not in a global build-path rule.\n",
+    "keyCharacteristics": [
+      "Original woodland artwork with a complete transparent silhouette.",
+      "Pixel display accents, ordinary sans reading and distinct monospace code.",
+      "Flat bordered surfaces, fern actions and amber preview/current-position semantics.",
+      "Familiar responsive controls and explicit availability labels."
+    ],
+    "rules": [
+      {
+        "name": "The Position Rule",
+        "body": "Amber chapter markers identify the current reading location, never completed work or earned progress.",
+        "section": "colors"
+      },
+      {
+        "name": "The Reading Voice Rule",
+        "body": "Preserve the separation between short pixel display lettering, system-sans explanation and monospace code.",
+        "section": "typography"
+      }
+    ],
+    "dos": [
+      "**Do** preserve the complete original transparent camp artwork and its provenance paths.",
+      "**Do** keep short Silkscreen display text, system-sans reading and monospace code distinct.",
+      "**Do** use the existing theme variables, keyboard focus and reduced-motion behavior.",
+      "**Do** retain explicit preview/upcoming labels and current-reading-position semantics."
+    ],
+    "donts": [
+      "**Don't** present amber chapter position as completed progress or XP.",
+      "**Don't** imply identity, code execution, saved progress or Builds are available.",
+      "**Don't** substitute captured reference-product imagery for CodeSaga's original assets.",
+      "**Don't** turn the home composition or scoped code-led build path into a global visual requirement."
+    ]
+  }
+}
