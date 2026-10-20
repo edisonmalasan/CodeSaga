@@ -600,6 +600,16 @@ No evidenced core capability is silently dropped. Conditional extensions stay un
 | M15 | Authoring/administration | Not started | Scoped publish/support/replay |
 | M16 | Launch/operations | Not started | Release/restore/support evidence |
 
+### Repository delivery — 2026-10-20
+
+Published and verified on `origin/main` in separate commits through `chore/publish-project-foundation`:
+
+- `5ad0da0` — project instructions, approved product brief, context, architecture and roadmap.
+- `74e797d` — project-local Impeccable skill and tooling.
+- `6918f59` — shared Impeccable configuration and Codex hooks.
+
+Verification: staged whitespace checks passed for each group; hook/configuration JSON parsed successfully; remote `main` matched each merged commit. Existing ignore rules continue to exclude `re/`, local hook consent and generated detector state. Application build/tests remain unavailable because no application toolchain exists. This delivery does not complete an implementation milestone or verify that the client has executed the hooks.
+
 ### Next implementation decision
 
 Review M01 and the remaining parts of architecture D01–D04, then authorize a bounded scaffold/core slice. The user has already confirmed the product brief and core framework/database selection in PRODUCT.md. Documentation/Impeccable initialization does not start autonomous roadmap execution.
