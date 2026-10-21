@@ -529,6 +529,8 @@ The scans found and fixed collection H1-to-H3 skips through contextual shared-li
 
 [Accessibility checks](../tests/ACCESSIBILITY.md) own cases, report fields, manual-review targets and limitations. CI preserves only scoped public JSON summaries after an attempted acceptance step, including failures; source-inventory publication still requires successful checks/cleanup. Remote verification/upload is pending. M16.02 remains unchecked: automated rules, CSS text resizing and media emulation do not replace full zoom/contrast/assistive-technology/device/user testing or future account/editor/terminal flows. Identity/execution providers and launch policies remain gates.
 
+**M16.02 initial Linux diagnostics:** [Source `ff7325f` workflow](https://github.com/edisonmalasan/CodeSaga/actions/runs/39525463158) completed but had five retry-only passes and was not accepted for merge. Its downloaded artifact contained 67 attempt reports, including duplicate-ID inconclusive checks and one mixed-theme inline-code contrast result. Follow-up scan readiness requires unique rendered document IDs and two animation frames, in addition to computed theme/font readiness; no DOM nodes or axe rules are removed. Configuration/CI now disable retries. Final Linux verification remains pending.
+
 ## Full evidence-to-feature coverage
 
 | Source | Scope | Delivery owners |

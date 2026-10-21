@@ -32,7 +32,7 @@ _Fill from verified project files. Remove unused rows._
 | Backend / runtime  | NestJS 11.2.7, pg 8.23.1; Node 24 CI baseline (26.10.0 local) | apps/api/package.json; .nvmrc; actual runtime |
 | Database / storage | PostgreSQL 18.6; Redis 8.10.2 and source-built MinIO local fixtures | infra/compose.yaml; apps/api/migrations; production providers undecided |
 | Build / tooling    | pnpm 12.6.0 workspace; tsc, Next.js build; Python research/audit utilities | package.json; pnpm-lock.yaml; tsconfig.base.json |
-| Tests              | node:test through tsx; PostgreSQL integration; Playwright Chromium/HTTP acceptance | package scripts; apps/*/test; packages/*/test; tests/ |
+| Tests              | node:test through tsx; PostgreSQL integration; Playwright Chromium/Firefox/WebKit acceptance and axe accessibility checks | package scripts; apps/*/test; packages/*/test; tests/ |
 
 ## Build, Test, and Development Commands
 

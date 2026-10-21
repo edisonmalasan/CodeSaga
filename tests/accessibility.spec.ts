@@ -20,6 +20,19 @@ async function scan(page: Page, info: TestInfo, state: string) {
   // before asking axe to compare inherited text with the themed background.
   const theme = await page.locator('html').getAttribute('data-theme');
   await expect(page.locator('body')).toHaveCSS('color', theme === 'dark' ? 'rgb(233, 243, 244)' : 'rgb(21, 52, 63)');
+  // Streamed server fragments can coexist briefly with their hydrated replacement.
+  // Require a complete, uniquely identified document; never remove hidden nodes or
+  // exclude them from axe to manufacture a clean result.
+  await expect.poll(() => page.locator('[id]').evaluateAll((elements) => {
+    const seen = new Set<string>();
+    return elements.filter((element) => {
+      if (seen.has(element.id)) return true;
+      seen.add(element.id); return false;
+    }).map((element) => element.id);
+  }), { message: 'Rendered document IDs must be unique before scanning' }).toEqual([]);
+  await page.evaluate(() => new Promise<void>((resolve) => {
+    requestAnimationFrame(() => requestAnimationFrame(() => resolve()));
+  }));
   const results = await new AxeBuilder({ page }).analyze();
   // Keep inconclusive checks visible; they must never be reported as passes.
   const summarize = (items: typeof results.violations) => items.map((item) => ({

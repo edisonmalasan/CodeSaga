@@ -38,7 +38,7 @@ jobs:
         timeout-minutes: 2
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
       - id: acceptance
-        run: pnpm test:e2e
+        run: pnpm test:e2e --retries=0
         timeout-minutes: 5
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() && (steps.acceptance.outcome == 'success' || steps.acceptance.outcome == 'failure') }}

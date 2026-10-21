@@ -12,7 +12,7 @@ $env:CI='true'
 pnpm test:e2e --retries=0
 ```
 
-`CI=true` chooses production processes and two workers; omitting it chooses development processes. Servers are owned by Playwright with bounded shutdown and cannot silently reuse an existing app. The global timeout is four minutes; CI's browser step is bounded at five minutes. CI allows one retry, so inspect its result for **flaky** outcomes rather than treating a retried pass as a first-attempt pass. The command above disables retries for local verification.
+`CI=true` chooses production processes and two workers; omitting it chooses development processes. Servers are owned by Playwright with bounded shutdown and cannot silently reuse an existing app. The global timeout is four minutes; CI's browser step is bounded at five minutes. Retries are disabled in the configuration and explicitly in the CI command, so retry-only passes cannot satisfy acceptance.
 
 Use `pnpm exec playwright test --project=webkit --retries=0` for a focused engine run, or `--project=http` for only the process contracts. A scoped run does not establish the full matrix. Browser fixture installation needs network access; Linux CI also installs the required OS libraries.
 

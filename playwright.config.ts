@@ -5,7 +5,7 @@ export default defineConfig({
   fullyParallel: true,
   workers: process.env.CI ? 2 : undefined,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 1 : 0,
+  retries: 0,
   globalTimeout: 240_000,
   reporter: 'list',
   use: { baseURL: 'http://127.0.0.1:3000' },
