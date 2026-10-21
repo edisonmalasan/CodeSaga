@@ -155,9 +155,9 @@ input::placeholder { color: var(--muted); opacity: 1; }
 .resource-list article:first-child { padding-top: 16px; }
 .resource-kind { font-size: .75rem; color: var(--muted); margin-bottom: 6px; }
 .resource-kind span { padding-inline: 4px; }
-.resource-list h3 { font-size: 1.125rem; margin-bottom: 7px; }
-.resource-list h3 a { color: var(--ink); text-decoration: none; }
-.resource-list h3 a:hover { text-decoration: underline; }
+.resource-list .resource-title { font-size: 1.125rem; letter-spacing: normal; margin-bottom: 7px; }
+.resource-list .resource-title a { color: var(--ink); text-decoration: none; }
+.resource-list .resource-title a:hover { text-decoration: underline; }
 .resource-list article p:last-child { max-width: 75ch; font-size: .9375rem; color: var(--muted); margin: 0; }
 .resource-open { display: inline-flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; margin-left: auto; }
 .site-footer { margin-top: 80px; background: var(--header); color: var(--header-ink); }
@@ -364,7 +364,7 @@ code { font-family: ui-monospace, 'Cascadia Code', 'SFMono-Regular', Consolas, m
   .path-links { gap: 12px; }
   .resources-section { margin-block: 36px 48px; }
   .resource-list article { gap: 12px; padding-block: 22px; }
-  .resource-list h3 { font-size: 1rem; }
+  .resource-list .resource-title { font-size: 1rem; }
   .resource-list article p:last-child { font-size: .875rem; }
   .resource-kind { font-size: .6875rem; }
   .resource-open { min-width: 32px; }

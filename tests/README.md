@@ -1,6 +1,6 @@
 # Public acceptance matrix
 
-`playwright.config.ts` declares two cross-process HTTP cases once in project `http` and the nine public discovery/reading cases in each of `chromium`, `firefox` and `webkit`: **29 cases** total. The workspace pins Playwright; its CLI installs matching engine binaries as described in the [official browser guide](https://playwright.dev/docs/browsers). These are automated engine tests, not certification of branded Chrome/Edge/Safari, physical mobile devices or every OS/browser combination.
+`playwright.config.ts` declares two cross-process HTTP cases once in project `http`, nine public discovery/reading cases in each of `chromium`, `firefox` and `webkit`, and 62 Chromium accessibility cases: **91 cases** total. [Accessibility scope and report interpretation](ACCESSIBILITY.md) own the added checks. The workspace pins Playwright; its CLI installs matching engine binaries as described in the [official browser guide](https://playwright.dev/docs/browsers). These are automated engine tests, not certification of branded Chrome/Edge/Safari, physical mobile devices or every OS/browser combination.
 
 ## Run
 
@@ -12,7 +12,7 @@ $env:CI='true'
 pnpm test:e2e --retries=0
 ```
 
-`CI=true` chooses production processes and two workers; omitting it chooses development processes. Servers are owned by Playwright with bounded shutdown and cannot silently reuse an existing app. The global timeout is three minutes; CI's browser step is bounded at four minutes. CI allows one retry, so inspect its result for **flaky** outcomes rather than treating a retried pass as a first-attempt pass. The command above disables retries for local verification.
+`CI=true` chooses production processes and two workers; omitting it chooses development processes. Servers are owned by Playwright with bounded shutdown and cannot silently reuse an existing app. The global timeout is four minutes; CI's browser step is bounded at five minutes. CI allows one retry, so inspect its result for **flaky** outcomes rather than treating a retried pass as a first-attempt pass. The command above disables retries for local verification.
 
 Use `pnpm exec playwright test --project=webkit --retries=0` for a focused engine run, or `--project=http` for only the process contracts. A scoped run does not establish the full matrix. Browser fixture installation needs network access; Linux CI also installs the required OS libraries.
 

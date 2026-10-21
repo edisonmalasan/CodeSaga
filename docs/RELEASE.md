@@ -35,6 +35,8 @@ Replace the placeholders with the reviewed run and exact SHA. Check the workflow
 
 Artifact expiration is a CI storage setting, not an approved learner-data retention policy. Preserve needed release evidence through the eventual approved release process before expiration; do not publish private workflow logs or local configuration.
 
+The workflow also preserves a separate `public-accessibility-<full-sha>` JSON artifact after an attempted acceptance step, including failures. [Accessibility checks](../tests/ACCESSIBILITY.md) own its deliberately limited fields and inconclusive-result interpretation. Its existence does not imply that acceptance or the workflow succeeded; the source inventory above retains its success-and-cleanup gate.
+
 ## Review before any deployment
 
 | Area | Current authority / remaining gate |

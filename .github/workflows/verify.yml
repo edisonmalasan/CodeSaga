@@ -37,8 +37,16 @@ jobs:
       - run: pnpm db:rehearse-restore
         timeout-minutes: 2
       - run: pnpm exec playwright install --with-deps chromium firefox webkit
-      - run: pnpm test:e2e
-        timeout-minutes: 4
+      - id: acceptance
+        run: pnpm test:e2e
+        timeout-minutes: 5
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() && (steps.acceptance.outcome == 'success' || steps.acceptance.outcome == 'failure') }}
+        with:
+          name: public-accessibility-${{ github.sha }}
+          path: test-results/*/axe-*.json
+          if-no-files-found: error
+          retention-days: 14
       - if: always()
         run: pnpm services:down
       - run: node scripts/release-record.mjs > "$RUNNER_TEMP/codesaga-release-record.json"

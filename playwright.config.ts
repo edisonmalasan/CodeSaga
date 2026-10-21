@@ -6,11 +6,12 @@ export default defineConfig({
   workers: process.env.CI ? 2 : undefined,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  globalTimeout: 180_000,
+  globalTimeout: 240_000,
   reporter: 'list',
   use: { baseURL: 'http://127.0.0.1:3000' },
   projects: [
     { name: 'http', testMatch: 'foundation.spec.ts' },
+    { name: 'accessibility', testMatch: 'accessibility.spec.ts', use: { browserName: 'chromium' } },
     ...(['chromium', 'firefox', 'webkit'] as const).map((browserName) => ({
       name: browserName, testMatch: 'discovery.spec.ts', use: { browserName },
     })),
