@@ -34,7 +34,6 @@ for (const theme of ['light', 'dark'] as const) {
       await expect(page.locator('body')).toHaveCSS('background-color', theme === 'dark' ? 'rgb(17, 39, 46)' : 'rgb(241, 246, 248)');
       await expect(page.locator('html')).toHaveCSS('scroll-behavior', 'auto');
       expect(await page.evaluate(() => (window as typeof window & { audioStarts?: number }).audioStarts)).toBe(0);
-      await page.screenshot({ path: testInfo.outputPath('before-hydration.png') });
     } finally { releaseHydration(); }
 
     // Hydration restores the controls, without briefly writing the default theme.
