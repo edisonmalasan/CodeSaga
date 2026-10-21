@@ -56,7 +56,7 @@ Compatibility and API references: [Next.js installation](https://nextjs.org/docs
 
 ```mermaid
 flowchart LR
-  Browser[Browser: navigation, filters, media, local preferences] --> Web[Next.js server routes]
+  Browser[Browser: navigation, filters, media, local preferences] --> Web[Next.js proxy and server routes]
   Web --> Client[Server-only validated catalog client]
   Client --> API[NestJS API]
   API --> Content[Original published content package]
@@ -76,9 +76,11 @@ flowchart LR
 
 Public reading is independent of the draft database seed. Redis/object fixtures have no production application consumers. The remaining sections describe the wider target architecture; their unimplemented domains are not enabled by this public slice.
 
-**Local preference lifecycle:** A fixed inline script in the root layout's head validates saved appearance/motion enums and applies them before the body, independently of Next.js hydration. It reads only `codesaga.preferences.v1`; stored text never becomes markup or executable source. Storage failure uses device defaults. Only the root HTML attribute hydration warning is suppressed for the expected pre-hydration attributes. A future strict CSP must authorize this fixed script by hash or nonce; no deployment CSP is selected here. [React inline script semantics](https://react.dev/reference/react-dom/components/script#rendering-an-inline-script) explain its parser placement.
+**Local preference lifecycle:** A fixed inline script in the root layout's head validates saved appearance/motion enums and applies them before the body, independently of Next.js hydration. It reads only `codesaga.preferences.v1`; stored text never becomes markup or executable source. Storage failure uses device defaults. Only the root HTML attribute hydration warning is suppressed for the expected pre-hydration attributes. The Next.js proxy supplies a fresh document nonce; the root layout reads it through the asynchronous request headers API and authorizes this script explicitly. [React inline script semantics](https://react.dev/reference/react-dom/components/script#rendering-an-inline-script) explain its parser placement.
 
 The provider restores controlled inputs and optional sound after hydration, applies updates synchronously, and consumes only localStorage events for this entry or a clear. Session storage events and unrelated keys are ignored. Blocked persistence preserves in-memory choices through client navigation; a full reload loses those choices. There is no server/account preference or cross-device synchronization. [Acceptance coverage](../tests/README.md) owns timing and fallback checks.
+
+**Public response policy:** [Public HTTP security policy](SECURITY.md) owns the enforced document/script nonce flow, JSON/static baseline, response headers, development allowances, dynamic/no-store HTML implications and deployment limits. It does not enable a session, runtime or untrusted preview boundary.
 
 ### 2.1 Baseline to review at M01
 

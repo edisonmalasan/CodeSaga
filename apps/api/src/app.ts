@@ -11,6 +11,7 @@ import { PublishedContent } from './content/content.service';
 import { IntegrationsController } from './integrations/integrations.controller';
 import { IDENTITY_SESSION, ISOLATED_EXECUTION, UnavailableIdentitySession, UnavailableIsolatedExecution } from './integrations/ports';
 import { requestTelemetryMiddleware, writeRequestTelemetry, type RequestTelemetrySink } from './telemetry';
+import { securityHeaders } from './security-headers';
 
 export async function createApp(config: ApiConfig, database: Database = createDatabase(config),
   telemetry: RequestTelemetrySink = writeRequestTelemetry) {
@@ -33,6 +34,7 @@ export async function createApp(config: ApiConfig, database: Database = createDa
   app.getHttpAdapter().getInstance().disable('x-powered-by');
   app.use(requestTelemetryMiddleware(telemetry));
   app.use(requestIdMiddleware);
+  app.use(securityHeaders);
   app.useGlobalFilters(new ApiExceptionFilter());
   app.enableCors({
     origin(value, callback) {

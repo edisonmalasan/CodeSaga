@@ -25,6 +25,7 @@
 | Setup, run, verify and local service commands | Root [README.md](../README.md); [AGENTS.md](../AGENTS.md) retains working rules and command summary |
 | Local PostgreSQL restore rehearsal and limitations | [Recovery runbook](../infra/RECOVERY.md); real fixture verification through `pnpm db:rehearse-restore` |
 | API request tracing, event fields and logging limits | [Request telemetry](../apps/api/TELEMETRY.md); server-generated `X-Trace-ID`, approved route templates and redaction checks |
+| Public browser script/embedding restrictions and API response headers | [Public HTTP security policy](SECURITY.md); nonce lifecycle, document/static/JSON boundaries and caching/deployment limits |
 | Source inventory, CI evidence and release/rollback limits | [Release handoff](RELEASE.md); `pnpm release:record` and the workflow's source inventory artifact |
 | Public browser coverage, focused engine runs and test limits | [Acceptance matrix](../tests/README.md); Chromium/Firefox/WebKit public journeys plus separate HTTP checks |
 | Automated accessibility, text resizing/media emulation and inconclusive findings | [Accessibility checks](../tests/ACCESSIBILITY.md); public light/dark scans and scoped CI JSON reports |

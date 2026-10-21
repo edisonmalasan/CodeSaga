@@ -10,7 +10,8 @@ export const materialPaths = [...manifestPaths, 'pnpm-lock.yaml', '.nvmrc', '.gi
   'packages/content/src/catalog.json', 'apps/web/ASSETS.md', 'apps/web/public/media/Silkscreen-OFL.txt',
   'apps/web/public/media/camp-observatory.png', 'docs/ROADMAP.md', 'docs/RELEASE.md',
   'docs/ARCHITECTURE.md', 'apps/api/PROVIDER_SETUP.md', 'infra/RECOVERY.md', 'apps/api/TELEMETRY.md',
-  'scripts/release-record.mjs'];
+  'scripts/release-record.mjs', 'docs/SECURITY.md', 'apps/web/proxy.ts', 'apps/web/next.config.ts',
+  'apps/web/src/security-policy.ts', 'apps/api/src/security-headers.ts'];
 
 export function createReleaseRecord(root) {
   const git = (...args) => {

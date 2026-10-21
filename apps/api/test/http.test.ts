@@ -95,6 +95,27 @@ test('malformed and oversized JSON share the public error envelope', async () =>
   }
 });
 
+test('security headers cover JSON, denied origins, parser failures and preflight', async () => {
+  const cases: [string, RequestInit, number][] = [
+    ['/health', {}, 200],
+    ['/missing', {}, 404],
+    ['/api/v1/session', {}, 503],
+    ['/health', { headers: { origin: 'https://untrusted.invalid' } }, 403],
+    ['/missing', { method: 'POST', headers: { 'content-type': 'application/json' }, body: '{bad' }, 400],
+    ['/missing', { method: 'POST', headers: { 'content-type': 'application/json' }, body: JSON.stringify({ text: 'x'.repeat(70_000) }) }, 413],
+    ['/health', { method: 'OPTIONS', headers: { origin: 'http://localhost:3000', 'access-control-request-method': 'GET' } }, 204],
+  ];
+  for (const [path, options, status] of cases) {
+    const response = await fetch(`${origin}${path}`, options);
+    assert.equal(response.status, status);
+    assert.equal(response.headers.get('x-content-type-options'), 'nosniff');
+    assert.equal(response.headers.get('x-frame-options'), 'DENY');
+    assert.equal(response.headers.get('referrer-policy'), 'no-referrer');
+    assert.equal(response.headers.get('permissions-policy'), 'camera=(), microphone=(), geolocation=()');
+    assert.equal(response.headers.get('content-security-policy'), "default-src 'none'; frame-ancestors 'none'; base-uri 'none'; form-action 'none'");
+  }
+});
+
 test('unhandled exceptions never expose their original message', () => {
   let status: number | undefined;
   let payload: unknown;
