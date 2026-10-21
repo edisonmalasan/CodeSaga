@@ -28,6 +28,7 @@
 | Source inventory, CI evidence and release/rollback limits | [Release handoff](RELEASE.md); `pnpm release:record` and the workflow's source inventory artifact |
 | Public browser coverage, focused engine runs and test limits | [Acceptance matrix](../tests/README.md); Chromium/Firefox/WebKit public journeys plus separate HTTP checks |
 | Automated accessibility, text resizing/media emulation and inconclusive findings | [Accessibility checks](../tests/ACCESSIBILITY.md); public light/dark scans and scoped CI JSON reports |
+| Appearance/motion before hydration, browser preference synchronization and storage fallback | [Architecture](ARCHITECTURE.md), section 2.0; [acceptance matrix](../tests/README.md) owns timing, cross-tab and failure checks |
 | Research entry point and detailed context map | [re/README.md](../re/README.md) |
 | Original records, references and integrity | [Evidence register](../re/docs/01-evidence-register.md), [archive audit](../re/docs/evidence/archive-audit.json), [verification/replay](../re/docs/11-verification-and-replay.md) |
 | Reference product/content/visual model | [02 Routes/content](../re/docs/02-routes-content.md), [03 Product systems](../re/docs/03-product-systems.md), [05 Visual system](../re/docs/05-visual-interaction-system.md) |
