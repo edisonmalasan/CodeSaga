@@ -54,7 +54,8 @@ test('mobile navigation and display preferences work across reload', async ({ pa
   await expect(page.getByLabel('Quiet navigation sounds', { exact: true })).toBeChecked();
 });
 
-test('denied browser storage preserves usable session preferences and content', async ({ page }) => {
+test('denied browser storage preserves usable session preferences and content', async ({ page, request }) => {
+  const course = (await catalog(request)).courses.find((item) => item.language === 'Python')!;
   await page.addInitScript(() => {
     Storage.prototype.getItem = () => { throw new DOMException('Storage denied', 'SecurityError'); };
     Storage.prototype.setItem = () => { throw new DOMException('Storage denied', 'SecurityError'); };
@@ -67,6 +68,8 @@ test('denied browser storage preserves usable session preferences and content', 
   await page.getByRole('searchbox', { name: 'Search courses', exact: true }).fill('Python');
   await expect(page.getByRole('link', { name: 'Explore Python course', exact: true })).toBeVisible();
   await page.getByRole('link', { name: 'Explore Python course', exact: true }).click();
+  await expect(page).toHaveURL(`/courses/${course.slug}`);
+  await expect(page.getByRole('heading', { level: 1 })).toHaveText(course.title);
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.reload();
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'system');
