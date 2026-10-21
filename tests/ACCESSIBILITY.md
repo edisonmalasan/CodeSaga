@@ -30,6 +30,8 @@ CI uploads these explicitly named JSON files as `public-accessibility-<full-sha>
 
 The explicit review target list is local to the two tested states; other inconclusive results cannot silently enter this baseline. Manual contrast calculations use the measured opaque panel colors; they do not certify every compositing, zoom, contrast or device setting.
 
+The subsequent strict Linux run passed all 62 accessibility cases and retained exactly four contrast inconclusives, but the complete 91-case matrix failed on an existing WebKit image test's detached scroll target. That test now selects/scrolls synchronously and waits for document readiness after aborting the image, while still requiring the real fallback to be visible. Its focused journey passed in all three engines locally; the roadmap owns final complete CI evidence.
+
 ## Limits
 
 The text-size test changes the root CSS font size to 200%; it is not a complete browser/page zoom assessment. Media emulation is not physical Windows high-contrast verification or real-device touch. Screen-reader listening/navigation, cognitive review, meaningful alt-text evaluation, subjective sound, full contrast/zoom matrices, external video and future authenticated/editor/terminal flows remain separate roadmap gates. The existing global reduced-motion override is exercised for usable navigation, not certified for every future animation.

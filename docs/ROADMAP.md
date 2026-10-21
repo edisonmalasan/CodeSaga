@@ -531,6 +531,8 @@ The scans found and fixed collection H1-to-H3 skips through contextual shared-li
 
 **M16.02 initial Linux diagnostics:** [Source `ff7325f` workflow](https://github.com/edisonmalasan/CodeSaga/actions/runs/39525463158) completed but had five retry-only passes and was not accepted for merge. Its downloaded artifact contained 67 attempt reports, including duplicate-ID inconclusive checks and one mixed-theme inline-code contrast result. Follow-up scan readiness requires unique rendered document IDs and two animation frames, in addition to computed theme/font readiness; no DOM nodes or axe rules are removed. Configuration/CI now disable retries. Final Linux verification remains pending.
 
+**M16.02 strict follow-up diagnostics:** [Source `3837e11` workflow](https://github.com/edisonmalasan/CodeSaga/actions/runs/39526460253) passed all 62 accessibility cases with zero retries, zero scan violations and four retained contrast inconclusives (downloaded artifact checked). The complete run stopped at 90/91 because the existing WebKit image fallback test scrolled a figure while error handling replaced it. The test now performs a synchronous scroll and waits for document readiness instead of the load event of a deliberately aborted resource; the actual fallback visibility assertion is preserved. The focused image journey subsequently passed in Chromium, Firefox and WebKit locally with no retries. Final complete Linux verification remains pending.
+
 ## Full evidence-to-feature coverage
 
 | Source | Scope | Delivery owners |

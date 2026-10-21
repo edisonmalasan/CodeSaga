@@ -138,10 +138,15 @@ test('original media expands with keyboard recovery and has a broken-image fallb
   await expect(page.getByRole('dialog')).not.toBeVisible();
   await expect(trigger).toBeFocused();
   await page.route(`**${image.src}`, (route) => route.abort());
-  await page.reload();
+  // A deliberately aborted image need not finish the browser's load lifecycle.
+  // Wait for the document, then assert the rendered failure state below.
+  await page.reload({ waitUntil: 'domcontentloaded' });
   // Reading media is lazy: bring its position into view to request the image.
   const targetImage = page.getByRole('figure', { name: image.caption, exact: true });
-  await targetImage.scrollIntoViewIfNeeded();
+  // Error handling can replace the figure during an animated scroll. Perform
+  // selection/scroll synchronously; the visible fallback assertion still waits
+  // for the actual failed-image UI rather than retrying the test.
+  await targetImage.evaluate((element) => element.scrollIntoView({ behavior: 'instant', block: 'center' }));
   await expect(page.getByText(`Image unavailable: ${image.alt}`, { exact: true })).toBeVisible();
 });
 
