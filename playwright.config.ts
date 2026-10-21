@@ -13,7 +13,7 @@ export default defineConfig({
     { name: 'http', testMatch: 'foundation.spec.ts' },
     { name: 'accessibility', testMatch: 'accessibility.spec.ts', use: { browserName: 'chromium' } },
     ...(['chromium', 'firefox', 'webkit'] as const).map((browserName) => ({
-      name: browserName, testMatch: 'discovery.spec.ts', use: { browserName },
+      name: browserName, testMatch: ['discovery.spec.ts', 'preferences.spec.ts'], use: { browserName },
     })),
   ],
   webServer: [

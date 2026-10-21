@@ -4,6 +4,7 @@ import './globals.css';
 import { Header, Footer } from '../src/components/shell';
 import { PreferenceProvider } from '../src/components/preferences';
 import { webOrigin } from '../src/catalog-client';
+import { preferenceBootstrap } from '../src/preference-bootstrap';
 
 export const metadata: Metadata = {
   metadataBase: new URL(webOrigin()),
@@ -11,5 +12,5 @@ export const metadata: Metadata = {
   description: 'Explore original Python and HTML & CSS reading previews. Find a small, understandable place to begin coding.',
 };
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body><PreferenceProvider><a className="skip-link" href="#main-content" tabIndex={0}>Skip to content</a><Header /><main id="main-content" tabIndex={-1}>{children}</main><Footer /></PreferenceProvider></body></html>;
+  return <html lang="en" suppressHydrationWarning><head><script id="codesaga-preferences" dangerouslySetInnerHTML={{ __html: preferenceBootstrap }} /></head><body><PreferenceProvider><a className="skip-link" href="#main-content" tabIndex={0}>Skip to content</a><Header /><main id="main-content" tabIndex={-1}>{children}</main><Footer /></PreferenceProvider></body></html>;
 }

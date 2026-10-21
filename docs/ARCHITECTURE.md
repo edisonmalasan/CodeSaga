@@ -76,6 +76,10 @@ flowchart LR
 
 Public reading is independent of the draft database seed. Redis/object fixtures have no production application consumers. The remaining sections describe the wider target architecture; their unimplemented domains are not enabled by this public slice.
 
+**Local preference lifecycle:** A fixed inline script in the root layout's head validates saved appearance/motion enums and applies them before the body, independently of Next.js hydration. It reads only `codesaga.preferences.v1`; stored text never becomes markup or executable source. Storage failure uses device defaults. Only the root HTML attribute hydration warning is suppressed for the expected pre-hydration attributes. A future strict CSP must authorize this fixed script by hash or nonce; no deployment CSP is selected here. [React inline script semantics](https://react.dev/reference/react-dom/components/script#rendering-an-inline-script) explain its parser placement.
+
+The provider restores controlled inputs and optional sound after hydration, applies updates synchronously, and consumes only localStorage events for this entry or a clear. Session storage events and unrelated keys are ignored. Blocked persistence preserves in-memory choices through client navigation; a full reload loses those choices. There is no server/account preference or cross-device synchronization. [Acceptance coverage](../tests/README.md) owns timing and fallback checks.
+
 ### 2.1 Baseline to review at M01
 
 Use a **TypeScript monorepo**, a separately deployed web application and API, and a backend organized as a modular monolith. Keep job workers and untrusted execution outside the web/API process. This gives the frontend/backend split requested while keeping initial domain transactions manageable.

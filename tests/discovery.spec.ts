@@ -66,6 +66,10 @@ test('denied browser storage preserves usable session preferences and content', 
   await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   await page.getByRole('searchbox', { name: 'Search courses', exact: true }).fill('Python');
   await expect(page.getByRole('link', { name: 'Explore Python course', exact: true })).toBeVisible();
+  await page.getByRole('link', { name: 'Explore Python course', exact: true }).click();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-theme', 'system');
 });
 
 test('aliases retain identity and wrong-parent/upcoming URLs never invent lessons', async ({ page, request }) => {

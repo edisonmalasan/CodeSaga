@@ -1,6 +1,6 @@
 # Public acceptance matrix
 
-`playwright.config.ts` declares two cross-process HTTP cases once in project `http`, nine public discovery/reading cases in each of `chromium`, `firefox` and `webkit`, and 62 Chromium accessibility cases: **91 cases** total. [Accessibility scope and report interpretation](ACCESSIBILITY.md) own the added checks. The workspace pins Playwright; its CLI installs matching engine binaries as described in the [official browser guide](https://playwright.dev/docs/browsers). These are automated engine tests, not certification of branded Chrome/Edge/Safari, physical mobile devices or every OS/browser combination.
+`playwright.config.ts` declares two cross-process HTTP cases once in project `http`, nine public discovery/reading and four preference cases in each of `chromium`, `firefox` and `webkit`, and 62 Chromium accessibility cases: **103 cases** total. [Accessibility scope and report interpretation](ACCESSIBILITY.md) own the axe checks. The workspace pins Playwright; its CLI installs matching engine binaries as described in the [official browser guide](https://playwright.dev/docs/browsers). These are automated engine tests, not certification of branded Chrome/Edge/Safari, physical mobile devices or every OS/browser combination.
 
 ## Run
 
@@ -22,7 +22,10 @@ Use `pnpm exec playwright test --project=webkit --retries=0` for a focused engin
 | --- | --- |
 | Catalog → course → lesson | Native prerequisite disclosure, composed filters, empty/reset, validated original identities, static reading without Run |
 | Mobile navigation/preferences | 390×844 CSS viewport, pointer-open then Escape/focus restoration, theme/motion/sound preference restoration across reload |
-| Denied browser storage | Explicit session-only preference state; usable content/filtering |
+| Denied browser storage | Explicit session-only preference state; usable content/filtering; choices survive client navigation and reset on full reload |
+| Saved appearance before hydration (two cases) | Hold back Next.js JS chunks; light/dark saved choice overrides opposite device preference before the body exists; reduced motion applies, no audio starts; release hydration and verify controlled values with no theme reversal or console/page errors |
+| Preference synchronization | Real same-origin tabs receive theme/motion/sound changes and key removal/clear; sessionStorage event and unrelated key do not change choices |
+| Malformed preferences | Five stored values exercise invalid JSON/null/array/unknown enums/valid data; attributes and controls agree with the parser, and bootstrap/hydration do not rewrite storage |
 | Alias/invalid/parent scope | Canonical identity, wrong-parent and malformed URLs, upcoming metadata without invented reading bodies |
 | Responsive reading/skip link | Home and all four reading previews at 320/390/768/1024/1440 CSS widths; no document overflow; first Tab reaches skip link and Enter focuses main |
 | Metadata/indexes | Canonical identity, public sitemap and robots; no private route families |
@@ -30,7 +33,7 @@ Use `pnpm exec playwright test --project=webkit --retries=0` for a focused engin
 | Sharing | Canonical copied URL; explicit clipboard failure and selectable fallback |
 | Reading collections/utilities | Resources/tutorials/blog/about/help/pricing/search and invalid prototype-like route names |
 
-The HTTP project checks separate web/API health contracts, real PostgreSQL readiness and the unknown-route error/request-ID contract. It does not require launching a browser and is not duplicated per engine.
+The HTTP project checks separate web/API health contracts, real PostgreSQL readiness and the unknown-route error/request-ID contract. It does not require launching a browser and is not duplicated per engine. Preference cases use isolated browser contexts and no account. Local screenshots live in ignored `test-results`; timing assertions establish attributes before the body and hydration, not a measured paint-performance budget or physical-device guarantee.
 
 ## Recorded checkpoint and limitations
 

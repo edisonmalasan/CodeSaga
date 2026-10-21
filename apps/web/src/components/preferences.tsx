@@ -8,21 +8,27 @@ const PreferenceContext = createContext({ preferences: defaultPreferences, updat
 export function PreferenceProvider({ children }: { children: ReactNode }) {
   const [preferences, setPreferences] = useState<Preferences>(defaultPreferences);
   const [storageFailed, setStorageFailed] = useState(false);
+  const current = useRef<Preferences>(defaultPreferences);
   const sound = useRef(false);
+  const apply = (next: Preferences) => {
+    current.current = next;
+    document.documentElement.dataset.theme = next.theme;
+    document.documentElement.dataset.motion = next.motion;
+    sound.current = next.sound;
+    setPreferences(next);
+  };
   useEffect(() => {
-    try { setPreferences(parsePreferences(localStorage.getItem(preferenceKey))); }
+    try { apply(parsePreferences(localStorage.getItem(preferenceKey))); }
     catch { setStorageFailed(true); }
     const synchronize = (event: StorageEvent) => {
-      if (event.key === preferenceKey || event.key === null) setPreferences(parsePreferences(event.newValue));
+      try {
+        if (event.storageArea !== window.localStorage) return;
+        if (event.key === preferenceKey || event.key === null) apply(parsePreferences(event.newValue));
+      } catch { setStorageFailed(true); }
     };
     window.addEventListener('storage', synchronize);
     return () => window.removeEventListener('storage', synchronize);
   }, []);
-  useEffect(() => {
-    document.documentElement.dataset.theme = preferences.theme;
-    document.documentElement.dataset.motion = preferences.motion;
-    sound.current = preferences.sound;
-  }, [preferences]);
   useEffect(() => {
     const feedback = (event: MouseEvent) => {
       if (!sound.current || !(event.target instanceof Element) || !event.target.closest('a,button')) return;
@@ -43,8 +49,8 @@ export function PreferenceProvider({ children }: { children: ReactNode }) {
     return () => document.removeEventListener('click', feedback);
   }, []);
   const update = (value: Partial<Preferences>) => {
-    const next = { ...preferences, ...value };
-    setPreferences(next);
+    const next = { ...current.current, ...value };
+    apply(next);
     try { localStorage.setItem(preferenceKey, JSON.stringify(next)); setStorageFailed(false); }
     catch { setStorageFailed(true); }
   };
